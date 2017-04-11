@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/nav_main"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="@string/menu_main"/>
+        <item
+                android:id="@+id/nav_history"
+                android:title="@string/menu_history"/>
+
+        <item
+                android:id="@+id/nav_clinics"
+                android:title="@string/menu_clinicls_list"/>
+
+        <item
+                android:id="@+id/nav_registry"
+                android:title="@string/menu_registry"/>
+
+        <item
+                android:id="@+id/nav_settings"
+                android:title="@string/menu_settings"/>
+
+    </group>
+
+</menu>

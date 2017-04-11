@@ -1,0 +1,24 @@
+<resources>
+    <!-- Писать на русском языке в этом файле неправильно, но на первых порах сойдет.-->
+    <!-- TODO: перед релизом перенести этот файл в файл русской локализации, а здесь создать английскую локализацию -->
+    <string name="app_name">Ингосстрах медицина</string>
+
+    <string name="navigation_drawer_open">Открыть меню</string>
+    <string name="navigation_drawer_close">Закрыть меню</string>
+
+    <string name="action_settings">Настройки</string>
+    
+    <string name="menu_main">Главная</string>
+    <string name="menu_clinicls_list">Список клиник</string>
+    <string name="menu_history">Медицинская карта</string>
+    <string name="menu_registry">Активные записи</string>
+    <string name="menu_settings">Настройки</string>
+
+    <string name="debug_text">Привет мир!</string>
+
+    <string name="fragment_greetings_base">Это базовый фрагмент!</string>
+    <string name="fragment_greetings_main">Это главный экран приложения!</string>
+    <string name="fragment_greetings_history">Это экран медицинской карты пользователия с историей посещений!</string>
+    <string name="fragment_greetings_settings">Это экран настроек!</string>
+    <string name="fragment_greetings_registry">Это экран активных записей!</string>
+</resources>
