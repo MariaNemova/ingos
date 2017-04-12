@@ -128,9 +128,9 @@ public class MainActivity extends AppCompatActivity
             this.bindFragment(TAG_REGISTRY, FragmentRegistry.class);
         } else if (id == R.id.nav_settings) {
             this.bindFragment(TAG_SETTINGS, FragmentSettings.class);
-        } else if (id == R.id.nav_view){
+        } /*else if (id == R.id.nav_view){
             this.bindFragment(TAG_PRIVATE_ROOM, FragmentPrivateRoom.class);
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
