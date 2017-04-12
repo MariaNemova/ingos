@@ -1,8 +1,5 @@
 package ru.ingos.digitalmedicine;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import ru.ingos.digitalmedicine.menu.*;
 
@@ -32,15 +28,9 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     //Теги для фргментов, чтобы определять, храняться ли они в FragmentManager и не создавать дополнительных сущностей.
-    private static String TAG_MAIN = "MAIN_FRAGMENT";
-    private static String TAG_HISTORY = "HOSTORY_FRAGMENT";
-    private static String TAG_CLINICS = "CLINICS_FRAGMENT";
-    private static String TAG_SETTINGS = "SETTINGS_FRAGMENT";
-    private static String TAG_REGISTRY = "REGISTRY_FRAGMENT";
-    private static String TAG_PRIVATE_ROOM = "ROOM_FRAGMENT";
+
 
     //НЕ ЗАБЫВАТЬ! Освобождать все ссылки при остановке активности! Необходимо для сборки мусора.
-    private FragmentManager fragmentManager;
     private DrawerLayout drawer;
 
     @Override
@@ -69,21 +59,24 @@ public class MainActivity extends AppCompatActivity
 
         //Cразу после запуска, показываю главный фргмент, делая его активным
         //TODO: Добавить проверку авторизации
-        this.fragmentManager = getFragmentManager();
-        this.bindFragment(TAG_MAIN, FragmentMain.class);
+
+        this.bindFragment(FragmentMain.class);
     }
 
-    private void bindFragment(String fragmentTag, Class<? extends FragmentBase> fragmentClass){
-        Fragment frag = this.fragmentManager.findFragmentByTag(fragmentTag);
-
-        if(frag == null){
-            try {
-                this.fragmentManager.beginTransaction().replace(R.id.fragment_container, fragmentClass.newInstance(), fragmentTag).commit();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
+    /**
+     * Заменяет фрагмент в главном контейнере
+     * В качестве тега используется имя класса
+     * @param fragmentClass класс фрагмента, который необходимо добавить
+     */
+    private void bindFragment(Class<? extends FragmentBase> fragmentClass){
+        try {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, fragmentClass.newInstance(),fragmentClass.getName())
+                    .commit();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
     }
 
@@ -126,15 +119,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_clinics) {
-            this.bindFragment(TAG_CLINICS, FragmentList.class);
+            this.bindFragment(FragmentList.class);
         } else if (id == R.id.nav_main) {
-            this.bindFragment(TAG_MAIN, FragmentMain.class);
+            this.bindFragment(FragmentMain.class);
         } else if (id == R.id.nav_history) {
-            this.bindFragment(TAG_HISTORY, FragmentHistory.class);
+            this.bindFragment(FragmentHistory.class);
         } else if (id == R.id.nav_registry) {
-            this.bindFragment(TAG_REGISTRY, FragmentRegistry.class);
+            this.bindFragment(FragmentRegistry.class);
         } else if (id == R.id.nav_settings) {
-            this.bindFragment(TAG_SETTINGS, FragmentSettings.class);
+            this.bindFragment(FragmentSettings.class);
         }
 
 
@@ -145,13 +138,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStop(){
         super.onStop();
-        this.fragmentManager = null;
+        this.drawer = null;
     }
 
     //перехватывает клик по шапке меню
     @Override
     public void onClick(View v) {
-        this.bindFragment(TAG_PRIVATE_ROOM, FragmentPrivateRoom.class); //показываю окно
+        this.bindFragment(FragmentPrivateRoom.class); //показываю окно
         this.drawer.closeDrawer(GravityCompat.START); //скрываю меню
     }
 }
