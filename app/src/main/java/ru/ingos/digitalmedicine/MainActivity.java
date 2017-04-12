@@ -2,6 +2,7 @@ package ru.ingos.digitalmedicine;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -11,6 +12,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
 import ru.ingos.digitalmedicine.menu.*;
 
 /**
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity
     private static String TAG_CLINICS = "CLINICS_FRAGMENT";
     private static String TAG_SETTINGS = "SETTINGS_FRAGMENT";
     private static String TAG_REGISTRY = "REGISTRY_FRAGMENT";
+    private static String TAG_PRIVATE_ROOM = "ROOM_FRAGMENT";
 
     //НЕ ЗАБЫВАТЬ! Освобождать все ссылки при остановке активности! Необходимо для сборки мусора.
     private FragmentManager fragmentManager;
@@ -123,6 +128,8 @@ public class MainActivity extends AppCompatActivity
             this.bindFragment(TAG_REGISTRY, FragmentRegistry.class);
         } else if (id == R.id.nav_settings) {
             this.bindFragment(TAG_SETTINGS, FragmentSettings.class);
+        } else if (id == R.id.nav_view){
+            this.bindFragment(TAG_PRIVATE_ROOM, FragmentPrivateRoom.class);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
