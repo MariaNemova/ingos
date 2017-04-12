@@ -24,4 +24,7 @@
 
     <string name="nav_header_usename">Иван Иванов</string>
     <string name="nav_header_number">0000 0000 0000 0000</string>
+
+    <string name="frag_title_main">Ингосстрах</string>
+    <string name="frag_title_ln">Личный кабинет</string>
 </resources>

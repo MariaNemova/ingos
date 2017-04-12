@@ -13,6 +13,9 @@ public class FragmentMain extends FragmentBase {
     public FragmentMain(){
         super();
         super.setLayout(R.layout.fragment_layout_main);
+        super.setTitle(R.string.frag_title_main);
     }
+
+
 
 }

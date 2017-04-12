@@ -7,10 +7,12 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+
 
 import ru.ingos.digitalmedicine.menu.*;
 
@@ -32,11 +34,18 @@ public class MainActivity extends AppCompatActivity
 
     //НЕ ЗАБЫВАТЬ! Освобождать все ссылки при остановке активности! Необходимо для сборки мусора.
     private DrawerLayout drawer;
+    private Toolbar appBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.appBar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(this.appBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
 
         this.drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -61,6 +70,8 @@ public class MainActivity extends AppCompatActivity
         //TODO: Добавить проверку авторизации
 
         this.bindFragment(FragmentMain.class);
+        NavigationView view = (NavigationView)findViewById(R.id.nav_view);
+        view.getMenu().getItem(0).setChecked(true);
     }
 
     /**
@@ -97,21 +108,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -130,15 +126,31 @@ public class MainActivity extends AppCompatActivity
             this.bindFragment(FragmentSettings.class);
         }
 
-
         this.drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.drawer.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onStop(){
         super.onStop();
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+
         this.drawer = null;
+        this.appBar = null;
     }
 
     //перехватывает клик по шапке меню
@@ -146,5 +158,16 @@ public class MainActivity extends AppCompatActivity
     public void onClick(View v) {
         this.bindFragment(FragmentPrivateRoom.class); //показываю окно
         this.drawer.closeDrawer(GravityCompat.START); //скрываю меню
+
+        NavigationView view = (NavigationView)findViewById(R.id.nav_view);
+        Menu menu = view.getMenu();
+        for(int i = 0; i<menu.size(); i++){
+            menu.getItem(i).setChecked(false);
+        }
+    }
+
+    public void cahngeToolbar(int res_id){
+        if(getSupportActionBar()!=null)
+            getSupportActionBar().setTitle(res_id);
     }
 }
