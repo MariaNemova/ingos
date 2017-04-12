@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import ru.ingos.digitalmedicine.menu.*;
@@ -28,7 +29,7 @@ import ru.ingos.digitalmedicine.menu.*;
  */
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     //Теги для фргментов, чтобы определять, храняться ли они в FragmentManager и не создавать дополнительных сущностей.
     private static String TAG_MAIN = "MAIN_FRAGMENT";
@@ -40,13 +41,14 @@ public class MainActivity extends AppCompatActivity
 
     //НЕ ЗАБЫВАТЬ! Освобождать все ссылки при остановке активности! Необходимо для сборки мусора.
     private FragmentManager fragmentManager;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        this.drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -54,6 +56,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Перехватываю клик по шапке меню
+        View header_view = navigationView.getHeaderView(0);
+        LinearLayout header = (LinearLayout) header_view.findViewById(R.id.nav_header);
+        header.setOnClickListener(this);
     }
 
     @Override
@@ -128,12 +135,10 @@ public class MainActivity extends AppCompatActivity
             this.bindFragment(TAG_REGISTRY, FragmentRegistry.class);
         } else if (id == R.id.nav_settings) {
             this.bindFragment(TAG_SETTINGS, FragmentSettings.class);
-        } /*else if (id == R.id.nav_view){
-            this.bindFragment(TAG_PRIVATE_ROOM, FragmentPrivateRoom.class);
-        }*/
+        }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+
+        this.drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -143,4 +148,10 @@ public class MainActivity extends AppCompatActivity
         this.fragmentManager = null;
     }
 
+    //перехватывает клик по шапке меню
+    @Override
+    public void onClick(View v) {
+        this.bindFragment(TAG_PRIVATE_ROOM, FragmentPrivateRoom.class); //показываю окно
+        this.drawer.closeDrawer(GravityCompat.START); //скрываю меню
+    }
 }

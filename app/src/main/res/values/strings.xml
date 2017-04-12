@@ -21,4 +21,7 @@
     <string name="fragment_greetings_history">Это экран медицинской карты пользователия с историей посещений!</string>
     <string name="fragment_greetings_settings">Это экран настроек!</string>
     <string name="fragment_greetings_registry">Это экран активных записей!</string>
+
+    <string name="nav_header_usename">Иван Иванов</string>
+    <string name="nav_header_number">0000 0000 0000 0000</string>
 </resources>
