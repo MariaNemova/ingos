@@ -12,6 +12,7 @@ public class FragmentSettings extends FragmentBase {
     public FragmentSettings(){
         super();
         super.setLayout(R.layout.fragment_layout_settings);
+        super.setTitle(R.string.frag_title_settings);
     }
 
 }

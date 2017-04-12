@@ -12,6 +12,7 @@ public class FragmentHistory extends FragmentBase {
     public FragmentHistory(){
         super();
         super.setLayout(R.layout.fragment_layout_history);
+        super.setTitle(R.string.frag_title_history);
     }
 
 }

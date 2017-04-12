@@ -21,10 +21,15 @@
     <string name="fragment_greetings_history">Это экран медицинской карты пользователия с историей посещений!</string>
     <string name="fragment_greetings_settings">Это экран настроек!</string>
     <string name="fragment_greetings_registry">Это экран активных записей!</string>
+    <string name="fragment_greetings_list">Это экран доступных клиник!</string>
 
     <string name="nav_header_usename">Иван Иванов</string>
     <string name="nav_header_number">0000 0000 0000 0000</string>
 
     <string name="frag_title_main">Ингосстрах</string>
     <string name="frag_title_ln">Личный кабинет</string>
+    <string name="frag_title_history">Медицинская карта</string>
+    <string name="frag_title_clinics">Список клиник</string>
+    <string name="frag_title_notes">Активные записи</string>
+    <string name="frag_title_settings">Настройки</string>
 </resources>

@@ -12,6 +12,7 @@ public class FragmentRegistry extends FragmentBase {
     public FragmentRegistry(){
         super();
         super.setLayout(R.layout.fragment_layout_registry);
+        super.setTitle(R.string.frag_title_notes);
     }
 
 }

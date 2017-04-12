@@ -19,6 +19,10 @@ import ru.ingos.digitalmedicine.R;
  */
 public class FragmentList extends FragmentBase {
 
-
+    public FragmentList(){
+        super();
+        super.setLayout(R.layout.fragment_layout_list);
+        super.setTitle(R.string.frag_title_clinics);
+    }
 
 }

@@ -11,6 +11,7 @@ public class FragmentPrivateRoom extends FragmentBase {
     public FragmentPrivateRoom(){
         super();
         super.setLayout(R.layout.fragment_layout_private_room);
+        super.setTitle(R.string.frag_title_ln);
     }
 
 }
