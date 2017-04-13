@@ -9,4 +9,9 @@
 
     <dimen name="nav_header_1">18sp</dimen>
     <dimen name="nav_header_2">16sp</dimen>
+
+    <dimen name="frag_global_padding">16dp</dimen>
+    <dimen name="frag_icon_padding">8dp</dimen>
+    <dimen name="frag_block_height">128dp</dimen>
+
 </resources>

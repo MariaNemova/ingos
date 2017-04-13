@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Покачто все за хардкодил.
+     Потомучто не имеет смысла выводить в string то, что в будущем будет подгружаться из кода -->
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/main_block">
+    <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="@dimen/frag_global_padding"
+            android:paddingBottom="@dimen/frag_global_padding"
+            android:paddingLeft="@dimen/frag_global_padding"
+            android:layout_weight=".20">
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:src="@drawable/ic_clock"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="@dimen/frag_global_padding"
+            android:layout_weight=".80">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01.05.2017 12:00"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"/>
+        <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Наименование услуги"
+                android:textColor="@color/black"/>
+        <TextView
+                android:layout_marginTop="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Адрес:"/>
+        <TextView
+                android:layout_marginTop="64dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ул. Улица, д. 11, к. 1, каб. 103"/>
+    </RelativeLayout>
+</LinearLayout>
