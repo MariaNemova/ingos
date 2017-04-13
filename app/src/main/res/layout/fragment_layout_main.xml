@@ -15,12 +15,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-            <LinearLayout
+            <com.daimajia.swipe.SwipeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
                 <include layout="@layout/block_registry_ingo"/>
-            </LinearLayout>
+                <include layout="@layout/block_registry_ingo"/>
+
+            </com.daimajia.swipe.SwipeLayout>
 
             <include layout="@layout/block_insurance_info"/>
             <include layout="@layout/block_building_info"/>
@@ -33,8 +34,8 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".07"
-            android:background="@color/drak_gray"
+            android:layout_weight=".10"
+            android:background="@color/colorAccentDark"
             android:elevation="4dp">
 
             <TextView
