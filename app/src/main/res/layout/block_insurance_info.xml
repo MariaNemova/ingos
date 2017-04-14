@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Иван Иванович Иванов"
-                android:textColor="@color/white"/>
+                android:textColor="@color/White"/>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Истекает через:"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/White"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Посмотреть программу страхования >"
-                android:textColor="@color/white"
+                android:textColor="@color/White"
                 android:textStyle="bold"
                 />
     </LinearLayout>

@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Годовая"
-                android:textColor="@color/black"
+                android:textColor="@color/Black"
                 />
         <LinearLayout
                 android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="@color/Black"
                     android:text="Всего обращений к врачу:"
                     />
             <TextView
@@ -54,7 +54,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="@color/Black"
                     android:text="Вызав врача на дом:"
                     />
             <TextView
@@ -75,7 +75,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="@color/Black"
                     android:text="Поля будут дорабатываться:"
                     />
             <TextView
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="Подробнее >"
-                android:textColor="@color/black"
+                android:textColor="@color/Black"
                 />
     </LinearLayout>
 </LinearLayout>

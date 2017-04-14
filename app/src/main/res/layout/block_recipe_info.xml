@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Наименование ??"
-                android:textColor="@color/white"/>
+                android:textColor="@color/White"/>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Начало курса:"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/White"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Окнчание курса:"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/White"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ближайший прием через:"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/White"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Посмотреть полный график >"
-                android:textColor="@color/white"
+                android:textColor="@color/White"
                 android:textStyle="bold"
                 />
     </LinearLayout>

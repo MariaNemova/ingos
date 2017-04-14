@@ -7,7 +7,7 @@
     <string name="navigation_drawer_close">Закрыть меню</string>
 
     <string name="action_settings">Настройки</string>
-    
+
     <string name="menu_main">Главная</string>
     <string name="menu_clinicls_list">Список клиник</string>
     <string name="menu_history">Медицинская карта</string>

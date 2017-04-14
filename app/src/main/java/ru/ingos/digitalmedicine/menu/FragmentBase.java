@@ -1,6 +1,7 @@
 package ru.ingos.digitalmedicine.menu;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ public class FragmentBase extends Fragment {
 
     private int layout_pointer = R.layout.fragment_layout_base;
     private int title_pointer = R.string.debug_text;
+    protected View view;
+    protected Context context;
 
 
     @Override
