@@ -32,4 +32,7 @@
     <string name="frag_title_clinics">Список клиник</string>
     <string name="frag_title_notes">Активные записи</string>
     <string name="frag_title_settings">Настройки</string>
+
+
+    <string name="btn_register_in_med">ЗАПИСАТЬСЯ НА ПРИЕМ</string>
 </resources>

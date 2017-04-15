@@ -14,6 +14,7 @@ import ru.ingos.digitalmedicine.R;
 
 /**
  * Created by Alexandr on 15.04.2017.
+ *
  */
 
 public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.ClinicHolder> {
@@ -41,12 +42,12 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
         return data.size();
     }
 
-    public static class ClinicHolder extends RecyclerView.ViewHolder {
+    static class ClinicHolder extends RecyclerView.ViewHolder {
 
         CardView cardView;
         TextView tvNameClinic;
 
-        public ClinicHolder(View itemView) {
+        ClinicHolder(View itemView) {
             super(itemView);
 
             tvNameClinic = (TextView) itemView.findViewById(R.id.tvNameClinic);

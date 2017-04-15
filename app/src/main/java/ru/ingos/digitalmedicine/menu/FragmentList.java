@@ -32,6 +32,7 @@ public class FragmentList extends FragmentBase {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanse) {
+        super.onCreateView(inflater,container,savedInstanse);//не забывать вызывать родительский метод
         view = inflater.inflate(LAYOUT, container, false);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);

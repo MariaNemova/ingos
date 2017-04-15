@@ -6,4 +6,9 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="CustomRatingBar" parent="android:Widget.Material.RatingBar">
+
+    </style>
+
 </resources>
