@@ -18,6 +18,7 @@
             <com.daimajia.swipe.SwipeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                 <include layout="@layout/block_registry_ingo"/>
                 <include layout="@layout/block_registry_ingo"/>
 
@@ -27,11 +28,11 @@
             <include layout="@layout/block_building_info"/>
             <include layout="@layout/block_recipe_info"/>
             <include layout="@layout/block_analys_info"/>
-
         </LinearLayout>
     </ScrollView>
 
     <RelativeLayout
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".10"

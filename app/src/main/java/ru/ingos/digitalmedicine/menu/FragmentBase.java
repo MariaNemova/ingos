@@ -3,6 +3,7 @@ package ru.ingos.digitalmedicine.menu;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,19 +25,26 @@ public class FragmentBase extends Fragment {
     private int title_pointer = R.string.debug_text;
     protected View view;
     protected Context context;
+    private MainActivity actv;
 
+    protected View globalView;
 
     @Override
-    public void onCreate(Bundle savedInstanse){
+    @CallSuper
+    public void onCreate(Bundle savedInstanse)
+    {
         super.onCreate(savedInstanse);
     }
 
+    @CallSuper
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanse){
-        MainActivity actv = (MainActivity)getActivity();
+        super.onCreateView(inflater,container,savedInstanse);
+        actv = (MainActivity)getActivity();
         actv.cahngeToolbar(title_pointer);
 
-        return inflater.inflate(this.layout_pointer,container,false);
+        globalView = inflater.inflate(this.layout_pointer,container,false);
+        return globalView;
     }
 
     protected void setLayout(int layout_pointer)
@@ -49,11 +57,17 @@ public class FragmentBase extends Fragment {
     }
 
     @Override
+    @CallSuper
     public void onDestroy(){
         super.onDestroy();
-
+        this.actv = null;
         this.layout_pointer = 0;
         this.title_pointer = 0;
+        globalView = null;
+    }
+
+    protected void changeView(Class<? extends FragmentBase> viewClass){
+        actv.bindFragment(viewClass, true);
     }
 
 }

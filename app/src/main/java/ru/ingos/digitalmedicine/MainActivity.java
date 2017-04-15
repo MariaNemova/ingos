@@ -1,5 +1,6 @@
 package ru.ingos.digitalmedicine;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -8,6 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     //НЕ ЗАБЫВАТЬ! Освобождать все ссылки при остановке активности! Необходимо для сборки мусора.
     private DrawerLayout drawer;
     private Toolbar appBar;
+    private Class<? extends FragmentBase> curFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +73,7 @@ public class MainActivity extends AppCompatActivity
         //Cразу после запуска, показываю главный фргмент, делая его активным
         //TODO: Добавить проверку авторизации
 
-        this.bindFragment(FragmentMain.class);
+        this.bindFragment(this.curFragment==null?FragmentMain.class:this.curFragment, false);
         NavigationView view = (NavigationView)findViewById(R.id.nav_view);
         view.getMenu().getItem(0).setChecked(true);
     }
@@ -79,16 +83,19 @@ public class MainActivity extends AppCompatActivity
      * В качестве тега используется имя класса
      * @param fragmentClass класс фрагмента, который необходимо добавить
      */
-    private void bindFragment(Class<? extends FragmentBase> fragmentClass){
+    public void bindFragment(Class<? extends FragmentBase> fragmentClass, boolean add_to_back){
         try {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, fragmentClass.newInstance(),fragmentClass.getName())
-                    .commit();
+            FragmentTransaction trans = getFragmentManager().beginTransaction();
+            trans.replace(R.id.fragment_container, fragmentClass.newInstance(),fragmentClass.getName());
+            if(add_to_back && this.curFragment != fragmentClass)trans.addToBackStack(null);
+            trans.commit();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+
+        this.curFragment = fragmentClass;
     }
 
     @Override
@@ -115,15 +122,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_clinics) {
-            this.bindFragment(FragmentList.class);
+            this.bindFragment(FragmentList.class, false);
         } else if (id == R.id.nav_main) {
-            this.bindFragment(FragmentMain.class);
+            this.bindFragment(FragmentMain.class, false);
         } else if (id == R.id.nav_history) {
-            this.bindFragment(FragmentHistory.class);
+            this.bindFragment(FragmentHistory.class, false);
         } else if (id == R.id.nav_registry) {
-            this.bindFragment(FragmentRegistry.class);
+            this.bindFragment(FragmentRegistry.class, false);
         } else if (id == R.id.nav_settings) {
-            this.bindFragment(FragmentSettings.class);
+            this.bindFragment(FragmentSettings.class, false);
         }
 
         this.drawer.closeDrawer(GravityCompat.START);
@@ -151,12 +158,13 @@ public class MainActivity extends AppCompatActivity
 
         this.drawer = null;
         this.appBar = null;
+        this.curFragment = null;
     }
 
     //перехватывает клик по шапке меню
     @Override
     public void onClick(View v) {
-        this.bindFragment(FragmentPrivateRoom.class); //показываю окно
+        this.bindFragment(FragmentPrivateRoom.class, true); //показываю окно
         this.drawer.closeDrawer(GravityCompat.START); //скрываю меню
 
         NavigationView view = (NavigationView)findViewById(R.id.nav_view);
