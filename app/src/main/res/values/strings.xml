@@ -33,6 +33,16 @@
     <string name="frag_title_notes">Активные записи</string>
     <string name="frag_title_settings">Настройки</string>
 
+    <string name="personal_information">Персональные данные</string>
+    <string name="edit_information">Изменение ваших данных и пароля</string>
+    <string name="insurance_information">Информация о страховке</string>
+    <string name="insurance_information_global">Доступные услуги, сроки окончания и т. д.</string>
+    <string name="service">Сервисы</string>
+    <string name="edit_service">Изменить доступные услуги, продлить полис и т. д.</string>
+    <string name="stats">Статистика</string>
+    <string name="stats_info">Информация о ваших посещениях клиник</string>
+    <string name="EXIT">ВЫЙТИ ИЗ ПРОФИЛЯ</string>
+
 
     <string name="btn_register_in_med">ЗАПИСАТЬСЯ НА ПРИЕМ</string>
 </resources>
