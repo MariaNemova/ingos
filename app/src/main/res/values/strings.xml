@@ -2,6 +2,7 @@
     <!-- Писать на русском языке в этом файле неправильно, но на первых порах сойдет.-->
     <!-- TODO: перед релизом перенести этот файл в файл русской локализации, а здесь создать английскую локализацию -->
     <string name="app_name">Ингосстрах медицина</string>
+    <string name="speciality">Категория</string>
 
     <string name="navigation_drawer_open">Открыть меню</string>
     <string name="navigation_drawer_close">Закрыть меню</string>
@@ -22,6 +23,8 @@
     <string name="fragment_greetings_settings">Это экран настроек!</string>
     <string name="fragment_greetings_registry">Это экран активных записей!</string>
     <string name="fragment_greetings_list">Это экран доступных клиник!</string>
+
+    <string name="activity_speciality">Это экран всех специальностей врачей!</string>
 
     <string name="nav_header_usename">Иван Иванов</string>
     <string name="nav_header_number">0000 0000 0000 0000</string>

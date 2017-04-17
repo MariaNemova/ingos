@@ -7,9 +7,8 @@ import android.support.annotation.CallSuper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
-import ru.ingos.digitalmedicine.MainActivity;
+import ru.ingos.digitalmedicine.Activity.MainActivity;
 import ru.ingos.digitalmedicine.R;
 
 /**

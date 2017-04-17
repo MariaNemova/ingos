@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.ingos.digitalmedicine.Clinic;
-import ru.ingos.digitalmedicine.adapter.ClinicListAdapter;
+import ru.ingos.digitalmedicine.models.ClinicModel;
+import ru.ingos.digitalmedicine.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.R;
 
 /**
@@ -42,13 +42,13 @@ public class FragmentList extends FragmentBase {
         return view;
     }
 
-    private List<Clinic> createData() {
-        List<Clinic> data = new ArrayList<>();
-        data.add(new Clinic("Clinic 1"));
-        data.add(new Clinic("Clinic 2"));
-        data.add(new Clinic("Clinic 3"));
-        data.add(new Clinic("Clinic 4"));
-        data.add(new Clinic("Clinic 5"));
-        return data;
+    private List<ClinicModel> createData() {
+        List<ClinicModel> clinics = new ArrayList<>();
+        clinics.add(new ClinicModel("ClinicModel 1"));
+        clinics.add(new ClinicModel("ClinicModel 2"));
+        clinics.add(new ClinicModel("ClinicModel 3"));
+        clinics.add(new ClinicModel("ClinicModel 4"));
+        clinics.add(new ClinicModel("ClinicModel 5"));
+        return clinics;
     }
 }

@@ -1,14 +1,14 @@
-package ru.ingos.digitalmedicine;
+package ru.ingos.digitalmedicine.models;
 
 /**
  * Created by Alexandr on 15.04.2017.
  */
 
-public class Clinic {
+public class ClinicModel {
 
     private String nameClinic;
 
-    public Clinic(String name) {
+    public ClinicModel(String name) {
         this.nameClinic = name;
     }
 

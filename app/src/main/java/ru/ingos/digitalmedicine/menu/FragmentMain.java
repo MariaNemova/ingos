@@ -1,5 +1,6 @@
 package ru.ingos.digitalmedicine.menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import ru.ingos.digitalmedicine.Activity.SpecialtyActivity;
 import ru.ingos.digitalmedicine.R;
 
 /**
@@ -51,6 +54,9 @@ public class FragmentMain extends FragmentBase implements AdapterView.OnClickLis
         switch (id){
             case R.id.block_insuranse:
                 super.changeView(FragmentPrivateRoom.class);
+                break;
+            case R.id.btn_register:
+                startActivity(new Intent(getActivity(), SpecialtyActivity.class));
                 break;
 
             default:

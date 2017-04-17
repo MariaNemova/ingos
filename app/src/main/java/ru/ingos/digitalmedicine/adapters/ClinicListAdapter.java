@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.adapter;
+package ru.ingos.digitalmedicine.adapters;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ru.ingos.digitalmedicine.Clinic;
+import ru.ingos.digitalmedicine.models.ClinicModel;
 import ru.ingos.digitalmedicine.R;
 
 /**
@@ -19,10 +19,10 @@ import ru.ingos.digitalmedicine.R;
 
 public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.ClinicHolder> {
 
-    private List<Clinic> data;
+    private List<ClinicModel> clinics;
 
-    public ClinicListAdapter(List<Clinic> data) {
-        this.data = data;
+    public ClinicListAdapter(List<ClinicModel> data) {
+        this.clinics = data;
     }
 
     @Override
@@ -34,12 +34,12 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
 
     @Override
     public void onBindViewHolder(ClinicHolder holder, int position) {
-        holder.tvNameClinic.setText(data.get(position).getNameClinic());
+        holder.tvNameClinic.setText(clinics.get(position).getNameClinic());
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return clinics.size();
     }
 
     static class ClinicHolder extends RecyclerView.ViewHolder {

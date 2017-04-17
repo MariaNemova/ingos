@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine;
+package ru.ingos.digitalmedicine.Activity;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 
+import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.menu.*;
 
 /**
