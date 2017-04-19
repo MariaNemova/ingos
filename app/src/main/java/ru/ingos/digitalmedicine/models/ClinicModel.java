@@ -1,9 +1,5 @@
 package ru.ingos.digitalmedicine.models;
 
-/**
- * Created by Alexandr on 15.04.2017.
- */
-
 public class ClinicModel {
 
     private String nameClinic;

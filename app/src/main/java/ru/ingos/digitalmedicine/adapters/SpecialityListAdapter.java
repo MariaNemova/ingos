@@ -12,9 +12,6 @@ import java.util.List;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.models.SpecialityModel;
 
-/**
- * Created by Alexandr on 18.04.2017.
- */
 
 public class SpecialityListAdapter extends BaseAdapter {
 

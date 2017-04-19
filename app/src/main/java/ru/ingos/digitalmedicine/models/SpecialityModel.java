@@ -1,9 +1,5 @@
 package ru.ingos.digitalmedicine.models;
 
-/**
- * Created by Alexandr on 18.04.2017.
- */
-
 public class SpecialityModel {
 
     private String name;

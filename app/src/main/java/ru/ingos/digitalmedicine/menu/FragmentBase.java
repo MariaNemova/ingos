@@ -51,7 +51,7 @@ public class FragmentBase extends Fragment {
         this.layout_pointer = layout_pointer;
     }
 
-    protected void setTitle(int title_pointer){
+    void setTitle(int title_pointer){
         this.title_pointer = title_pointer;
     }
 
@@ -65,7 +65,7 @@ public class FragmentBase extends Fragment {
         globalView = null;
     }
 
-    protected void changeView(Class<? extends FragmentBase> viewClass){
+    void changeView(Class<? extends FragmentBase> viewClass){
         actv.bindFragment(viewClass, true);
     }
 
