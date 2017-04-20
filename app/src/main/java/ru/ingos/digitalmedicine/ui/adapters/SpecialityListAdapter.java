@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.adapters;
+package ru.ingos.digitalmedicine.ui.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.ingos.digitalmedicine.R;
-import ru.ingos.digitalmedicine.models.SpecialityModel;
+import ru.ingos.digitalmedicine.ui.models.SpecialityModel;
 
 
 public class SpecialityListAdapter extends BaseAdapter {

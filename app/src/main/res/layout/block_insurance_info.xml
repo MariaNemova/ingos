@@ -19,6 +19,7 @@
                 android:textColor="@color/primaryLight"
                 android:textStyle="bold"/>
         <TextView
+                android:id="@+id/insuranse_username"
                 android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,6 +37,7 @@
                     android:text="Истекает через:"
                     android:textColor="@color/White"/>
             <TextView
+                    android:id="@+id/insuranse_expire"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="5dp"

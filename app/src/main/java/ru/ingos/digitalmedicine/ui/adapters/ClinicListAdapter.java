@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.adapters;
+package ru.ingos.digitalmedicine.ui.adapters;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ru.ingos.digitalmedicine.models.ClinicModel;
+import ru.ingos.digitalmedicine.ui.models.ClinicModel;
 import ru.ingos.digitalmedicine.R;
 
 /**

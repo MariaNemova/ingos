@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.menu;
+package ru.ingos.digitalmedicine.ui.fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.ingos.digitalmedicine.models.ClinicModel;
-import ru.ingos.digitalmedicine.adapters.ClinicListAdapter;
+import ru.ingos.digitalmedicine.ui.models.ClinicModel;
+import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.R;
 
 /**

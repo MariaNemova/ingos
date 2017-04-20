@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.Activity;
+package ru.ingos.digitalmedicine.ui.activities;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -9,16 +9,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.transition.Transition;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
 
+import butterknife.ButterKnife;
 import ru.ingos.digitalmedicine.R;
-import ru.ingos.digitalmedicine.menu.*;
+import ru.ingos.digitalmedicine.ui.fragments.*;
 
 /**
  * Экран является точкой входа в приложение, содержит меню. Все экраны, которые могут быть вызваны из меню,
