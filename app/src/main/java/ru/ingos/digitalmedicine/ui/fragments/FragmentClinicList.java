@@ -19,11 +19,11 @@ import ru.ingos.digitalmedicine.R;
  *
  * Экран списка, списка клиник врачей и прочего!
  */
-public class FragmentList extends FragmentBase {
+public class FragmentClinicList extends FragmentBase {
 
     private final static int LAYOUT = R.layout.fragment_layout_list;
 
-    public FragmentList(){
+    public FragmentClinicList(){
         super();
         super.setLayout(LAYOUT);
         super.setTitle(R.string.frag_title_clinics);
@@ -36,7 +36,7 @@ public class FragmentList extends FragmentBase {
         view = inflater.inflate(LAYOUT, container, false);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setLayoutManager(new LinearLayoutManager(null));
         recyclerView.setAdapter(new ClinicListAdapter(createData()));
 
         return view;

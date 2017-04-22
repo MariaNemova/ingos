@@ -2,6 +2,7 @@ package ru.ingos.digitalmedicine.common;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Utils {
 
@@ -15,6 +16,37 @@ public class Utils {
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
         return cal.getTime();
+    }
+
+    public static long daysBetween(long start, long end){
+        return TimeUnit.DAYS.convert(start-end, TimeUnit.MILLISECONDS);
+    }
+
+    public static String getCorrectDaysString(long days_between){
+        String btw_str = String.valueOf(days_between);
+
+        int last_digit = (int)days_between % 10;
+        switch (last_digit){
+            case 2:
+            case 3:
+            case 4:
+                btw_str+=" дня";
+                break;
+            case 1:
+                btw_str += "день";
+                break;
+            case 0:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            default:
+                btw_str+=" дней";
+                break;
+        }
+
+        return btw_str;
     }
 
 }

@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 
-import butterknife.ButterKnife;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.ui.fragments.*;
 
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity
         //Cразу после запуска, показываю главный фргмент, делая его активным
         //TODO: Добавить проверку авторизации
 
-        this.bindFragment(this.curFragment==null?FragmentMain.class:this.curFragment, false);
+        this.bindFragment(FragmentMain.class, false);
         NavigationView view = (NavigationView)findViewById(R.id.nav_view);
         view.getMenu().getItem(0).setChecked(true);
     }
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_clinics) {
-            this.bindFragment(FragmentList.class, false);
+            this.bindFragment(FragmentClinicList.class, false);
         } else if (id == R.id.nav_main) {
             this.bindFragment(FragmentMain.class, false);
         } else if (id == R.id.nav_history) {

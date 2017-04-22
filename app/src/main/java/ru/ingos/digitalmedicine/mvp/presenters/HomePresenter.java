@@ -8,13 +8,16 @@ import ru.ingos.digitalmedicine.mvp.models.ClinicModel;
 import ru.ingos.digitalmedicine.mvp.models.InsuranceModel;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 
-import java.util.concurrent.TimeUnit;
-
 @InjectViewState
 public class HomePresenter extends MvpPresenter<HomeView> {
 
     private ClinicModel lastClinic;
     private InsuranceModel insuranceInfo;
+
+    public HomePresenter(){
+        super();
+        Log.d("[MOJAR]", "Презентер создан");
+    }
 
     private void loadClinicInfo(){
         //На самом деле здесь должна происходить некоторая загрузка с диска. Но она пока не реализована.
@@ -40,13 +43,11 @@ public class HomePresenter extends MvpPresenter<HomeView> {
     private void showInsuranceInfo(){
         loadInsuranceInfo();
 
-        long days_between = TimeUnit.DAYS.convert(
-                insuranceInfo.getExpireDate().getTime()-System.currentTimeMillis(),
-                TimeUnit.MILLISECONDS);
+        long days_between = Utils.daysBetween(insuranceInfo.getExpireDate().getTime(), System.currentTimeMillis());
 
         getViewState().setInsuranceInfo(
                 insuranceInfo.getUserName()+" "+insuranceInfo.getUserSurname(),
-                String.valueOf(days_between),
+                Utils.getCorrectDaysString(days_between),
                 days_between<30);
     }
 
@@ -65,6 +66,8 @@ public class HomePresenter extends MvpPresenter<HomeView> {
 
     @Override
     public void onFirstViewAttach(){
+        super.onFirstViewAttach();
+        Log.d("[MOJAR]", "Загружаю с диска!");
         showClinicInfo();
         showInsuranceInfo();
     }
@@ -79,6 +82,10 @@ public class HomePresenter extends MvpPresenter<HomeView> {
 
     public void onNewRegistryBtnClick(){
         getViewState().createNewRegistry();
+    }
+
+    public void onBuildingListClick(){
+        getViewState().showClinicsList();
     }
 
 }

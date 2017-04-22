@@ -16,16 +16,43 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
             <com.daimajia.swipe.SwipeLayout
+                    android:id="@+id/swipt_registry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                <RelativeLayout
+                        android:id="@+id/btn_registry_list"
+                        android:layout_width="128dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorAccentDark"
+                        android:padding="10dp">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textStyle="bold"
 
-                <include layout="@layout/block_registry_ingo"/>
-                <include layout="@layout/block_registry_ingo"/>
+                            android:textColor="@color/White"
+                            android:text="@string/btn_registry_list"/>
+
+                </RelativeLayout>
+                <include layout="@layout/block_registry_info"/>
+
 
             </com.daimajia.swipe.SwipeLayout>
 
             <include layout="@layout/block_insurance_info"/>
-            <include layout="@layout/block_building_info"/>
+
+            <com.daimajia.swipe.SwipeLayout
+                    android:id="@+id/swipe_building"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:clickable="true">
+                <include layout="@layout/button_list_building_layout"/>
+                <include layout="@layout/block_building_info"/>
+
+            </com.daimajia.swipe.SwipeLayout>
+
             <include layout="@layout/block_recipe_info"/>
             <include layout="@layout/block_analys_info"/>
         </LinearLayout>

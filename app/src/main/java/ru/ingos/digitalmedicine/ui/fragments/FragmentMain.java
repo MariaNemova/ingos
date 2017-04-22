@@ -2,6 +2,9 @@ package ru.ingos.digitalmedicine.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.daimajia.swipe.SwipeLayout;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
@@ -40,12 +44,16 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     @BindView(R.id.insuranse_expire)
     TextView insuranceExpire;
 
-    @InjectPresenter
-    HomePresenter homePresenter;
+    @BindView(R.id.btn_building_list)
+    RelativeLayout swipe_right_btn;
+    @BindView(R.id.block_insuranse)
+    LinearLayout block_insurance;
+    @BindView(R.id.btn_register)
+    RelativeLayout add_registry;
 
-    private static int[] BLOCKS = {
-            R.id.block_insuranse
-    };
+
+    @InjectPresenter(tag = "HOME")
+    HomePresenter homePresenter;
 
     public FragmentMain(){
         super();
@@ -53,22 +61,12 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
         super.setTitle(R.string.frag_title_main);
     }
 
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanse){
-        View temp = super.onCreateView(inflater,container,savedInstanse);
-
-        for (int id:BLOCKS){
-            LinearLayout ll = (LinearLayout) this.globalView.findViewById(id);
-            ll.setOnClickListener(this);
-        }
-
-        RelativeLayout main_btn  = (RelativeLayout) this.globalView.findViewById(R.id.btn_register);
-        main_btn.setOnClickListener(this);
-
-        ButterKnife.bind(this,temp);
-        return temp;
+    public void onViewCreated(View view, @Nullable Bundle savedInstance){
+        ButterKnife.bind(this, view);
+        swipe_right_btn.setOnClickListener(this);
+        block_insurance.setOnClickListener(this);
+        add_registry.setOnClickListener(this);
     }
 
     @Override
@@ -83,6 +81,9 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
                 break;
             case R.id.block_statistics:
                 homePresenter.onStatisticsClick();
+                break;
+            case R.id.btn_building_list:
+                homePresenter.onBuildingListClick();
                 break;
             default:
                 break;
@@ -101,7 +102,11 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     public void setInsuranceInfo(String userName, String expire, Boolean isRed) {
         insuranceFullname.setText(userName);
         insuranceExpire.setText(expire);
-        insuranceExpire.setTextColor(isRed?R.color.colorAccent:R.color.White);
+
+        int red = ContextCompat.getColor(getActivity(), R.color.colorAccent);
+        int white = ContextCompat.getColor(getActivity(), R.color.White);
+
+        insuranceExpire.setTextColor(isRed?red:white);
     }
 
     @Override
@@ -117,5 +122,10 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     @Override
     public void createNewRegistry() {
         startActivity(new Intent(getActivity(), SpecialtyActivity.class));
+    }
+
+    @Override
+    public void showClinicsList() {
+        super.changeView(FragmentClinicList.class);
     }
 }

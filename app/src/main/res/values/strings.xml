@@ -48,4 +48,6 @@
 
 
     <string name="btn_register_in_med">ЗАПИСАТЬСЯ НА ПРИЕМ</string>
+    <string name="btn_registry_list">К СПИСКУ ЗАПИСЕЙ</string>
+    <string name="btn_building_list">К СПИСКУ ЦЕНТРОВ</string>
 </resources>
