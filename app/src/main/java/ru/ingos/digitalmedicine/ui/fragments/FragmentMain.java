@@ -17,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.PresenterType;
 import com.daimajia.swipe.SwipeLayout;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
@@ -54,7 +55,7 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
 
     private Unbinder unbinder;
 
-    @InjectPresenter(tag = "HOME")
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "Home")
     HomePresenter homePresenter;
 
     public FragmentMain(){
@@ -64,11 +65,20 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     }
 
     @Override
+    public void onCreate(Bundle saved){
+        super.onCreate(saved);
+
+        Log.d("MOJAR", "Frag Create");
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstance){
         unbinder = ButterKnife.bind(this, view);
         swipe_right_btn.setOnClickListener(this);
         block_insurance.setOnClickListener(this);
         add_registry.setOnClickListener(this);
+
+        Log.d("MOJAR", "Frag View Create");
     }
 
     @Override
@@ -135,10 +145,12 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     public void onDestroyView(){
         unbinder.unbind();
         super.onDestroyView();
+        Log.d("MOJAR", "Frag View Destroied");
     }
 
     @Override
     public void onDestroy(){
         super.onDestroy();
+        Log.d("MOJAR", "Frag Destroied");
     }
 }
