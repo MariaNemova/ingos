@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.menu;
+package ru.ingos.digitalmedicine.ui.fragments;
 
 import ru.ingos.digitalmedicine.R;
 

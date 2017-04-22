@@ -15,7 +15,7 @@
     <string name="menu_registry">Активные записи</string>
     <string name="menu_settings">Настройки</string>
 
-    <string name="debug_text">Привет мир!</string>
+    <string name="debug_text">[Дебаг]</string>
 
     <string name="fragment_greetings_base">Это базовый фрагмент!</string>
     <string name="fragment_greetings_main">Это главный экран приложения!</string>
@@ -48,4 +48,6 @@
 
 
     <string name="btn_register_in_med">ЗАПИСАТЬСЯ НА ПРИЕМ</string>
+    <string name="btn_registry_list">К СПИСКУ ЗАПИСЕЙ</string>
+    <string name="btn_building_list">К СПИСКУ ЦЕНТРОВ</string>
 </resources>

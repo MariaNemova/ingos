@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.models;
+package ru.ingos.digitalmedicine.ui.models;
 
 public class ClinicModel {
 

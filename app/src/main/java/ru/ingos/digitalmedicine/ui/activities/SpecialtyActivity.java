@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.Activity;
+package ru.ingos.digitalmedicine.ui.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.ingos.digitalmedicine.R;
-import ru.ingos.digitalmedicine.adapters.SpecialityListAdapter;
-import ru.ingos.digitalmedicine.models.SpecialityModel;
+import ru.ingos.digitalmedicine.ui.adapters.SpecialityListAdapter;
+import ru.ingos.digitalmedicine.ui.models.SpecialityModel;
 
 
 public class SpecialtyActivity extends AppCompatActivity {
@@ -36,6 +36,5 @@ public class SpecialtyActivity extends AppCompatActivity {
         specialties.add(new SpecialityModel("Хирург"));
 
         return specialties;
-
     }
 }

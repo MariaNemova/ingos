@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.menu;
+package ru.ingos.digitalmedicine.ui.fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.ingos.digitalmedicine.models.ClinicModel;
-import ru.ingos.digitalmedicine.adapters.ClinicListAdapter;
+import ru.ingos.digitalmedicine.ui.models.ClinicModel;
+import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.R;
 
 /**
@@ -19,11 +19,11 @@ import ru.ingos.digitalmedicine.R;
  *
  * Экран списка, списка клиник врачей и прочего!
  */
-public class FragmentList extends FragmentBase {
+public class FragmentClinicList extends FragmentBase {
 
     private final static int LAYOUT = R.layout.fragment_layout_list;
 
-    public FragmentList(){
+    public FragmentClinicList(){
         super();
         super.setLayout(LAYOUT);
         super.setTitle(R.string.frag_title_clinics);
@@ -36,7 +36,7 @@ public class FragmentList extends FragmentBase {
         view = inflater.inflate(LAYOUT, container, false);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setLayoutManager(new LinearLayoutManager(null));
         recyclerView.setAdapter(new ClinicListAdapter(createData()));
 
         return view;

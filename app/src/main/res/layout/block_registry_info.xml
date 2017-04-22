@@ -2,6 +2,7 @@
 <!-- Покачто все за хардкодил.
      Потомучто не имеет смысла выводить в string то, что в будущем будет подгружаться из кода -->
 <LinearLayout
+        android:id="@+id/registry_item"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
