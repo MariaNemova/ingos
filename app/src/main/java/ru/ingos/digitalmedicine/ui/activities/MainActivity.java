@@ -7,14 +7,16 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import com.arellomobile.mvp.MvpAppCompatActivity;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.ui.fragments.*;
 
@@ -24,33 +26,28 @@ import ru.ingos.digitalmedicine.ui.fragments.*;
  * обособленную сущность и имеет свой собтвенный жизненый цикл.
  * Такой подход выбран из-за того, что меню должно присутствовать на всех экранах. Избегаем дубликатов кода, используем
  * DRY концепцию.
- *
- * TODO: реализовать на этом экране проверку входа. Если пользователь не авторизован, то выбрасывать его на экран входа
  */
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends MvpAppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-    //Теги для фргментов, чтобы определять, храняться ли они в FragmentManager и не создавать дополнительных сущностей.
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawer;
+    @BindView(R.id.toolbar)
+    Toolbar appBar;
 
-
-    //НЕ ЗАБЫВАТЬ! Освобождать все ссылки при остановке активности! Необходимо для сборки мусора.
-    private DrawerLayout drawer;
-    private Toolbar appBar;
-    private Class<? extends FragmentBase> curFragment;
+    private Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        unbinder = ButterKnife.bind(this);
 
-        this.appBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(this.appBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-
-        this.drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -64,6 +61,8 @@ public class MainActivity extends AppCompatActivity
         LinearLayout header = (LinearLayout) header_view.findViewById(R.id.nav_header);
         header.setOnClickListener(this);
     }
+
+
 
     @Override
     protected void onStart(){
@@ -83,18 +82,14 @@ public class MainActivity extends AppCompatActivity
      * @param fragmentClass класс фрагмента, который необходимо добавить
      */
     public void bindFragment(Class<? extends FragmentBase> fragmentClass, boolean add_to_back){
+        FragmentTransaction trans = getFragmentManager().beginTransaction();
         try {
-            FragmentTransaction trans = getFragmentManager().beginTransaction();
-            trans.replace(R.id.fragment_container, fragmentClass.newInstance(),fragmentClass.getName());
-            if(add_to_back && this.curFragment != fragmentClass)trans.addToBackStack(null);
-            trans.commit();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+            trans.replace(R.id.fragment_container, fragmentClass.newInstance());
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-        this.curFragment = fragmentClass;
+        if(add_to_back)trans.addToBackStack(null);
+        trans.commit();
     }
 
     @Override
@@ -105,13 +100,6 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -153,11 +141,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onDestroy(){
-        super.onDestroy();
+        unbinder.unbind();
 
-        this.drawer = null;
-        this.appBar = null;
-        this.curFragment = null;
+        super.onDestroy();
     }
 
     //перехватывает клик по шапке меню

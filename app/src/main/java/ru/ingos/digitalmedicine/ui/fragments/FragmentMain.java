@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.daimajia.swipe.SwipeLayout;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
@@ -51,6 +52,7 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     @BindView(R.id.btn_register)
     RelativeLayout add_registry;
 
+    private Unbinder unbinder;
 
     @InjectPresenter(tag = "HOME")
     HomePresenter homePresenter;
@@ -63,7 +65,7 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstance){
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
         swipe_right_btn.setOnClickListener(this);
         block_insurance.setOnClickListener(this);
         add_registry.setOnClickListener(this);
@@ -127,5 +129,16 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     @Override
     public void showClinicsList() {
         super.changeView(FragmentClinicList.class);
+    }
+
+    @Override
+    public void onDestroyView(){
+        unbinder.unbind();
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
     }
 }

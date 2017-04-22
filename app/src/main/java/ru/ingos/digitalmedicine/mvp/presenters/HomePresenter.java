@@ -42,9 +42,7 @@ public class HomePresenter extends MvpPresenter<HomeView> {
 
     private void showInsuranceInfo(){
         loadInsuranceInfo();
-
         long days_between = Utils.daysBetween(insuranceInfo.getExpireDate().getTime(), System.currentTimeMillis());
-
         getViewState().setInsuranceInfo(
                 insuranceInfo.getUserName()+" "+insuranceInfo.getUserSurname(),
                 Utils.getCorrectDaysString(days_between),
@@ -53,9 +51,6 @@ public class HomePresenter extends MvpPresenter<HomeView> {
 
     private void showClinicInfo(){
         loadClinicInfo();
-
-        Log.d("[DEBUG]", getViewState().toString());
-
         getViewState().setLastClinicInfo(
                 lastClinic.getClinicName(),
                 lastClinic.getClinincAdress(),
