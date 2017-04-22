@@ -19,4 +19,6 @@ public interface HomeView extends MvpView{
     void createNewRegistry();
     @StateStrategyType(SkipStrategy.class)
     void showClinicsList();
+    @StateStrategyType(SkipStrategy.class)
+    void showClinicInfo();
 }

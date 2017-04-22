@@ -17,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.google.android.gms.maps.MapFragment;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.ui.fragments.*;
 

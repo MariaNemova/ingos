@@ -21,6 +21,7 @@ import com.arellomobile.mvp.presenter.PresenterType;
 import com.daimajia.swipe.SwipeLayout;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
+import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
 import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
 import ru.ingos.digitalmedicine.R;
 
@@ -52,6 +53,9 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     LinearLayout block_insurance;
     @BindView(R.id.btn_register)
     RelativeLayout add_registry;
+    @BindView(R.id.last_clinic_info)
+    LinearLayout clinic_info;
+
 
     private Unbinder unbinder;
 
@@ -77,6 +81,7 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
         swipe_right_btn.setOnClickListener(this);
         block_insurance.setOnClickListener(this);
         add_registry.setOnClickListener(this);
+        clinic_info.setOnClickListener(this);
 
         Log.d("MOJAR", "Frag View Create");
     }
@@ -96,6 +101,9 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
                 break;
             case R.id.btn_building_list:
                 homePresenter.onBuildingListClick();
+                break;
+            case R.id.last_clinic_info:
+                homePresenter.onClinicInfoClick();
                 break;
             default:
                 break;
@@ -139,6 +147,11 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     @Override
     public void showClinicsList() {
         super.changeView(FragmentClinicList.class);
+    }
+
+    @Override
+    public void showClinicInfo() {
+        startActivity(new Intent(getActivity(), ClinicInfoActivity.class));
     }
 
     @Override
