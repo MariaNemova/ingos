@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/White">
 
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".93"
+            android:layout_height="match_parent"
+            android:background="@color/White"
             >
         <LinearLayout
                 android:layout_width="match_parent"
@@ -55,16 +55,22 @@
 
             <include layout="@layout/block_recipe_info"/>
             <include layout="@layout/block_analys_info"/>
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp">
+                  <!-- Костыль для корректного отображения -->
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 
     <RelativeLayout
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".10"
+            android:layout_height="64dp"
+            android:layout_alignParentBottom="true"
             android:background="@color/colorAccentDark"
-            android:elevation="4dp">
+            android:clipToPadding="false"
+            android:elevation="7dp">
 
             <TextView
                     android:layout_width="match_parent"
@@ -77,5 +83,5 @@
 
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>
 

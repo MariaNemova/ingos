@@ -1,5 +1,7 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,6 +24,7 @@ import com.daimajia.swipe.SwipeLayout;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
+import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
 import ru.ingos.digitalmedicine.R;
 
@@ -151,7 +154,8 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
 
     @Override
     public void showClinicInfo() {
-        startActivity(new Intent(getActivity(), ClinicInfoActivity.class));
+        Intent clinicInfo = new Intent(getActivity(), ClinicInfoActivity.class);
+        startActivity(clinicInfo);
     }
 
     @Override

@@ -1,5 +1,9 @@
 package ru.ingos.digitalmedicine.common;
 
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.view.Window;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -47,6 +51,18 @@ public class Utils {
         }
 
         return btw_str;
+    }
+
+    public static int getStatusBarHeight(Resources resources){
+        int result = 0;
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = resources.getDimensionPixelSize(resourceId);
+        }else {
+            //FIXME перед релизхом убрать эту строку обязательно!
+            throw new RuntimeException("StatusBar size not found!");
+        }
+        return result;
     }
 
 }
