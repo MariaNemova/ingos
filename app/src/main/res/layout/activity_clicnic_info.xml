@@ -1,74 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/clinic_info"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="@color/White">
-    <android.support.design.widget.AppBarLayout
-            android:id="@+id/clinic_info_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="192dp"
-            android:focusable="true">
-        <android.support.design.widget.CollapsingToolbarLayout
-                android:id="@+id/clinic_info_collapse_bar"
+        android:layout_width="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+                android:id="@+id/clinic_info_app_bar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:focusable="true">
-            <FrameLayout
+            <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/clinic_info_collapse_bar"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:focusable="false"
-                    android:clickable="false"
-                    app:layout_collapseMode="parallax">
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    app:layout_scrollFlags="scroll|snap"
+                    app:expandedTitleMarginStart="48dp"
+                    app:expandedTitleMarginEnd="64dp">
                 <fragment
                         class="com.google.android.gms.maps.MapFragment"
+                        app:layout_collapseMode="parallax"
                         android:id="@+id/clinic_info_map"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:layout="@layout/block_recipe_info"
-                        />
-            </FrameLayout>
-            <android.support.v7.widget.Toolbar
-                    android:id="@+id/clinic_info_toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_collapseMode="parallax"
-                    android:focusable="true"
-                    android:clickable="true">
-            </android.support.v7.widget.Toolbar>
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <LinearLayout
+                        android:layout_height="192dp"/>
+                <android.support.v7.widget.Toolbar
+                        android:id="@+id/clinic_info_toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fitsSystemWindows="true"
+                        android:focusable="true"
+                        android:clickable="true"
+                        app:layout_collapseMode="pin"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+    <android.support.v4.widget.NestedScrollView
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:orientation="vertical"
-            android:background="@color/White"
-            android:elevation="4dp"
-            >
-
-        <TextView
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Полное наименование клиники"
-                android:textColor="@color/Black"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Сегодня с 9:00 до 20:00"/>
+                android:layout_height="match_parent">
+            <include layout="@layout/fragment_layout_main"/>
+        </FrameLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
 
-    </LinearLayout>
-    <android.support.v4.view.ViewPager
-            android:id="@+id/clinic_info_pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-    </android.support.v4.view.ViewPager>
-</LinearLayout>

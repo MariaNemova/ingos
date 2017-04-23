@@ -1,8 +1,11 @@
 package ru.ingos.digitalmedicine.common;
 
 import android.content.res.Resources;
+import android.graphics.Point;
 import android.graphics.Rect;
+import android.util.TypedValue;
 import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -59,10 +62,27 @@ public class Utils {
         if (resourceId > 0) {
             result = resources.getDimensionPixelSize(resourceId);
         }else {
-            //FIXME перед релизхом убрать эту строку обязательно!
+            //FIXME не ронять приложение. найти выход из ситуации
             throw new RuntimeException("StatusBar size not found!");
         }
         return result;
+    }
+
+    public static int getActionBarHeight(Resources resources, Resources.Theme theme){
+        TypedValue tv = new TypedValue();
+        if (theme.resolveAttribute(android.R.attr.actionBarSize, tv, true))
+        {
+            return TypedValue.complexToDimensionPixelSize(tv.data,resources.getDisplayMetrics());
+        }else {
+            //FIXME не ронять приложение. найти выход из ситуации
+            throw new RuntimeException("ActionBar not found!");
+        }
+    }
+
+    public static int getWindowHeight(WindowManager manager){
+        Point p = new Point();
+        manager.getDefaultDisplay().getSize(p);
+        return p.y;
     }
 
 }

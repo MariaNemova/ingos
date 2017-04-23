@@ -1,7 +1,5 @@
 package ru.ingos.digitalmedicine.ui.adapters;
 
-import android.app.Fragment;
-
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
@@ -12,9 +10,11 @@ import ru.ingos.digitalmedicine.R;
 
 public class ClinicInfoPagerAdapter extends PagerAdapter{
     private Context mContext;
+    private int windowHeight;
 
-    public ClinicInfoPagerAdapter(Context context){
+    public ClinicInfoPagerAdapter(Context context, int windowHeight){
         this.mContext = context;
+        this.windowHeight = windowHeight;
     }
 
     @Override
@@ -31,7 +31,6 @@ public class ClinicInfoPagerAdapter extends PagerAdapter{
     public Object instantiateItem(ViewGroup container, int position) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.fragment_layout_private_room, container, false);
-        container.addView(layout);
         return layout;
     }
 
