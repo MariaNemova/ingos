@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -25,14 +27,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
+import ru.ingos.digitalmedicine.ui.adapters.ClinicInfoPagerAdapter;
 
 public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapReadyCallback, View.OnClickListener  {
 
     @BindView(R.id.clinic_info_toolbar)
     Toolbar toolbar;
+    @BindView(R.id.clinic_info)
+    LinearLayout appBarLay;
+    @BindView(R.id.clinic_info_pager)
+    ViewPager pager;
 
     private Unbinder unbinder;
-
 
     @Override
     public void onCreate(Bundle savedInstance){
@@ -40,6 +46,8 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
         setContentView(R.layout.activity_clicnic_info);
 
         unbinder = ButterKnife.bind(this);
+
+        pager.setAdapter(new ClinicInfoPagerAdapter(this));
 
         MapFragment map = (MapFragment) getFragmentManager().findFragmentById(R.id.clinic_info_map);
         map.getMapAsync(this);
@@ -83,17 +91,10 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
+        //В силу особенностей этого блока, нельзя ддобавить меню опций на экран
 
-        switch (id){
-            case R.id.home:
-                Log.d("MOJAR", "Back btn pressed!");
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            default:
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
+        onBackPressed();
+        return true;
+        //return super.onOptionsItemSelected(item);
     }
 }
