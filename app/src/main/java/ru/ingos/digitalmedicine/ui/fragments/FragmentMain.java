@@ -75,7 +75,7 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     public void onCreate(Bundle saved){
         super.onCreate(saved);
 
-        Log.d("MOJAR", "Frag Create");
+
     }
 
     @Override
@@ -85,8 +85,6 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
         block_insurance.setOnClickListener(this);
         add_registry.setOnClickListener(this);
         clinic_info.setOnClickListener(this);
-
-        Log.d("MOJAR", "Frag View Create");
     }
 
     @Override
@@ -162,12 +160,10 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     public void onDestroyView(){
         unbinder.unbind();
         super.onDestroyView();
-        Log.d("MOJAR", "Frag View Destroied");
     }
 
     @Override
     public void onDestroy(){
         super.onDestroy();
-        Log.d("MOJAR", "Frag Destroied");
     }
 }

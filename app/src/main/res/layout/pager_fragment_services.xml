@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginBottom="6dp"
+            >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Предоставляемые услуги"
+                android:textColor="@color/White"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        <TextView
+                android:textColor="@color/LightGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Всего 20"/>
+
+    </LinearLayout>
+
+    <ListView
+            android:id="@+id/clinic_info_services_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+    </ListView>
+
+</LinearLayout>

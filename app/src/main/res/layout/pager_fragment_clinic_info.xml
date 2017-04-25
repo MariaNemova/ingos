@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:clipToPadding="false"
+        android:paddingBottom="6dp">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginBottom="6dp"
+            >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Полное наименование клиники"
+                android:textColor="@color/White"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        <TextView
+                android:textColor="@color/LightGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Сегодня с 9:00 до 20:00"/>
+
+    </LinearLayout>
+    <LinearLayout
+            style="@style/ClinicInfoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+        <android.support.v7.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"/>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".85"
+                android:orientation="vertical"
+                android:padding="5dp">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Андрес:"
+                    android:textColor="@color/Black"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="4dp"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Россия, г.Москва, ул. Тестовая, д. 12/3"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            style="@style/ClinicInfoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <android.support.v7.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"/>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".85"
+                android:orientation="vertical"
+                android:padding="5dp">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Телефон:"
+                    android:textColor="@color/Black"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="4dp"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+7(495)720-02-80"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            style="@style/ClinicInfoTextView"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <android.support.v7.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"/>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".85"
+                android:orientation="vertical"
+                android:padding="5dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Режим работы:"
+                android:textColor="@color/Black"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:text="Пн: 9:00 - 20:00"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="Вт: 9:00 - 20:00"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="Ср: 9:00 - 20:00"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:textColor="@color/colorAccentDark"
+                android:text="Чт: 9:00 - 20:00"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="Пт: 9:00 - 20:00"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="Сб: 10:00 - 16:00"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:text="Вс: Выходной"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            style="@style/ClinicInfoTextView"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <android.support.v7.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"/>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".85"
+                android:orientation="vertical"
+                android:padding="5dp">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Комментарий:"
+                    android:textColor="@color/Black"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="4dp"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="  Любая другая необходимая информация, которая может быть написана на сайте сайо клиники. Как дораться, важные изменения в расписании прочее."/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,21 +1,13 @@
 package ru.ingos.digitalmedicine.ui.activities;
 
-import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -34,8 +26,8 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
 
     @BindView(R.id.clinic_info_toolbar)
     Toolbar toolbar;
-    //@BindView(R.id.clinic_info_pager)
-   //ViewPager pager;
+    @BindView(R.id.clinic_info_pager)
+    ViewPager pager;
 
     private Unbinder unbinder;
 
@@ -45,19 +37,14 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
         setContentView(R.layout.activity_clicnic_info);
 
         unbinder = ButterKnife.bind(this);
-        //pager.setAdapter(new ClinicInfoPagerAdapter(this, Utils.getWindowHeight(getWindowManager())));
+        pager.setAdapter(new ClinicInfoPagerAdapter(getSupportFragmentManager()));
 
         MapFragment map = (MapFragment) getFragmentManager().findFragmentById(R.id.clinic_info_map);
         map.getMapAsync(this);
 
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             int statusBarHeight = Utils.getStatusBarHeight(getResources());
-            int actionBarHeight = Utils.getActionBarHeight(getResources(), getTheme());
-
             toolbar.setPadding(0, statusBarHeight,0,5);
-
-
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
