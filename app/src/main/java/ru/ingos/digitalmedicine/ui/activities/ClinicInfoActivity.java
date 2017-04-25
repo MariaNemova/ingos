@@ -1,10 +1,14 @@
 package ru.ingos.digitalmedicine.ui.activities;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.support.design.widget.AppBarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,14 +26,18 @@ import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicInfoPagerAdapter;
 
-public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapReadyCallback, View.OnClickListener  {
+public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapReadyCallback, View.OnClickListener, AppBarLayout.OnOffsetChangedListener {
 
     @BindView(R.id.clinic_info_toolbar)
     Toolbar toolbar;
     @BindView(R.id.clinic_info_pager)
     ViewPager pager;
+    @BindView(R.id.clinic_info_app_bar)
+    AppBarLayout appBar;
 
     private Unbinder unbinder;
+    private int statusBarHeight;
+    private boolean collapsed = false;
 
     @Override
     public void onCreate(Bundle savedInstance){
@@ -43,7 +51,7 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
         map.getMapAsync(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            int statusBarHeight = Utils.getStatusBarHeight(getResources());
+            statusBarHeight = Utils.getStatusBarHeight(getResources());
             toolbar.setPadding(0, statusBarHeight,0,5);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
@@ -52,6 +60,8 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        appBar.addOnOffsetChangedListener(this);
     }
 
     @Override
@@ -84,5 +94,25 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
         onBackPressed();
         return true;
         //return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        if(Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()){
+            if(!collapsed){
+                int primary = ContextCompat.getColor(this, R.color.colorPrimary);
+                toolbar.setBackgroundColor(primary);
+                getSupportActionBar().setTitle("Краткое наименование клиники");
+                collapsed = true;
+            }
+
+        }else {
+            if(collapsed){
+                getSupportActionBar().setTitle("");
+                toolbar.setTitleTextColor(Color.DKGRAY);
+                toolbar.setBackgroundColor(Color.TRANSPARENT);
+                collapsed = false;
+            }
+        }
     }
 }

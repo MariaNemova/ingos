@@ -30,7 +30,11 @@
     <ListView
             android:id="@+id/clinic_info_services_list"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:dividerHeight="0dp"
+            android:layout_margin="4dp"
+            android:elevation="2dp"
+            android:background="@color/White">
 
     </ListView>
 

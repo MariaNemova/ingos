@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,6 +29,9 @@ public class ServiceListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        if(mServices == null){
+            return 0;
+        }
         return mServices.size();
     }
 
@@ -52,10 +53,8 @@ public class ServiceListAdapter extends BaseAdapter {
         }else {
             view = convertView;
         }
-
         TextView tvService = (TextView) view.findViewById(R.id.tvSpeciality);
         tvService.setText(((Service) getItem(position)).getName());
-
         return view;
     }
 }

@@ -16,7 +16,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="true"
-                    app:contentScrim="@color/colorPrimary"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed">
                 <fragment
                         class="com.google.android.gms.maps.MapFragment"
@@ -31,8 +30,7 @@
                         android:fitsSystemWindows="true"
                         android:focusable="true"
                         android:clickable="true"
-                        app:layout_collapseMode="pin"
-                        app:popupTheme="@style/ThemeOverlay.AppCompat"/>
+                        app:layout_collapseMode="pin"/>
             </android.support.design.widget.CollapsingToolbarLayout>
         </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.NestedScrollView
