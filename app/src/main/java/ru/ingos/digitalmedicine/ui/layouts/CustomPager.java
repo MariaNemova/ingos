@@ -28,24 +28,27 @@ public class CustomPager extends ViewPager {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             return;
         }
-        ListView listView = (ListView)mCurrentView.findViewById(R.id.clinic_info_services_list);
+
+
         int height = 0;
+        ListView listView = (ListView)mCurrentView.findViewById(R.id.clinic_info_services_list);
         if(listView != null){
             ServiceListAdapter adapter = (ServiceListAdapter)listView.getAdapter();
+
             if(adapter != null){
-                height = adapter.getCount()*64;//FIXME неверный способ вычсления высоты! заменить! (сейчас нет времени на исправления)
-            }else {
-                Log.d("MOJAR", "No adapter on list view!");
+                int count = adapter.getCount();
+                int mesured_height = listView.getMeasuredHeight();
+                height = mesured_height;//FIXME костыль! не знаю как правильно обработать вычисление высоты
+                Log.d("MOJAR", count+" "+mesured_height);
             }
-        }else {
+        }else{
+
             mCurrentView.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
             int h = mCurrentView.getMeasuredHeight();
             if (h > height) height = h;
         }
 
-
-
-        Log.d("MOJAR", "Layout height: "+height);
+//        Log.d("MOJAR", "Layout height: "+height);
 
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);

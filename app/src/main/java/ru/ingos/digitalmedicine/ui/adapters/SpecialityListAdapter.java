@@ -30,6 +30,7 @@ public class SpecialityListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
+        notifyDataSetChanged();
         return specialties.get(position);
     }
 
@@ -50,8 +51,11 @@ public class SpecialityListAdapter extends BaseAdapter {
         TextView tvSpeciality = (TextView) view.findViewById(R.id.tvSpeciality);
         tvSpeciality.setText(specialityModel.getName());
 
+
+
         return view;
     }
+
 
     private SpecialityModel getSpecialityModel(int position){
         return (SpecialityModel) getItem(position);

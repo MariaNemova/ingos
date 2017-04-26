@@ -44,6 +44,22 @@ public class ServiceListPresenter extends MvpPresenter<ServiceListView> {
         services.add(new Service("Горилла2", "что-то"));
         services.add(new Service("Еще что-то2", "что-то"));
         services.add(new Service("Название 102", "что-то"));
+        services.add(new Service("Трапевт", "что-то"));
+        services.add(new Service("Хирурге", "что-то"));
+        services.add(new Service("Тралог", "что-то"));
+        services.add(new Service("Стоматолог", "что-то"));
+        services.add(new Service("ЛОР", "что-то"));
+        services.add(new Service("Горилла", "что-то"));
+        services.add(new Service("Еще что-то", "что-то"));
+        services.add(new Service("Название 10", "что-то"));
+        services.add(new Service("Трапевт2", "что-то"));
+        services.add(new Service("Хирург2", "что-то"));
+        services.add(new Service("Травматолог2", "что-то"));
+        services.add(new Service("Стоматолог2", "что-то"));
+        services.add(new Service("ЛОР2", "что-то"));
+        services.add(new Service("Горилла2", "что-то"));
+        services.add(new Service("Еще что-то2", "что-то"));
+        services.add(new Service("Название 102", "что-то"));
 
         return services;
     }

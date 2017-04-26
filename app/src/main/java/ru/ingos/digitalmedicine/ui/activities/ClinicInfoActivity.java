@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -100,19 +101,22 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
         if(Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()){
             if(!collapsed){
-                int primary = ContextCompat.getColor(this, R.color.colorPrimary);
-                toolbar.setBackgroundColor(primary);
-                getSupportActionBar().setTitle("Краткое наименование клиники");
+                showActionBar(getSupportActionBar());
                 collapsed = true;
             }
-
         }else {
             if(collapsed){
-                getSupportActionBar().setTitle("");
-                toolbar.setTitleTextColor(Color.DKGRAY);
-                toolbar.setBackgroundColor(Color.TRANSPARENT);
+                hideActionBar(getSupportActionBar());
                 collapsed = false;
             }
         }
+    }
+
+    private void showActionBar(ActionBar ab){
+        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+    }
+
+    private void hideActionBar(ActionBar ab){
+        toolbar.setBackgroundColor(Color.TRANSPARENT);
     }
 }

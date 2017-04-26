@@ -10,7 +10,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.Service;
 import ru.ingos.digitalmedicine.mvp.presenters.ServiceListPresenter;
@@ -39,25 +38,15 @@ public class FragmentServices extends MVP4Fragment implements ServiceListView{
         ListView serviceList = (ListView) mainView.findViewById(R.id.clinic_info_services_list);
         adapter = new ServiceListAdapter(getContext());
         if(serviceList!=null){
-            Log.d("MOJAR", "Адаптер установлен!");
             serviceList.setAdapter(adapter);
         }
         presenter.setServices();
 
-//        mesureContainerAgain(container,mainView);
+        ViewGroup.LayoutParams params = container.getLayoutParams();
+        params.height  =serviceList.getLayoutParams().height;
+        container.setLayoutParams(params);
+
         return mainView;
-    }
-
-    private void mesureContainerAgain(ViewGroup container, View view){
-        if(!(container instanceof CustomPager)) return;
-
-        CustomPager pager = (CustomPager) container;
-        pager.measureCurrentView(view);
-        int mesureWidth = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-        int mesureHeight = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-
-        pager.measure(mesureWidth, mesureHeight);
-        Log.d("MOJAR", "New height: "+pager.getMeasuredHeight());
     }
 
     @Override
