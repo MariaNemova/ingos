@@ -123,6 +123,8 @@ public class MainActivity extends MvpAppCompatActivity
             this.bindFragment(FragmentRegistry.class, false);
         } else if (id == R.id.nav_settings) {
             this.bindFragment(FragmentSettings.class, false);
+        } else if (id == R.id.nav_recipes) {
+            this.bindFragment(FragmentRecipes.class, false);
         }
 
         this.drawer.closeDrawer(GravityCompat.START);

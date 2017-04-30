@@ -35,6 +35,7 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
     @Override
     public void onBindViewHolder(ClinicHolder holder, int position) {
         holder.tvNameClinic.setText(clinics.get(position).getNameClinic());
+        holder.tvAddresClinic.setText(clinics.get(position).getAddresClinic());
     }
 
     @Override
@@ -46,11 +47,13 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
 
         CardView cardView;
         TextView tvNameClinic;
+        TextView tvAddresClinic;
 
         ClinicHolder(View itemView) {
             super(itemView);
 
             tvNameClinic = (TextView) itemView.findViewById(R.id.tvNameClinic);
+            tvAddresClinic = (TextView) itemView.findViewById(R.id.tvAddresClinic);
             cardView = (CardView) itemView.findViewById(R.id.cardview);
         }
     }

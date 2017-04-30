@@ -14,8 +14,12 @@
     <string name="menu_history">Медицинская карта</string>
     <string name="menu_registry">Активные записи</string>
     <string name="menu_settings">Настройки</string>
+    <string name="menu_recipes">Рецепты</string>
 
     <string name="debug_text">[Дебаг]</string>
+
+    <string name="tab1_text">Список</string>
+    <string name="tab2_text">На карте</string>
 
     <string name="fragment_greetings_base">Это базовый фрагмент!</string>
     <string name="fragment_greetings_main">Это главный экран приложения!</string>
@@ -35,6 +39,7 @@
     <string name="frag_title_clinics">Список клиник</string>
     <string name="frag_title_notes">Активные записи</string>
     <string name="frag_title_settings">Настройки</string>
+    <string name="frag_title_recipes">Рецепты</string>
 
     <string name="personal_information">Персональные данные</string>
     <string name="edit_information">Изменение ваших данных и пароля</string>
