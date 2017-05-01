@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 import android.view.ViewGroup;
 import ru.ingos.digitalmedicine.ui.fragments.clinicinfo.FragmentInformation;
+import ru.ingos.digitalmedicine.ui.fragments.clinicinfo.FragmentRating;
 import ru.ingos.digitalmedicine.ui.fragments.clinicinfo.FragmentServices;
 import ru.ingos.digitalmedicine.ui.layouts.CustomPager;
 
@@ -24,6 +25,7 @@ public class ClinicInfoPagerAdapter extends FragmentPagerAdapter {
 
         this.fragments.add(new FragmentInformation());
         this.fragments.add(new FragmentServices());
+        this.fragments.add(new FragmentRating());
     }
 
     @Override

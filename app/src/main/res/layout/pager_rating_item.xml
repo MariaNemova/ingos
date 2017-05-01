@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:id="@+id/registry_item"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/white"
+        android:layout_margin="2dp">
+    <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="@dimen/frag_global_padding"
+            android:paddingBottom="@dimen/frag_global_padding"
+            android:paddingLeft="@dimen/frag_global_padding"
+            android:layout_weight=".20">
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_avatar"/>
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/frag_global_padding"
+            android:orientation="vertical"
+            android:layout_weight=".80">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Имя Клиента"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@android:style/Widget.Holo.RatingBar.Small"
+                    android:numStars="5"
+                    android:rating="2.5"
+                    android:isIndicator="true"
+                    />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:text="23.03.2017"/>
+        </LinearLayout>
+        <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="Полный текст гневного комментария"/>
+
+    </LinearLayout>
+</LinearLayout>

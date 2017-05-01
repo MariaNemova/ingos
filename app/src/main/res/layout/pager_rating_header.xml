@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/White"
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              android:layout_margin="4dp"
+              android:layout_marginTop="0dp"
+              android:elevation="2dp">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".50"
+            android:textAlignment="center"
+            android:background="@color/colorPrimaryDark">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/White"
+                android:text="РЕЙТИНГ КЛИНИКИ"/>
+    </RelativeLayout>
+    <android.support.v7.widget.AppCompatRatingBar
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:layout_weight=".50"
+            android:rating="4.5"
+            android:numStars="5"
+            android:isIndicator="true"/>
+
+</LinearLayout>

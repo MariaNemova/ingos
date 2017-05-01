@@ -77,7 +77,6 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textStyle="bold"
-
                     android:textColor="@color/White"
                     android:text="@string/btn_register_in_med"/>
 
