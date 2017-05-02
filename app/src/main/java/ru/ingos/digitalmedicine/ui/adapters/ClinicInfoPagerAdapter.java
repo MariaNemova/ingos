@@ -48,4 +48,18 @@ public class ClinicInfoPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return fragments.size();
     }
+
+    @Override
+    public CharSequence getPageTitle(int pos){
+        switch (pos){
+            case 0:
+                return "Информация";
+            case 1:
+                return "Услуги";
+            case 2:
+                return "Рейтинг";
+            default:
+                return null;//этого не должно происходить
+        }
+    }
 }
