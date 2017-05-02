@@ -1,32 +1,24 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
-import com.daimajia.swipe.SwipeLayout;
+import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
-import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
-import ru.ingos.digitalmedicine.R;
 
 /**
  * Created by Александр Шиян on 11.04.2017.

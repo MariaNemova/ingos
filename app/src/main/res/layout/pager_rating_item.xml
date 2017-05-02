@@ -28,6 +28,7 @@
             android:orientation="vertical"
             android:layout_weight=".80">
         <TextView
+                android:id="@+id/rating_client_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Имя Клиента"
@@ -38,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <RatingBar
+                    android:id="@+id/rating_client_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@android:style/Widget.Holo.RatingBar.Small"
@@ -46,13 +48,14 @@
                     android:isIndicator="true"
                     />
             <TextView
+                    android:id="@+id/rating_client_date"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:text="23.03.2017"/>
         </LinearLayout>
         <TextView
-
+                android:id="@+id/rating_client_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
