@@ -1,5 +1,6 @@
 package ru.ingos.digitalmedicine.ui.adapters;
 
+import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
+import ru.ingos.digitalmedicine.ui.activities.MainActivity;
+import ru.ingos.digitalmedicine.ui.activities.NewRegistryActivity;
+import ru.ingos.digitalmedicine.ui.adapters.holders.ClinicHolder;
+import ru.ingos.digitalmedicine.ui.listeners.ClinicListOnClickListener;
 import ru.ingos.digitalmedicine.ui.models.ClinicModel;
 import ru.ingos.digitalmedicine.R;
 
@@ -17,12 +23,23 @@ import ru.ingos.digitalmedicine.R;
  *
  */
 
-public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.ClinicHolder> {
+public class ClinicListAdapter extends RecyclerView.Adapter<ClinicHolder> {
 
     private List<ClinicModel> clinics;
+    private final ClinicListOnClickListener listener;
 
-    public ClinicListAdapter(List<ClinicModel> data) {
+    public ClinicListAdapter(List<ClinicModel> data, Activity activity) {
         this.clinics = data;
+        if(activity == null){
+            throw  new RuntimeException("You must set an actibity for the ClinicsList!");
+        }
+
+        boolean isMainActivity = activity instanceof MainActivity;
+        if(isMainActivity){
+            listener = new ClinicListOnClickListener(activity, ClinicInfoActivity.class);
+        }else {
+            listener = new ClinicListOnClickListener(activity, NewRegistryActivity.class);
+        }
     }
 
     @Override
@@ -34,8 +51,12 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
 
     @Override
     public void onBindViewHolder(ClinicHolder holder, int position) {
-        holder.tvNameClinic.setText(clinics.get(position).getNameClinic());
-        holder.tvAddresClinic.setText(clinics.get(position).getAddresClinic());
+        String clinicName = clinics.get(position).getNameClinic();
+        String cliniAdress = clinics.get(position).getAddresClinic();
+
+        holder.setClinicName(clinicName);
+        holder.setClinicAdress(cliniAdress);
+        holder.setOnClickListener(listener);
     }
 
     @Override
@@ -43,18 +64,7 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
         return clinics.size();
     }
 
-    static class ClinicHolder extends RecyclerView.ViewHolder {
 
-        CardView cardView;
-        TextView tvNameClinic;
-        TextView tvAddresClinic;
 
-        ClinicHolder(View itemView) {
-            super(itemView);
 
-            tvNameClinic = (TextView) itemView.findViewById(R.id.tvNameClinic);
-            tvAddresClinic = (TextView) itemView.findViewById(R.id.tvAddresClinic);
-            cardView = (CardView) itemView.findViewById(R.id.cardview);
-        }
-    }
 }

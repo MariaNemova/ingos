@@ -27,7 +27,7 @@ import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicInfoPagerAdapter;
 
-public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapReadyCallback, View.OnClickListener, AppBarLayout.OnOffsetChangedListener {
+public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapReadyCallback, AppBarLayout.OnOffsetChangedListener {
 
     @BindView(R.id.clinic_info_toolbar)
     Toolbar toolbar;
@@ -83,10 +83,6 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
 
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){

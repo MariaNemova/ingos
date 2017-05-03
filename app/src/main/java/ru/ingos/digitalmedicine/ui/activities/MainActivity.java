@@ -3,36 +3,23 @@ package ru.ingos.digitalmedicine.ui.activities;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.MvpFragment;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.ui.fragments.*;
 
-/**
- * Экран является точкой входа в приложение, содержит меню. Все экраны, которые могут быть вызваны из меню,
- * представляют собой фрагменты, которые заплняют FrameLayout на этом экране. Каждый фрагмент представляет собой
- * обособленную сущность и имеет свой собтвенный жизненый цикл.
- * Такой подход выбран из-за того, что меню должно присутствовать на всех экранах. Избегаем дубликатов кода, используем
- * DRY концепцию.
- */
 
 public class MainActivity extends MvpAppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
