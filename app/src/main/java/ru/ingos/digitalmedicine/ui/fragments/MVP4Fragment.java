@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.ui.fragments.base;
+package ru.ingos.digitalmedicine.ui.fragments;
 
 import android.os.Build;
 import android.os.Bundle;

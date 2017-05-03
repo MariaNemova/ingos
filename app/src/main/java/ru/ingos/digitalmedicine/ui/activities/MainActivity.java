@@ -19,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.MvpFragment;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -86,7 +87,7 @@ public class MainActivity extends MvpAppCompatActivity
      * В качестве тега используется имя класса
      * @param fragmentClass класс фрагмента, который необходимо добавить
      */
-    public void bindFragment(Class<? extends FragmentBase> fragmentClass, boolean add_to_back){
+    public void bindFragment(Class<? extends MvpFragment> fragmentClass, boolean add_to_back){
         FragmentTransaction trans = getFragmentManager().beginTransaction();
         try {
             trans.replace(R.id.fragment_container, fragmentClass.newInstance());
@@ -164,10 +165,5 @@ public class MainActivity extends MvpAppCompatActivity
         for(int i = 0; i<menu.size(); i++){
             menu.getItem(i).setChecked(false);
         }
-    }
-
-    public void cahngeToolbar(int res_id){
-        if(getSupportActionBar()!=null)
-            getSupportActionBar().setTitle(res_id);
     }
 }

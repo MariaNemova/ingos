@@ -1,7 +1,6 @@
 package ru.ingos.digitalmedicine.ui.fragments.clinicinfo;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +14,7 @@ import ru.ingos.digitalmedicine.mvp.models.Service;
 import ru.ingos.digitalmedicine.mvp.presenters.ServiceListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.ServiceListView;
 import ru.ingos.digitalmedicine.ui.adapters.ServiceListAdapter;
-import ru.ingos.digitalmedicine.ui.fragments.base.MVP4Fragment;
-import ru.ingos.digitalmedicine.ui.layouts.CustomPager;
+import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 import java.util.List;
 

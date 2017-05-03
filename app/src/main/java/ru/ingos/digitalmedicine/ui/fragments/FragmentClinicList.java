@@ -11,32 +11,31 @@ import android.widget.TabHost;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import com.arellomobile.mvp.MvpFragment;
 import ru.ingos.digitalmedicine.ui.models.ClinicModel;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.R;
 
-/**
- * Created by Александр Шиян on 11.04.2017.
- *
- * Экран списка, списка клиник врачей и прочего!
- */
-public class FragmentClinicList extends FragmentBase {
+public class FragmentClinicList extends MvpFragment {
 
-    private final static int LAYOUT = R.layout.fragment_layout_list;
-
-    public FragmentClinicList(){
-        super();
-        super.setLayout(LAYOUT);
-        super.setTitle(R.string.frag_title_clinics);
-    }
-
+    @BindView(R.id.tab_host)
+    TabHost tabHost;
+    @BindView(R.id.clinic_list_recycler_view)
+    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanse) {
         super.onCreateView(inflater,container,savedInstanse);//не забывать вызывать родительский метод
-        view = inflater.inflate(LAYOUT, container, false);
+        return inflater.inflate(R.layout.fragment_layout_list, container, false);
+    }
 
-        TabHost tabHost = (TabHost) view.findViewById(R.id.tab_host);
+    @Override
+    public void onViewCreated(View view, Bundle instance){
+        super.onViewCreated(view, instance);
+        ButterKnife.bind(this, view);
+
         tabHost.setup();
 
         TabHost.TabSpec tabSpec;
@@ -51,14 +50,12 @@ public class FragmentClinicList extends FragmentBase {
         tabSpec.setContent(R.id.tab2);
         tabHost.addTab(tabSpec);
 
-
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(null));
         recyclerView.setAdapter(new ClinicListAdapter(createData()));
 
-        return view;
     }
 
+    //халтура. используй MVP.
     private List<ClinicModel> createData() {
         List<ClinicModel> clinics = new ArrayList<>();
         clinics.add(new ClinicModel("Будь здоров", "ул. Пушкина, д. 15"));

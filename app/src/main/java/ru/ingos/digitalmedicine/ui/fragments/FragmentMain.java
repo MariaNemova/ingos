@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -12,12 +14,14 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
+import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
 
 /**
@@ -26,7 +30,7 @@ import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
  * Фрагмент, представляющий собой главный экран приложения. На нем располагаются ключевые кнопки, информация о
  * состоянии страховки и последняя активная запись к врачу.
  */
-public class FragmentMain extends FragmentBase implements HomeView, AdapterView.OnClickListener{
+public class FragmentMain extends MvpFragment implements HomeView, AdapterView.OnClickListener{
 
     @BindView(R.id.last_clinic_name)
     TextView clinicName;
@@ -59,15 +63,18 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
 
     public FragmentMain(){
         super();
-        super.setLayout(R.layout.fragment_layout_main);
-        super.setTitle(R.string.frag_title_main);
     }
 
     @Override
     public void onCreate(Bundle saved){
         super.onCreate(saved);
+    }
 
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
+        View view = inflater.inflate(R.layout.fragment_layout_main, container, false);
+        getActivity().setTitle(R.string.frag_title_main);
 
+        return view;
     }
 
     @Override
@@ -124,7 +131,7 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
 
     @Override
     public void showPrivateRoom() {
-        super.changeView(FragmentPrivateRoom.class);
+        //переход в личный кабинет
     }
 
     @Override
@@ -133,13 +140,15 @@ public class FragmentMain extends FragmentBase implements HomeView, AdapterView.
     }
 
     @Override
-    public void createNewRegistry() {
+    public void createNewRegistry()
+    {
         startActivity(new Intent(getActivity(), SpecialtyActivity.class));
     }
 
     @Override
-    public void showClinicsList() {
-        super.changeView(FragmentClinicList.class);
+    public void showClinicsList()
+    {
+        //переход в список клиник
     }
 
     @Override

@@ -16,9 +16,8 @@ import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.RatingItemModel;
 import ru.ingos.digitalmedicine.mvp.presenters.RatingScreenPresenter;
 import ru.ingos.digitalmedicine.mvp.views.RatingView;
-import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicRatingAdapter;
-import ru.ingos.digitalmedicine.ui.fragments.base.MVP4Fragment;
+import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 import java.util.List;
 
