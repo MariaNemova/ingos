@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.arellomobile.mvp.MvpFragment;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.common.Utils;
 
 /**
  * Created by Александр Шиян on 11.04.2017.
@@ -17,7 +18,7 @@ public class FragmentSettings extends MvpFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         super.onCreateView(inflater,container,savedInstance);
-        getActivity().setTitle(R.string.frag_title_settings);
+        Utils.setActivityTitle(R.string.frag_title_settings, getActivity());
         return inflater.inflate(R.layout.fragment_layout_settings, container, false);
     }
 

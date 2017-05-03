@@ -34,7 +34,7 @@
     <string name="nav_header_number">0000 0000 0000 0000</string>
 
     <string name="frag_title_main">Ингосстрах</string>
-    <string name="frag_title_ln">Личный кабинет</string>
+    <string name="frag_title_lk">Личный кабинет</string>
     <string name="frag_title_history">Медицинская карта</string>
     <string name="frag_title_clinics">Список клиник</string>
     <string name="frag_title_registry">Активные записи</string>

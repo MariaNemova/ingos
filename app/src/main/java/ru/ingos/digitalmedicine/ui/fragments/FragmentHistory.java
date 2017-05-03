@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.arellomobile.mvp.MvpFragment;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.common.Utils;
 
 import java.util.zip.Inflater;
 
@@ -18,7 +19,7 @@ public class FragmentHistory extends MvpFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
-        getActivity().setTitle(R.string.frag_title_history);
+        Utils.setActivityTitle(R.string.frag_title_history, getActivity());
         return inflater.inflate(R.layout.fragment_layout_history, container, false);
     }
 

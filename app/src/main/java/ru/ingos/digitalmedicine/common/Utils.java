@@ -1,11 +1,13 @@
 package ru.ingos.digitalmedicine.common;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.TypedValue;
 import android.view.Window;
 import android.view.WindowManager;
+import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -83,6 +85,12 @@ public class Utils {
         Point p = new Point();
         manager.getDefaultDisplay().getSize(p);
         return p.y;
+    }
+
+    public static void setActivityTitle(int pointer, Activity activity){
+        if(activity instanceof MainActivity){
+            ((MainActivity) activity).getSupportActionBar().setTitle(pointer);
+        }
     }
 
 }

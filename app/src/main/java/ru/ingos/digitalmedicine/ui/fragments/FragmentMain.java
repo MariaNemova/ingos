@@ -1,5 +1,6 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
@@ -72,10 +74,12 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         View view = inflater.inflate(R.layout.fragment_layout_main, container, false);
-        getActivity().setTitle(R.string.frag_title_main);
+        Utils.setActivityTitle(R.string.frag_title_main, getActivity());
 
         return view;
     }
+
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstance){

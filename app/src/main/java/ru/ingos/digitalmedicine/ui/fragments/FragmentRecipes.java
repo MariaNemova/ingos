@@ -17,6 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.ui.adapters.RecipeListAdapter;
 import ru.ingos.digitalmedicine.ui.models.RecipeModel;
@@ -31,7 +32,8 @@ public class FragmentRecipes extends MvpFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         super.onCreateView(inflater,container,savedInstance);
-        getActivity().setTitle(R.string.frag_title_recipes);
+        Utils.setActivityTitle(R.string.frag_title_recipes, getActivity());
+
         return inflater.inflate(R.layout.fragment_layout_recipes, container, false);
     }
 
