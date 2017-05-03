@@ -3,6 +3,7 @@ package ru.ingos.digitalmedicine.ui.fragments.clinicinfo;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.RatingItemModel;
 import ru.ingos.digitalmedicine.mvp.presenters.RatingScreenPresenter;
 import ru.ingos.digitalmedicine.mvp.views.RatingView;
+import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicRatingAdapter;
 import ru.ingos.digitalmedicine.ui.fragments.base.MVP4Fragment;
 
@@ -21,7 +24,7 @@ import java.util.List;
 
 public class FragmentRating extends MVP4Fragment implements RatingView{
 
-    @InjectPresenter
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "RatingPresenter")
     RatingScreenPresenter presenter;
 
     @BindView(R.id.clinic_rating)
@@ -38,11 +41,10 @@ public class FragmentRating extends MVP4Fragment implements RatingView{
     @Override
     public void onViewCreated(View view, Bundle savedInstance){
         unbinder = ButterKnife.bind(this, view);
-        ratingContainer.setLayoutManager(new LinearLayoutManager(getContext()));
-        this.adapter = new ClinicRatingAdapter();
-        ratingContainer.setAdapter(adapter);
 
-        presenter.onScreenLoading();
+        ratingContainer.setLayoutManager(new LinearLayoutManager(getContext()));
+        ratingContainer.setAdapter(new ClinicRatingAdapter());
+
     }
 
     @Override
@@ -53,13 +55,15 @@ public class FragmentRating extends MVP4Fragment implements RatingView{
 
     @Override
     public void setRatingItems(List<RatingItemModel> arr) {
-        this.adapter.setItems(arr);
-        this.adapter.notifyDataSetChanged();
+        Log.d("MOJAR", "Setting rating items. Total size: "+arr.size());
+        ((ClinicRatingAdapter)ratingContainer.getAdapter()).setItems(arr);
+        ratingContainer.getAdapter().notifyDataSetChanged();
     }
 
     @Override
     public void setRatingTotal(float ratingTotal) {
-        this.adapter.setTotal(ratingTotal);
-        this.adapter.notifyDataSetChanged();
+        Log.d("MOJAR", "Setting rating total: "+ratingTotal);
+        ((ClinicRatingAdapter)ratingContainer.getAdapter()).setTotal(ratingTotal);
+        ratingContainer.getAdapter().notifyDataSetChanged();
     }
 }

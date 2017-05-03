@@ -12,6 +12,7 @@ import ru.ingos.digitalmedicine.ui.adapters.holders.HeaderHolder;
 import ru.ingos.digitalmedicine.ui.adapters.holders.RatingHolder;
 
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class ClinicRatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -23,18 +24,17 @@ public class ClinicRatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View tempView;
 
-
-        int layout_pointer;
         switch (viewType){
             case TYPE_HEADER:
-                layout_pointer = R.layout.pager_rating_header;
-                break;
+                tempView = inflater.inflate(R.layout.pager_rating_header, parent,false);
+                return new HeaderHolder(tempView);
             default:
-                layout_pointer = R.layout.pager_rating_item;
+                tempView = inflater.inflate(R.layout.pager_rating_item, parent,false);
+                return new RatingHolder(tempView);
         }
-        View view = LayoutInflater.from(parent.getContext()).inflate(layout_pointer, parent,false);
-        return new RecyclerView.ViewHolder(view) {};
     }
 
     @Override
@@ -61,7 +61,7 @@ public class ClinicRatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        return 17;
+        return items.size();
     }
 
     public void setItems(List<RatingItemModel> items) {
