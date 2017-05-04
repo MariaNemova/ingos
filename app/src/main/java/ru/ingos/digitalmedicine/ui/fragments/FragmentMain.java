@@ -135,12 +135,12 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
 
     @Override
     public void showPrivateRoom() {
-        //переход в личный кабинет
+        Utils.changerMainActivityFragment(FragmentPrivateRoom.class, getActivity());
     }
 
     @Override
     public void showStatistics() {
-        //TODO: добавить переход на экран статистики
+        Utils.changerMainActivityFragment(FragmentHistory.class, getActivity());
     }
 
     @Override
@@ -152,7 +152,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     @Override
     public void showClinicsList()
     {
-        //переход в список клиник
+        Utils.changerMainActivityFragment(FragmentClinicList.class, getActivity());
     }
 
     @Override

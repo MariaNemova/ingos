@@ -1,12 +1,14 @@
 package ru.ingos.digitalmedicine.common;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.TypedValue;
 import android.view.Window;
 import android.view.WindowManager;
+import com.arellomobile.mvp.MvpFragment;
 import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 
 import java.util.Calendar;
@@ -93,4 +95,10 @@ public class Utils {
         }
     }
 
+    public static void changerMainActivityFragment(Class<? extends MvpFragment> fragClass, Activity activity){
+        if(activity instanceof MainActivity){
+            ((MainActivity) activity).bindFragment(fragClass, true);
+        }
+
+    }
 }
