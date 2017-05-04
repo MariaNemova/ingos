@@ -56,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/Black"
-                    android:text="Вызав врача на дом:"
+                    android:text="Вызов врача на дом:"
                     />
             <TextView
                     android:layout_width="wrap_content"
@@ -64,27 +64,6 @@
                     android:paddingStart="5dp"
                     android:paddingLeft="5dp"
                     android:text="5"
-                    />
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="5dp"
-                android:paddingLeft="5dp">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/Black"
-                    android:text="Поля будут дорабатываться:"
-                    />
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="5dp"
-                    android:paddingLeft="5dp"
-                    android:text="nothing to show"
                     />
         </LinearLayout>
 

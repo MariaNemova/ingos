@@ -1,56 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:layout_marginBottom="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="10dp"
-        android:weightSum="1">
-
+        android:padding="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
->
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:paddingTop="4dp"
-                app:srcCompat="@drawable/ic_profile" />
-
+            <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/iconed_list_item_icon"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15"
+                    android:src="@drawable/ic_location_pin"/>
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight=".85"
                 android:orientation="vertical">
-
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/iconed_list_item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="6dp"
-                    android:text="@string/personal_information"
+                    android:text="@string/insurance_information"
                     android:textColor="@android:color/black"
                     android:textStyle="bold"
-                    android:textSize="@dimen/activity_horizontal_margin" />
-
+                    android:textSize="18sp" />
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/iconed_list_item_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="6dp"
-                    android:text="@string/edit_information"
+                    android:text="@string/insurance_information_global"
                     android:textColor="@color/Black"
-                    android:textSize="12dp" />
+                    android:textSize="14sp" />
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
