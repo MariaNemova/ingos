@@ -17,17 +17,25 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.MvpFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.mvp.presenters.FragmentBinderPresenter;
+import ru.ingos.digitalmedicine.mvp.views.FragmentBinderView;
 import ru.ingos.digitalmedicine.ui.fragments.*;
 
 
 public class MainActivity extends MvpAppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, FragmentBinderView {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
     @BindView(R.id.toolbar)
     Toolbar appBar;
+
+    @InjectPresenter(type = PresenterType.GLOBAL)
+    FragmentBinderPresenter presenter;
+
 
     private Unbinder unbinder;
 
@@ -64,7 +72,7 @@ public class MainActivity extends MvpAppCompatActivity
         //Cразу после запуска, показываю главный фргмент, делая его активным
         //TODO: Добавить проверку авторизации
 
-        this.bindFragment(FragmentMain.class, false);
+//        this.presenter.bindFragment(FragmentMain.class, false);
         NavigationView view = (NavigationView)findViewById(R.id.nav_view);
         view.getMenu().getItem(0).setChecked(true);
     }
@@ -74,6 +82,7 @@ public class MainActivity extends MvpAppCompatActivity
      * В качестве тега используется имя класса
      * @param fragmentClass класс фрагмента, который необходимо добавить
      */
+    @Override
     public void bindFragment(Class<? extends MvpFragment> fragmentClass, boolean add_to_back){
         FragmentTransaction trans = getFragmentManager().beginTransaction();
         try {
@@ -83,6 +92,10 @@ public class MainActivity extends MvpAppCompatActivity
         }
         if(add_to_back)trans.addToBackStack(null);
         trans.commit();
+    }
+
+    public void setFragment(Class<?extends MvpFragment> fragment, boolean addToBackStack){
+        this.presenter.bindFragment(fragment, addToBackStack);
     }
 
     @Override
@@ -102,17 +115,17 @@ public class MainActivity extends MvpAppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_clinics) {
-            this.bindFragment(FragmentClinicList.class, false);
+            this.presenter.bindFragment(FragmentClinicList.class, false);
         } else if (id == R.id.nav_main) {
-            this.bindFragment(FragmentMain.class, false);
+            this.presenter.bindFragment(FragmentMain.class, false);
         } else if (id == R.id.nav_history) {
-            this.bindFragment(FragmentHistory.class, false);
+            this.presenter.bindFragment(FragmentHistory.class, false);
         } else if (id == R.id.nav_registry) {
-            this.bindFragment(FragmentRegistry.class, false);
+            this.presenter.bindFragment(FragmentRegistry.class, false);
         } else if (id == R.id.nav_settings) {
-            this.bindFragment(FragmentSettings.class, false);
+            this.presenter.bindFragment(FragmentSettings.class, false);
         } else if (id == R.id.nav_recipes) {
-            this.bindFragment(FragmentRecipes.class, false);
+            this.presenter.bindFragment(FragmentRecipes.class, false);
         }
 
         this.drawer.closeDrawer(GravityCompat.START);
@@ -144,7 +157,7 @@ public class MainActivity extends MvpAppCompatActivity
     //перехватывает клик по шапке меню
     @Override
     public void onClick(View v) {
-        this.bindFragment(FragmentPrivateRoom.class, true); //показываю окно
+        this.presenter.bindFragment(FragmentPrivateRoom.class, true); //показываю окно
         this.drawer.closeDrawer(GravityCompat.START); //скрываю меню
 
         NavigationView view = (NavigationView)findViewById(R.id.nav_view);
