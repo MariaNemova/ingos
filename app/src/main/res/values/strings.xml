@@ -54,6 +54,10 @@
     <string name="recipe_name">Название лекарства</string>
     <string name="recipe_manual">Инструкция по применению</string>
     <string name="recipe_add">Добавить рецепт</string>
+    <string name="title_recipe_add">Добавление рецепта</string>
+    <string name="drug_name">Введите название лекарства</string>
+    <string name="drug_manual">Введите инструкцию по применению</string>
+    <string name="btn_add_recipe">Добавить рецепт</string>
 
     <string name="btn_register_in_med">ЗАПИСАТЬСЯ НА ПРИЕМ</string>
     <string name="btn_registry_list">К СПИСКУ ЗАПИСЕЙ</string>

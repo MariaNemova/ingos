@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -29,8 +30,9 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
     @Override
     public void onBindViewHolder(RecipeHolder holder, int position) {
-        holder.tvRecipeName.setText(recipes.get(position).getRecipeName());
-        holder.tvRecipeManual.setText(recipes.get(position).getRecipeManual());
+        RecipeModel current = recipes.get(position);
+        holder.setData(current, position);
+        holder.setListeners();
     }
 
     @Override
@@ -38,19 +40,51 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         return recipes.size();
     }
 
-    public class RecipeHolder extends RecyclerView.ViewHolder {
+    public class RecipeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        CardView cVRecipe;
+        CardView cvRecipe;
         TextView tvRecipeName;
         TextView tvRecipeManual;
+        ImageView ivDel;
+        private int position;
+        private RecipeModel currentObject;
 
         public RecipeHolder(View itemView) {
             super(itemView);
 
-            cVRecipe = (CardView) itemView.findViewById(R.id.cVRecipe);
+            cvRecipe = (CardView) itemView.findViewById(R.id.cvRecipe);
             tvRecipeName = (TextView) itemView.findViewById(R.id.tvRecipeName);
             tvRecipeManual = (TextView) itemView.findViewById(R.id.tvRecipeManual);
+            ivDel = (ImageView) itemView.findViewById(R.id.ivDel);
+        }
+
+        public void setData(RecipeModel currentObject, int position){
+            this.tvRecipeName.setText(currentObject.getRecipeName());
+            this.tvRecipeManual.setText(currentObject.getRecipeManual());
+            this.position = position;
+            this.currentObject = currentObject;
+        }
+
+        public void setListeners(){
+            ivDel.setOnClickListener(RecipeHolder.this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.ivDel:
+                    removeItem(position);
+                    break;
+            }
         }
     }
+
+    public void removeItem(int position){
+        recipes.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, recipes.size());
+
+    }
+
 
 }

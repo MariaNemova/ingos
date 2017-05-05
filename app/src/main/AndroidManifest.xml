@@ -30,6 +30,7 @@
         <activity android:name=".ui.activities.ClinicInfoActivity"/>
         <activity android:name=".ui.activities.FragmentHolderActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ui.activities.NewRegistryActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.AddRecipeActivity" android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
