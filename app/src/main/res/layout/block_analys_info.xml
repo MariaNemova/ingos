@@ -4,15 +4,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:elevation="4dp">
+        android:background="@android:color/white"
+        android:clickable="true"
+        >
 
     <LinearLayout
             android:id="@+id/block_statistics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/frag_global_padding"
-            android:background="@color/primaryLight"
-            android:orientation="vertical">
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="vertical"
+            android:focusable="true">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

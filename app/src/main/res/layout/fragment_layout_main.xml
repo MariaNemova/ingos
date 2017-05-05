@@ -4,7 +4,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/White">
+        android:background="@color/White"
+		android:clipToPadding="false">
 
     <ScrollView
             android:layout_width="match_parent"
@@ -13,30 +14,33 @@
             >
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
             <com.daimajia.swipe.SwipeLayout
                     android:id="@+id/swipt_registry"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+					android:elevation="4dp">
                 <RelativeLayout
                         android:id="@+id/btn_registry_list"
                         android:layout_width="128dp"
                         android:layout_height="match_parent"
-                        android:background="@color/colorAccentDark"
-                        android:padding="10dp">
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:textStyle="bold"
-
-                            android:textColor="@color/White"
-                            android:text="@string/btn_registry_list"/>
+                        android:background="@color/colorAccentDark">
+					<RelativeLayout android:layout_width="match_parent"
+									android:layout_height="match_parent"
+									android:background="?android:attr/selectableItemBackground"
+									android:padding="10dp">
+						<TextView
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:gravity="center"
+								android:textStyle="bold"
+								android:textColor="@color/White"
+								android:text="@string/btn_registry_list"/>
+					</RelativeLayout>
 
                 </RelativeLayout>
                 <include layout="@layout/block_registry_info"/>
-
 
             </com.daimajia.swipe.SwipeLayout>
 
@@ -50,7 +54,6 @@
                     android:clickable="true">
                 <include layout="@layout/button_list_building_layout"/>
                 <include layout="@layout/block_building_info"/>
-
             </com.daimajia.swipe.SwipeLayout>
 
             <include layout="@layout/block_recipe_info"/>
@@ -71,7 +74,10 @@
             android:background="@color/colorAccentDark"
             android:clipToPadding="false"
             android:elevation="7dp">
-
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground">
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -79,6 +85,9 @@
                     android:textStyle="bold"
                     android:textColor="@color/White"
                     android:text="@string/btn_register_in_med"/>
+        </RelativeLayout>
+
+
 
     </RelativeLayout>
 

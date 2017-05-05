@@ -4,13 +4,15 @@
         android:id="@+id/block_insuranse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:background="@color/colorPrimaryDark">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/frag_global_padding"
-            android:background="@color/colorPrimaryDark"
+            android:background="?android:attr/selectableItemBackground"
             android:orientation="vertical">
         <TextView
                 android:layout_width="wrap_content"

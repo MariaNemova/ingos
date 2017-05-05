@@ -5,16 +5,19 @@
     android:layout_width="128dp"
     android:layout_height="match_parent"
     android:background="@color/colorAccentDark"
-    android:padding="10dp"
     android:clickable="true"
     android:focusable="true">
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textStyle="bold"
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:padding="10dp">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textStyle="bold"
 
-            android:textColor="@color/White"
-            android:text="@string/btn_building_list"/>
-
+                android:textColor="@color/White"
+                android:text="@string/btn_building_list"/>
+    </RelativeLayout>
 </RelativeLayout>
