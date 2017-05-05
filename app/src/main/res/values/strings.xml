@@ -59,6 +59,18 @@
     <string name="drug_manual">Введите инструкцию по применению</string>
     <string name="btn_add_recipe">Добавить рецепт</string>
 
+    <string name="doctor_spec">Специалист</string>
+    <string name="reception_date">Дата приема</string>
+
+    <string name="full_information_from_mc">Информация о приеме</string>
+    <string name="title_report">Жалобы</string>
+    <string name="report">Боли в животе</string>
+    <string name="past_disease">Перенесенные заболевания</string>
+    <string name="diagnosis">Диагноз</string>
+    <string name="present_disease">Развитие настоящего заболевания</string>
+    <string name="get_recipe">Выписанные лекарства</string>
+    <string name="doc_name">Имя врача</string>
+
     <string name="btn_register_in_med">ЗАПИСАТЬСЯ НА ПРИЕМ</string>
     <string name="btn_registry_list">К СПИСКУ ЗАПИСЕЙ</string>
     <string name="btn_building_list">К СПИСКУ ЦЕНТРОВ</string>

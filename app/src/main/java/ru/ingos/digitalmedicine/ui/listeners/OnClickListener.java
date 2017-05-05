@@ -6,12 +6,12 @@ import android.util.Log;
 import android.view.View;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
 
-public class ClinicListOnClickListener implements View.OnClickListener {
+public class OnClickListener implements View.OnClickListener {
 
     private final Activity parent;
     private Class childActivityClass;
 
-    public ClinicListOnClickListener(Activity parent, Class childActivityClass) {
+    public OnClickListener(Activity parent, Class childActivityClass) {
         this.parent = parent;
         this.childActivityClass = childActivityClass;
     }
