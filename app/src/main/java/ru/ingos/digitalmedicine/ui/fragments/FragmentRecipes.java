@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpFragment;
@@ -18,6 +20,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.activities.AddRecipeActivity;
@@ -68,7 +71,13 @@ public class FragmentRecipes extends MvpFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (data == null) { return; }
-        recipes().add(new RecipeModel(data.getStringExtra("name"), data.getStringExtra("manual")));
+        if (data == null) {
+            Log.d(IngosApplication.DEBUG_TAG, "Add recipe form returned not data!");
+            return;
+        }
+        RecyclerView.Adapter adapter = recyclerView.getAdapter();
+        if(adapter instanceof RecipeListAdapter){
+            ((RecipeListAdapter) adapter).addItem(data.getStringExtra("name"), data.getStringExtra("manual"));
+        }
     }
 }

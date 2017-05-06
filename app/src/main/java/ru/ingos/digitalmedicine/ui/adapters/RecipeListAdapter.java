@@ -86,5 +86,12 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
     }
 
+    public void addItem(String name, String manual){
+        if(name.equals("")) return;
 
+        RecipeModel item = new RecipeModel(name, manual);
+        recipes.add(item);
+        notifyItemRangeInserted(recipes.size()-2, 1);
+        notifyDataSetChanged();
+    }
 }

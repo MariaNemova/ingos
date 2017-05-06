@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import butterknife.ButterKnife;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 
 import butterknife.BindView;
@@ -29,6 +30,8 @@ public class AddRecipeActivity extends MvpAppCompatActivity {
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(R.string.title_recipe_add);
+
+        ButterKnife.bind(this);
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
