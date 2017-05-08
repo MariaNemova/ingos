@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import android.widget.TextView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
 import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 import ru.ingos.digitalmedicine.ui.activities.NewRegistryActivity;
-import ru.ingos.digitalmedicine.ui.adapters.holders.ClinicHolder;
 import ru.ingos.digitalmedicine.ui.listeners.OnClickListener;
 import ru.ingos.digitalmedicine.ui.models.ClinicModel;
 import ru.ingos.digitalmedicine.R;
@@ -21,7 +21,7 @@ import ru.ingos.digitalmedicine.R;
  *
  */
 
-public class ClinicListAdapter extends RecyclerView.Adapter<ClinicHolder> {
+public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.ClinicHolder> {
 
     private List<ClinicModel> clinics;
     private final OnClickListener listener;
@@ -63,6 +63,32 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicHolder> {
     }
 
 
+    public static class ClinicHolder extends RecyclerView.ViewHolder{
 
 
+        private TextView tvNameClinic;
+        private TextView tvAddresClinic;
+        private View view;
+
+        public ClinicHolder(View itemView) {
+            super(itemView);
+
+            tvNameClinic = (TextView) itemView.findViewById(R.id.tvNameClinic);
+            tvAddresClinic = (TextView) itemView.findViewById(R.id.tvAddresClinic);
+            this.view = itemView;
+        }
+
+        public void setClinicName(String name) {
+            this.tvNameClinic.setText(name);
+        }
+
+        public void setClinicAdress(String address) {
+            this.tvAddresClinic.setText(address);
+        }
+
+        public void setOnClickListener(View.OnClickListener listener){
+            view.setOnClickListener(listener);
+        }
+
+    }
 }

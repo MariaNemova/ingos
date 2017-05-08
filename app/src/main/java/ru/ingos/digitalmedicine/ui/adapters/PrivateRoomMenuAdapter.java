@@ -1,17 +1,18 @@
 package ru.ingos.digitalmedicine.ui.adapters;
 
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.PrivateRoomMenuItem;
-import ru.ingos.digitalmedicine.ui.adapters.holders.PrivateRoomMenuHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrivateRoomMenuAdapter extends RecyclerView.Adapter<PrivateRoomMenuHolder> {
+public class PrivateRoomMenuAdapter extends RecyclerView.Adapter<PrivateRoomMenuAdapter.PrivateRoomMenuHolder> {
 
     List<PrivateRoomMenuItem> items = new ArrayList<>();
 
@@ -39,5 +40,37 @@ public class PrivateRoomMenuAdapter extends RecyclerView.Adapter<PrivateRoomMenu
     @Override
     public int getItemCount() {
         return this.items.size();
+    }
+
+    public static class PrivateRoomMenuHolder extends RecyclerView.ViewHolder {
+
+        private TextView name;
+        private TextView description;
+        private AppCompatImageView icon;
+
+        public PrivateRoomMenuHolder(View itemView) {
+            super(itemView);
+
+            name = (TextView) itemView.findViewById(R.id.iconed_list_item_name);
+            description = (TextView) itemView.findViewById(R.id.iconed_list_item_description);
+            icon = (AppCompatImageView) itemView.findViewById(R.id.iconed_list_item_icon);
+
+            if(name == null || description == null || icon == null)
+                throw  new RuntimeException("Wrong view in the PrivateRoomMenuHolder. Can't find children!");
+
+        }
+
+        public void setNameTV (String name){
+            this.name.setText(name);
+        }
+
+        public void setDescriptionTV(String description){
+            this.description.setText(description);
+        }
+
+        public void setIcon(int iconPointer){
+            this.icon.setImageResource(iconPointer);
+        }
+
     }
 }

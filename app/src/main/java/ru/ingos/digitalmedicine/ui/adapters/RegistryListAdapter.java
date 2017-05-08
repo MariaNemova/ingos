@@ -2,10 +2,12 @@ package ru.ingos.digitalmedicine.ui.adapters;
 
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -29,7 +31,10 @@ public class RegistryListAdapter extends RecyclerView.Adapter<RegistryListAdapte
     @Override
     public RegistryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.block_registry_info, parent, false);
-
+        RecyclerView.LayoutParams params = (RecyclerView.LayoutParams)view.getLayoutParams();
+        params.setMargins(0,0,0,3);
+        view.setBackgroundColor(Color.WHITE);
+        view.setLayoutParams(params);
 
         return new RegistryHolder(view);
     }

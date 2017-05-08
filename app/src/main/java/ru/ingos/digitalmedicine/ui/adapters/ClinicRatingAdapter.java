@@ -1,18 +1,15 @@
 package ru.ingos.digitalmedicine.ui.adapters;
 
-import android.media.Rating;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.RatingItemModel;
-import ru.ingos.digitalmedicine.ui.adapters.holders.HeaderHolder;
-import ru.ingos.digitalmedicine.ui.adapters.holders.RatingHolder;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class ClinicRatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -70,5 +67,47 @@ public class ClinicRatingAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public void setTotal(float total) {
         this.total = total;
+    }
+
+    public static class RatingHolder extends RecyclerView.ViewHolder {
+
+        private TextView fullText;
+        private TextView date;
+        private RatingBar rating;
+        private TextView fullName;
+
+        public RatingHolder(View itemView) {
+            super(itemView);
+
+            fullText = (TextView) itemView.findViewById(R.id.rating_client_text);
+            date = (TextView) itemView.findViewById(R.id.rating_client_date);
+            rating = (RatingBar) itemView.findViewById(R.id.rating_client_rating);
+            fullName = (TextView) itemView.findViewById(R.id.rating_client_name);
+        }
+
+        public void setItem(String name, String date, String fullText, float rating){
+            if(this.fullText != null)
+                this.fullText.setText(fullText);
+            if(this.fullName != null)
+                this.fullName.setText(name);
+            if(this.rating != null)
+                this.rating.setRating(rating);
+            if(this.fullName != null)
+                this.fullName.setText(name);
+        }
+    }
+
+    public static class HeaderHolder extends RecyclerView.ViewHolder {
+
+        private RatingBar total_rating;
+
+        public HeaderHolder(View itemView) {
+            super(itemView);
+            total_rating = (RatingBar) itemView.findViewById(R.id.clinic_total_rating);
+        }
+
+        public void setTotalRating(float rating){
+            this.total_rating.setRating(rating);
+        }
     }
 }

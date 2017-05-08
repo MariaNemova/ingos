@@ -24,7 +24,6 @@ public class FragmentRegistry extends MvpFragment {
     @BindView(R.id.rvRegistry)
     RecyclerView rvRegistry;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         super.onCreateView(inflater,container,savedInstance);
@@ -42,6 +41,8 @@ public class FragmentRegistry extends MvpFragment {
         rvRegistry.setAdapter(new RegistryListAdapter(registry(), getActivity()));
     }
 
+
+    //TODO перевести все на MVP
     private List<RegistryModel> registry (){
         List<RegistryModel> registry = new ArrayList<>();
         registry.add(new RegistryModel("11 мая, 2017 год. 12:00", "ЛОР", "Ул. Пушкина, д. 12, каб. 112"));
