@@ -27,28 +27,34 @@
             android:layout_height="match_parent"
             android:padding="@dimen/frag_global_padding"
             android:layout_weight=".80">
+
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01.05.2017 12:00"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+            android:id="@+id/tvTimeRegistry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01.05.2017 12:00"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
         <TextView
-                android:layout_marginTop="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Наименование услуги"
-                android:textColor="@color/Black"/>
+            android:id="@+id/tvNameService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Наименование услуги"
+            android:textColor="@color/Black" />
         <TextView
                 android:layout_marginTop="48dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="Адрес:"/>
+
         <TextView
-                android:layout_marginTop="64dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ул. Улица, д. 11, к. 1, каб. 103"/>
+            android:id="@+id/tvAdClinic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="ул. Улица, д. 11, к. 1, каб. 103" />
     </RelativeLayout>
 </LinearLayout>
