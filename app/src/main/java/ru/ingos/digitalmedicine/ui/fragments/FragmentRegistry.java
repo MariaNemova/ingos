@@ -8,27 +8,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.arellomobile.mvp.MvpFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
+import ru.ingos.digitalmedicine.mvp.models.RegistryModel;
+import ru.ingos.digitalmedicine.mvp.presenters.RegistryListPresenter;
+import ru.ingos.digitalmedicine.mvp.views.RegistryListView;
 import ru.ingos.digitalmedicine.ui.adapters.RegistryListAdapter;
-import ru.ingos.digitalmedicine.ui.models.RegistryModel;
 
-public class FragmentRegistry extends MvpFragment {
+public class FragmentRegistry extends MvpFragment implements RegistryListView {
+
+
+    @InjectPresenter(type = PresenterType.GLOBAL)
+    RegistryListPresenter presenter;
 
     @BindView(R.id.rvRegistry)
     RecyclerView rvRegistry;
 
+    private RegistryListAdapter adapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
-        super.onCreateView(inflater,container,savedInstance);
         Utils.setActivityTitle(R.string.frag_title_registry, getActivity());
-        return inflater.inflate(R.layout.fragment_layout_registry,container,false);
+        return inflater.inflate(R.layout.fragment_layout_registry, container, false);
     }
 
     @Override
@@ -36,20 +46,14 @@ public class FragmentRegistry extends MvpFragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
+        adapter = new RegistryListAdapter(getActivity());
 
+        rvRegistry.setAdapter(adapter);
         rvRegistry.setLayoutManager(new LinearLayoutManager(null));
-        rvRegistry.setAdapter(new RegistryListAdapter(registry(), getActivity()));
     }
 
-
-    //TODO перевести все на MVP
-    private List<RegistryModel> registry (){
-        List<RegistryModel> registry = new ArrayList<>();
-        registry.add(new RegistryModel("11 мая, 2017 год. 12:00", "ЛОР", "Ул. Пушкина, д. 12, каб. 112"));
-        registry.add(new RegistryModel("16 мая, 2017 год. 15:00", "Уролог", "Ул. Красная, д. 25, каб. 302"));
-        registry.add(new RegistryModel("1 июня, 2017 год. 11:00", "Окулист", "Ул. Семеновская, д. 31, каб. 202"));
-
-        return registry;
+    @Override
+    public void setRegistry(List<RegistryModel> registry) {
+        adapter.setRegistry(registry);
     }
-
 }
