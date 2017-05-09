@@ -14,10 +14,6 @@ public class RegistryListPresenter extends MvpPresenter<RegistryListView> {
 
     private List<RegistryModel> registry;
 
-    public RegistryListPresenter(){
-        super();
-    }
-
     //мы имитируем данные, в реальности тут должно быть что-то что подключается к интернету, диску итд.
     private List<RegistryModel> loadRegistry (){
         List<RegistryModel> registry = new ArrayList<>();
@@ -37,7 +33,7 @@ public class RegistryListPresenter extends MvpPresenter<RegistryListView> {
         setRegistry();
     }
 
-    public void setRegistry() {
+    private void setRegistry() {
         getViewState().setRegistry(new ArrayList<>(registry));
     }
 }

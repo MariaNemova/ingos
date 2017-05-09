@@ -1,69 +1,348 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/registry_item"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="8dp">
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:text="01.05.2017 12:00"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:text="Наименование услуги"
-            android:textColor="@color/Black" />
-
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:text="Адрес:"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:text="ул. Улица, д. 11, к. 1, каб. 103" />
-    </LinearLayout>
+        android:layout_width="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom">
-        <Button
-            android:id="@+id/btnInfo"
-            android:layout_width="wrap_content"
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:background="@color/Blue"
-            android:textColor="@color/White"
-            android:text="@string/btn_full_info" />
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/Blue"
-            android:layout_weight="1"
-            android:textColor="@color/White"
-            android:text="@string/btn_edit_registry" />
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:focusable="true"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                android:elevation="3dp">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Основная инфомрация"
+                    android:textColor="@android:color/white"
+                    android:background="@color/colorPrimaryDark"
+                    android:padding="10dp"
+                    android:textSize="18sp"
+                    android:textAlignment="center"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:text="Дата приема:"
+                        android:padding="8dp"
+                        android:textSize="16sp"/>
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:text="16.05.2017"
+                        android:padding="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:text="Время приема:"
+                        android:padding="8dp"
+                        android:textSize="16sp"/>
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:text="14:05"
+                        android:padding="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:text="Краткий адрес:"
+                        android:padding="8dp"
+                        android:textSize="16sp"/>
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:text="ул.Тестовая, д.11/1"
+                        android:padding="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:text="Кабинет:"
+                        android:padding="8dp"
+                        android:textSize="16sp"/>
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:text="403"
+                        android:padding="8dp"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/white"
+                android:layout_marginBottom="10dp"
+                android:elevation="3dp">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:orientation="vertical">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Медицинский центр"
+                        android:textColor="@android:color/white"
+                        android:background="@color/colorPrimaryDark"
+                        android:padding="10dp"
+                        android:textSize="18sp"
+                        android:textAlignment="center"/>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="Полный адрес:"
+                            android:padding="8dp"
+                            android:textSize="16sp"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="г.Москва, ул.Тестовая, д.11, к.1, 109469"
+                            android:padding="8dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="Телефон:"
+                            android:padding="8dp"
+                            android:textSize="16sp"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="+7(495)123-45-67"
+                            android:padding="8dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="Режим работы:"
+                            android:padding="8dp"
+                            android:textSize="16sp"/>
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:text="Пн: 9:00 - 20:00"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:text="Вт: 9:00 - 20:00"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:text="Ср: 9:00 - 20:00"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:textColor="@color/colorAccentDark"
+                                android:text="Чт: 9:00 - 20:00"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:text="Пт: 9:00 - 20:00"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:text="Сб: 10:00 - 16:00"/>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:text="Вс: Выходной"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="Рейтинг:"
+                            android:padding="8dp"
+                            android:textSize="16sp"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="4.5/5"
+                            android:padding="8dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/white"
+                android:elevation="3dp">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:orientation="vertical">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Принимающий специалист"
+                        android:textColor="@android:color/white"
+                        android:background="@color/colorPrimaryDark"
+                        android:padding="10dp"
+                        android:textSize="18sp"
+                        android:textAlignment="center"/>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="ФИО:"
+                            android:padding="8dp"
+                            android:textSize="16sp"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="Иванов Иван Иванович"
+                            android:padding="8dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="Специальность:"
+                            android:padding="8dp"
+                            android:textSize="16sp"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="Окулист"
+                            android:padding="8dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="Рейтинг:"
+                            android:padding="8dp"
+                            android:textSize="16sp"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="4.5/5"
+                            android:padding="8dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
-</LinearLayout>
+
+</ScrollView>

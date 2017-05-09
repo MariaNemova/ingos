@@ -23,7 +23,7 @@ import java.util.List;
 
 public class FragmentRating extends MVP4Fragment implements RatingView{
 
-    @InjectPresenter(type = PresenterType.GLOBAL, tag = "RatingPresenter")
+    @InjectPresenter
     RatingScreenPresenter presenter;
 
     @BindView(R.id.clinic_rating)

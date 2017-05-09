@@ -1,6 +1,5 @@
 package ru.ingos.digitalmedicine.mvp.presenters;
 
-import android.util.Log;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import ru.ingos.digitalmedicine.common.Utils;
@@ -31,7 +30,7 @@ public class HomePresenter extends MvpPresenter<HomeView> {
         insuranceInfo = new InsuranceModel(
                 "Андрей",
                 "Ворницкий",
-                Utils.getDate(2017, 05, 15)
+                Utils.getDate(2017 + Utils.GLOBAL_RANDOM.nextInt(40), 1+Utils.GLOBAL_RANDOM.nextInt(10), 1+Utils.GLOBAL_RANDOM.nextInt(15))
         );
     }
 

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -33,7 +34,7 @@ public class MainActivity extends MvpAppCompatActivity
     @BindView(R.id.toolbar)
     Toolbar appBar;
 
-    @InjectPresenter(type = PresenterType.GLOBAL)
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "FragmentBinderPresenter")
     FragmentBinderPresenter presenter;
 
 
@@ -46,8 +47,11 @@ public class MainActivity extends MvpAppCompatActivity
         unbinder = ButterKnife.bind(this);
 
         setSupportActionBar(this.appBar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+        }
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -94,8 +98,8 @@ public class MainActivity extends MvpAppCompatActivity
         trans.commit();
     }
 
-    public void setFragment(Class<?extends MvpFragment> fragment, boolean addToBackStack){
-        this.presenter.bindFragment(fragment, addToBackStack);
+    public void setFragment(Class<? extends MvpFragment> fragment){
+        this.presenter.bindFragment(fragment, true);
     }
 
     @Override

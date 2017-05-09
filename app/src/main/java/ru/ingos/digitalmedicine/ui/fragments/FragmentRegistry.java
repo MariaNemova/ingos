@@ -7,15 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.arellomobile.mvp.MvpFragment;
-import com.arellomobile.mvp.presenter.InjectPresenter;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import com.arellomobile.mvp.MvpFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
@@ -24,10 +19,12 @@ import ru.ingos.digitalmedicine.mvp.presenters.RegistryListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.RegistryListView;
 import ru.ingos.digitalmedicine.ui.adapters.RegistryListAdapter;
 
+import java.util.List;
+
 public class FragmentRegistry extends MvpFragment implements RegistryListView {
 
 
-    @InjectPresenter(type = PresenterType.GLOBAL)
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "RegistryListPresenter")
     RegistryListPresenter presenter;
 
     @BindView(R.id.rvRegistry)
@@ -54,6 +51,6 @@ public class FragmentRegistry extends MvpFragment implements RegistryListView {
 
     @Override
     public void setRegistry(List<RegistryModel> registry) {
-        adapter.setRegistry(registry);
+        adapter.setmRegistry(registry);
     }
 }

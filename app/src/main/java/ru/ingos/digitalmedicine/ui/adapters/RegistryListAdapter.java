@@ -18,18 +18,11 @@ import ru.ingos.digitalmedicine.ui.listeners.OnClickListener;
 
 public class RegistryListAdapter extends RecyclerView.Adapter<RegistryListAdapter.RegistryHolder> {
 
-
-
-    List<RegistryModel> registry;
-    private final OnClickListener listener;
-
+    private List<RegistryModel> mRegistry;
+    private final OnClickListener mListener;
 
     public RegistryListAdapter(Activity activity) {
-        this.listener = new OnClickListener(activity, RegistryInfoActivity.class);
-    }
-
-    public void setRegistry(List<RegistryModel> registry) {
-        this.registry = registry;
+        this.mListener = new OnClickListener(activity, RegistryInfoActivity.class);
     }
 
     @Override
@@ -45,28 +38,32 @@ public class RegistryListAdapter extends RecyclerView.Adapter<RegistryListAdapte
 
     @Override
     public void onBindViewHolder(RegistryHolder holder, int position) {
-        RegistryModel current = registry.get(position);
-        holder.setData(current, position);
-        holder.setOnClickListener(listener);
+        RegistryModel current = mRegistry.get(position);
+        holder.setData(current);
+        holder.setOnClickListener(mListener);
 
     }
 
     @Override
     public int getItemCount() {
-        return registry.size();
+        return mRegistry !=null? mRegistry.size():0;
     }
 
 
-    public class RegistryHolder extends RecyclerView.ViewHolder {
+    public void setmRegistry(List<RegistryModel> mRegistry) {
+        this.mRegistry = mRegistry;
+    }
+
+    class RegistryHolder extends RecyclerView.ViewHolder {
 
         private TextView tvTimeRegistry;
         private TextView tvNameService;
         private TextView tvAddressClinic;
-        private int position;
+
         private View view;
 
 
-        public RegistryHolder(View itemView) {
+        RegistryHolder(View itemView) {
             super(itemView);
 
             tvTimeRegistry = (TextView) itemView.findViewById(R.id.tvTimeRegistry);
@@ -75,15 +72,14 @@ public class RegistryListAdapter extends RecyclerView.Adapter<RegistryListAdapte
 
         }
 
-        public void setData(RegistryModel currentObject, int position) {
+        void setData(RegistryModel currentObject) {
             this.tvTimeRegistry.setText(currentObject.getTimeRegistry());
             this.tvNameService.setText(currentObject.getNameService());
             this.tvAddressClinic.setText(currentObject.getAddressClinic());
-            this.position = position;
             this.view = itemView;
         }
 
-        public void setOnClickListener(View.OnClickListener listener){
+        void setOnClickListener(View.OnClickListener listener){
             view.setOnClickListener(listener);
         }
 

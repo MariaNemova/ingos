@@ -1,6 +1,5 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,7 +22,6 @@ import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
-import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
 
 /**
@@ -60,7 +58,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
 
     private Unbinder unbinder;
 
-    @InjectPresenter(type = PresenterType.GLOBAL)
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "HomePresenter")
     HomePresenter homePresenter;
 
     public FragmentMain(){

@@ -1,14 +1,9 @@
 package ru.ingos.digitalmedicine.common;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.res.Resources;
-import android.graphics.Point;
-import android.graphics.Rect;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.Window;
-import android.view.WindowManager;
 import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.MvpPresenter;
 import ru.ingos.digitalmedicine.IngosApplication;
@@ -16,10 +11,12 @@ import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Utils {
+
+    public static final Random GLOBAL_RANDOM = new Random();
 
     public static Date getDate(int year, int month, int day) {
         Calendar cal = Calendar.getInstance();
@@ -65,32 +62,33 @@ public class Utils {
     }
 
     public static int getStatusBarHeight(Resources resources){
-        int result = 0;
         int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
-            result = resources.getDimensionPixelSize(resourceId);
+            return resources.getDimensionPixelSize(resourceId);
         }else {
             //FIXME: не ронять приложение. найти выход из ситуации
             throw new RuntimeException("StatusBar size not found!");
         }
-        return result;
     }
 
-    public static int getWindowHeight(WindowManager manager){
-        Point p = new Point();
-        manager.getDefaultDisplay().getSize(p);
-        return p.y;
-    }
+//    public static int getWindowHeight(WindowManager manager){
+//        Point p = new Point();
+//        manager.getDefaultDisplay().getSize(p);
+//        return p.y;
+//    }
 
     public static void setActivityTitle(int pointer, Activity activity){
         if(activity instanceof MainActivity){
-            ((MainActivity) activity).getSupportActionBar().setTitle(pointer);
+            ActionBar actionBar = ((MainActivity) activity).getSupportActionBar();
+            if(actionBar != null){
+                actionBar.setTitle(pointer);
+            }
         }
     }
 
     public static void changerMainActivityFragment(Class<? extends MvpFragment> fragClass, Activity activity){
         if(activity instanceof MainActivity){
-            ((MainActivity) activity).setFragment(fragClass, true);
+            ((MainActivity) activity).setFragment(fragClass);
         }
     }
 
