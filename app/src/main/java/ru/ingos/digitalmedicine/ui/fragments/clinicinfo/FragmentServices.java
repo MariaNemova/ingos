@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.Service;
@@ -27,30 +26,20 @@ public class FragmentServices extends MVP4Fragment implements ServiceListView{
     ServiceListPresenter presenter;
 
     private ServiceListAdapter adapter;
-    private Unbinder unbinder;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
-        View mainView = inflater.inflate(R.layout.pager_fragment_services, container, false);
-        unbinder = ButterKnife.bind(mainView);
-        ListView serviceList = (ListView) mainView.findViewById(R.id.clinic_info_services_list);
+        return inflater.inflate(R.layout.pager_fragment_services, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstance){
+        ButterKnife.bind(view);
+        ListView serviceList = (ListView) view.findViewById(R.id.clinic_info_services_list);
         adapter = new ServiceListAdapter(getContext());
         if(serviceList!=null){
             serviceList.setAdapter(adapter);
         }
-        presenter.setServices();
-
-        ViewGroup.LayoutParams params = container.getLayoutParams();
-        params.height  =serviceList.getLayoutParams().height;
-        container.setLayoutParams(params);
-
-        return mainView;
-    }
-
-    @Override
-    public void onDestroyView(){
-        unbinder.unbind();
-        super.onDestroyView();
     }
 
     @Override

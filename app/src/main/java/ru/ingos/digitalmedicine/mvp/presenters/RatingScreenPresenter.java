@@ -4,6 +4,7 @@ import android.util.Log;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.viewstate.MvpViewState;
+import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.models.RatingItemModel;
 import ru.ingos.digitalmedicine.mvp.views.RatingView;
 
@@ -18,9 +19,7 @@ public class RatingScreenPresenter extends MvpPresenter<RatingView> {
 
     @Override
     public void onFirstViewAttach(){
-        //здесь должна происходить настоящая загрузка с диска. но ее нет покачто.
-        Log.d("MOJAR", "Загружаю рейтинг откуда-то");
-        //симулмрую асинхронность
+        Utils.logPresenterCreated(this.getClass());
         loadAllRatingItems();
         setScreen();
     }

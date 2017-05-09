@@ -60,7 +60,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
 
     private Unbinder unbinder;
 
-    @InjectPresenter(type = PresenterType.GLOBAL, tag = "Home")
+    @InjectPresenter(type = PresenterType.GLOBAL)
     HomePresenter homePresenter;
 
     public FragmentMain(){

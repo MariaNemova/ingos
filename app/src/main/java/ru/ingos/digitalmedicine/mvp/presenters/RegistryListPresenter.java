@@ -1,24 +1,24 @@
 package ru.ingos.digitalmedicine.mvp.presenters;
 
+import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.models.RegistryModel;
 import ru.ingos.digitalmedicine.mvp.views.RegistryListView;
 
+@InjectViewState //корень зла, не забывать
 public class RegistryListPresenter extends MvpPresenter<RegistryListView> {
 
     private List<RegistryModel> registry;
-
-    private boolean updated = false;
-    private boolean requested = false;
 
     public RegistryListPresenter(){
         super();
     }
 
+    //мы имитируем данные, в реальности тут должно быть что-то что подключается к интернету, диску итд.
     private List<RegistryModel> loadRegistry (){
         List<RegistryModel> registry = new ArrayList<>();
 
@@ -29,22 +29,15 @@ public class RegistryListPresenter extends MvpPresenter<RegistryListView> {
         return registry;
     }
 
+    //Этот метод вызывается автоматически при первом присоединении
     @Override
     public void onFirstViewAttach() {
+        Utils.logPresenterCreated(RegistryListPresenter.class);
         this.registry = loadRegistry();
-        updated = true;
-        if(requested){
-            setRegistry();
-        }
+        setRegistry();
     }
 
     public void setRegistry() {
-        if(updated){
-            getViewState().setRegistry(new ArrayList<>(registry));
-            updated = false;
-            requested = false;
-        }
-        else
-            requested = true;
+        getViewState().setRegistry(new ArrayList<>(registry));
     }
 }

@@ -15,24 +15,12 @@ public class RegistryModel {
     public String getTimeRegistry() {
         return timeRegistry;
     }
-
-    public void setTimeRegistry(String timeRegistry) {
-        this.timeRegistry = timeRegistry;
-    }
-
     public String getNameService() {
         return nameService;
     }
-
-    public void setNameService(String nameService) {
-        this.nameService = nameService;
-    }
-
     public String getAddressClinic() {
         return addressClinic;
     }
 
-    public void setAddressClinic(String addressClinic) {
-        this.addressClinic = addressClinic;
-    }
+
 }

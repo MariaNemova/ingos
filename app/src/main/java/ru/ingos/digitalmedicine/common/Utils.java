@@ -5,14 +5,18 @@ import android.app.Fragment;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Window;
 import android.view.WindowManager;
 import com.arellomobile.mvp.MvpFragment;
+import com.arellomobile.mvp.MvpPresenter;
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class Utils {
@@ -66,21 +70,10 @@ public class Utils {
         if (resourceId > 0) {
             result = resources.getDimensionPixelSize(resourceId);
         }else {
-            //FIXME не ронять приложение. найти выход из ситуации
+            //FIXME: не ронять приложение. найти выход из ситуации
             throw new RuntimeException("StatusBar size not found!");
         }
         return result;
-    }
-
-    public static int getActionBarHeight(Resources resources, Resources.Theme theme){
-        TypedValue tv = new TypedValue();
-        if (theme.resolveAttribute(android.R.attr.actionBarSize, tv, true))
-        {
-            return TypedValue.complexToDimensionPixelSize(tv.data,resources.getDisplayMetrics());
-        }else {
-            //FIXME не ронять приложение. найти выход из ситуации
-            throw new RuntimeException("ActionBar not found!");
-        }
     }
 
     public static int getWindowHeight(WindowManager manager){
@@ -99,6 +92,9 @@ public class Utils {
         if(activity instanceof MainActivity){
             ((MainActivity) activity).setFragment(fragClass, true);
         }
+    }
 
+    public static void logPresenterCreated(Class<? extends MvpPresenter> presenterClass){
+        Log.d(IngosApplication.DEBUG_TAG, "Presenter: \""+presenterClass.getSimpleName()+"\" created");
     }
 }

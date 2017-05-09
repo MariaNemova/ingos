@@ -14,11 +14,6 @@ public class HomePresenter extends MvpPresenter<HomeView> {
     private ClinicModel lastClinic;
     private InsuranceModel insuranceInfo;
 
-    public HomePresenter(){
-        super();
-        Log.d("[MOJAR]", "Презентер создан");
-    }
-
     private void loadClinicInfo(){
         //На самом деле здесь должна происходить некоторая загрузка с диска. Но она пока не реализована.
         lastClinic = new ClinicModel(
@@ -61,8 +56,7 @@ public class HomePresenter extends MvpPresenter<HomeView> {
 
     @Override
     public void onFirstViewAttach(){
-        super.onFirstViewAttach();
-        Log.d("[MOJAR]", "Загружаю с диска!");
+        Utils.logPresenterCreated(this.getClass());
         showClinicInfo();
         showInsuranceInfo();
     }

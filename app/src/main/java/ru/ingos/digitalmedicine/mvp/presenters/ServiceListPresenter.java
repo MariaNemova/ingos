@@ -3,6 +3,7 @@ package ru.ingos.digitalmedicine.mvp.presenters;
 import android.util.Log;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.models.Service;
 import ru.ingos.digitalmedicine.mvp.views.ServiceListView;
 
@@ -13,16 +14,6 @@ import java.util.List;
 public class ServiceListPresenter extends MvpPresenter<ServiceListView> {
 
     private List<Service> services;
-
-    //имитирую колбек. в будущем будет заменено на асинхронный запрос.
-    private boolean updated = false;
-    private boolean requested = false;
-
-    public ServiceListPresenter(){
-        super();
-
-        Log.d("MOJAR", "Создан презентер списка!");
-    }
 
     private List<Service> loadServices(){
         //TODO необходимо правильно описать выкачивание доступных услуг из БД
@@ -44,22 +35,12 @@ public class ServiceListPresenter extends MvpPresenter<ServiceListView> {
 
     @Override
     public void onFirstViewAttach(){
+        Utils.logPresenterCreated(ServiceListPresenter.class);
         this.services = loadServices();
-        updated = true;
-        //имитирую колбек. в будущем будет заменено на асинхронный запрос.
-        if(requested){
-            setServices();
-        }
+        setServices();
     }
 
     public void setServices(){
-        if(updated){
-            //разрываю ссылку
-            getViewState().setServices(new ArrayList<>(services));
-            updated = false;
-            requested = false;
-        }
-        else
-            requested = true;
+        getViewState().setServices(new ArrayList<>(services));
     }
 }
