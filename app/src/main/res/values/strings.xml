@@ -78,4 +78,37 @@
     <string name="btn_register_in_med">ЗАПИСАТЬСЯ НА ПРИЕМ</string>
     <string name="btn_registry_list">К СПИСКУ ЗАПИСЕЙ</string>
     <string name="btn_building_list">К СПИСКУ ЦЕНТРОВ</string>
+
+    <string name="example_date">12.05.2017</string>
+    <string name="example_time">14:30</string>
+    <string name="example_phone_number">+7(495)123–45–67</string>
+    <string name="example_work_mon">Пн: 8:00–18:00</string>
+    <string name="example_work_tue">Вт: 8:00–18:00</string>
+    <string name="example_work_wed">Ср: 8:00–18:00</string>
+    <string name="example_work_thu">Чт: 8:00–18:00</string>
+    <string name="example_work_fri">Пт: 8:00–18:00</string>
+    <string name="example_work_sat">Сб: 10:00–16:00</string>
+    <string name="example_work_sun">Вс: Выходной</string>
+    <string name="example_fio">Иванов Иван Иванович</string>
+    <string name="example_adress">ул.Тестовая, д.11/1</string>
+    <string name="example_adress_long">г.Москва, ул.Тестовая, д.11, к.1, 109469</string>
+    <string name="example_room">403</string>
+    <string name="example_rating">4.5/5</string>
+    <string name="example_speciality">Окулист</string>
+
+    <string name="info_field_registry_date">Дата приема:</string>
+    <string name="info_field_registry_time">Время приема:</string>
+    <string name="info_field_phone_number">Телефон:</string>
+    <string name="info_field_work_hours">Режим работы:</string>
+    <string name="info_field_rating">Рейтинг:</string>
+    <string name="info_field_fio">ФИО:</string>
+    <string name="info_field_adress">Адрес:</string>
+    <string name="info_field_adress_long">Полный адрес:</string>
+    <string name="info_field_room">Кабинет:</string>
+    <string name="info_field_speciality">Специальность:</string>
+
+
+    <string name="registry_info_main">Основная информация</string>
+    <string name="registry_info_clinic">Медицинский центр</string>
+    <string name="registry_info_special">Принимающий специалист</string>
 </resources>

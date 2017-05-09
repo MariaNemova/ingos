@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
     <LinearLayout
-
+            android:clipToPadding="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="?android:attr/colorBackground"
             android:padding="10dp">
-
-
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -20,11 +20,11 @@
                 android:clickable="true"
                 android:orientation="vertical"
                 android:layout_marginBottom="10dp"
-                android:elevation="3dp">
+                android:elevation="3dp" tools:targetApi="lollipop">
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Основная инфомрация"
+                    android:text="@string/registry_info_main"
                     android:textColor="@android:color/white"
                     android:background="@color/colorPrimaryDark"
                     android:padding="10dp"
@@ -38,14 +38,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:text="Дата приема:"
+                        android:text="@string/info_field_registry_date"
                         android:padding="8dp"
                         android:textSize="16sp"/>
                 <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:text="16.05.2017"
+                        android:text="@string/example_date"
                         android:padding="8dp"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"/>
@@ -58,14 +58,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:text="Время приема:"
+                        android:text="@string/info_field_registry_time"
                         android:padding="8dp"
                         android:textSize="16sp"/>
                 <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:text="14:05"
+                        android:text="@string/example_time"
                         android:padding="8dp"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"/>
@@ -78,14 +78,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:text="Краткий адрес:"
+                        android:text="@string/info_field_adress"
                         android:padding="8dp"
                         android:textSize="16sp"/>
                 <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:text="ул.Тестовая, д.11/1"
+                        android:text="@string/example_adress"
                         android:padding="8dp"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"/>
@@ -98,14 +98,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:text="Кабинет:"
+                        android:text="@string/info_field_room"
                         android:padding="8dp"
                         android:textSize="16sp"/>
                 <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:text="403"
+                        android:text="@string/example_room"
                         android:padding="8dp"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"/>
@@ -118,7 +118,7 @@
                 android:layout_gravity="center"
                 android:background="@android:color/white"
                 android:layout_marginBottom="10dp"
-                android:elevation="3dp">
+                android:elevation="3dp" tools:targetApi="lollipop">
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Медицинский центр"
+                        android:text="@string/registry_info_clinic"
                         android:textColor="@android:color/white"
                         android:background="@color/colorPrimaryDark"
                         android:padding="10dp"
@@ -143,14 +143,14 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="Полный адрес:"
+                            android:text="@string/info_field_adress_long"
                             android:padding="8dp"
                             android:textSize="16sp"/>
                     <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="г.Москва, ул.Тестовая, д.11, к.1, 109469"
+                            android:text="@string/example_adress_long"
                             android:padding="8dp"
                             android:textSize="16sp"
                             android:textColor="@android:color/black"/>
@@ -163,14 +163,14 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="Телефон:"
+                            android:text="@string/info_field_phone_number"
                             android:padding="8dp"
                             android:textSize="16sp"/>
                     <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="+7(495)123-45-67"
+                            android:text="@string/example_phone_number"
                             android:padding="8dp"
                             android:textSize="16sp"
                             android:textColor="@android:color/black"/>
@@ -183,7 +183,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="Режим работы:"
+                            android:text="@string/info_field_work_hours"
                             android:padding="8dp"
                             android:textSize="16sp"/>
                     <LinearLayout
@@ -197,43 +197,43 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp"
-                                android:text="Пн: 9:00 - 20:00"/>
+                                android:text="@string/example_work_mon"/>
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp"
-                                android:text="Вт: 9:00 - 20:00"/>
+                                android:text="@string/example_work_tue"/>
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp"
-                                android:text="Ср: 9:00 - 20:00"/>
+                                android:text="@string/example_work_wed"/>
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textSize="16sp"
                                 android:textColor="@color/colorAccentDark"
-                                android:text="Чт: 9:00 - 20:00"/>
+                                android:text="@string/example_work_thu"/>
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp"
-                                android:text="Пт: 9:00 - 20:00"/>
+                                android:text="@string/example_work_fri"/>
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp"
-                                android:text="Сб: 10:00 - 16:00"/>
+                                android:text="@string/example_work_sat"/>
                         <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp"
-                                android:text="Вс: Выходной"/>
+                                android:text="@string/example_work_sun"/>
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -244,14 +244,14 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="Рейтинг:"
+                            android:text="@string/info_field_rating"
                             android:padding="8dp"
                             android:textSize="16sp"/>
                     <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="4.5/5"
+                            android:text="@string/example_rating"
                             android:padding="8dp"
                             android:textSize="16sp"
                             android:textColor="@android:color/black"/>
@@ -264,7 +264,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@android:color/white"
-                android:elevation="3dp">
+                android:elevation="3dp" tools:targetApi="lollipop">
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -275,7 +275,7 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Принимающий специалист"
+                        android:text="@string/registry_info_special"
                         android:textColor="@android:color/white"
                         android:background="@color/colorPrimaryDark"
                         android:padding="10dp"
@@ -289,14 +289,14 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="ФИО:"
+                            android:text="@string/info_field_fio"
                             android:padding="8dp"
                             android:textSize="16sp"/>
                     <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="Иванов Иван Иванович"
+                            android:text="@string/example_fio"
                             android:padding="8dp"
                             android:textSize="16sp"
                             android:textColor="@android:color/black"/>
@@ -309,14 +309,14 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="Специальность:"
+                            android:text="@string/info_field_speciality"
                             android:padding="8dp"
                             android:textSize="16sp"/>
                     <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="Окулист"
+                            android:text="@string/example_speciality"
                             android:padding="8dp"
                             android:textSize="16sp"
                             android:textColor="@android:color/black"/>
@@ -329,14 +329,14 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="Рейтинг:"
+                            android:text="@string/info_field_rating"
                             android:padding="8dp"
                             android:textSize="16sp"/>
                     <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="4.5/5"
+                            android:text="@string/example_rating"
                             android:padding="8dp"
                             android:textSize="16sp"
                             android:textColor="@android:color/black"/>
