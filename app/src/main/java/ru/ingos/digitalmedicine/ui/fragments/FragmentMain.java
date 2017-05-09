@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import butterknife.Unbinder;
 import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
@@ -32,34 +34,22 @@ import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
  */
 public class FragmentMain extends MvpFragment implements HomeView, AdapterView.OnClickListener{
 
-    @BindView(R.id.last_clinic_name)
-    TextView clinicName;
-    @BindView(R.id.last_clinic_tel)
-    TextView clinicPhone;
-    @BindView(R.id.last_clinic_adress)
-    TextView clinicAdress;
-    @BindView(R.id.last_clinic_work_hours)
-    TextView clinicWorkHours;
+    @BindView(R.id.fragment_main_last_clinic_name) TextView tvClinicName;
+    @BindView(R.id.fragment_main_last_clinic_tel) TextView tvClinicPhone;
+    @BindView(R.id.fragment_main_last_clinic_adress) TextView tvClinicAdress;
+    @BindView(R.id.fragment_main_last_clinic_work_hours) TextView tvClinicWorkHours;
+    @BindView(R.id.fragment_main_insuranse_username) TextView tvInsuranceFullname;
+    @BindView(R.id.fragment_main_insuranse_expire) TextView tvInsuranceExpire;
+    @BindView(R.id.fragment_main_block_insuranse) LinearLayout llBlockInsurance;
+    @BindView(R.id.fragment_main_btn_register) RelativeLayout rlAddRegistry;
+    @BindView(R.id.fragment_main_last_clinic_info) LinearLayout llClinicInfo;
+    @BindView(R.id.fragment_main_btn_registry_list) RelativeLayout rlRegistryList;
+    @BindView(R.id.fragment_main_btn_building_list) RelativeLayout rlClinicList;
+    @BindView(R.id.fragment_main_block_statistics) LinearLayout llBlockStatistics;
 
-    @BindView(R.id.insuranse_username)
-    TextView insuranceFullname;
-    @BindView(R.id.insuranse_expire)
-    TextView insuranceExpire;
-
-    @BindView(R.id.btn_building_list)
-    RelativeLayout swipe_right_btn;
-    @BindView(R.id.block_insuranse)
-    LinearLayout block_insurance;
-    @BindView(R.id.fragment_layout_main_btn_register)
-    RelativeLayout add_registry;
-    @BindView(R.id.last_clinic_info)
-    LinearLayout clinic_info;
-
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "HomePresenter") HomePresenter homePresenter;
 
     private Unbinder unbinder;
-
-    @InjectPresenter(type = PresenterType.GLOBAL, tag = "HomePresenter")
-    HomePresenter homePresenter;
 
     public FragmentMain(){
         super();
@@ -71,7 +61,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
-        View view = inflater.inflate(R.layout.fragment_layout_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
         Utils.setActivityTitle(R.string.frag_title_main, getActivity());
 
         return view;
@@ -82,30 +72,37 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstance){
         unbinder = ButterKnife.bind(this, view);
-        swipe_right_btn.setOnClickListener(this);
-        block_insurance.setOnClickListener(this);
-        add_registry.setOnClickListener(this);
-        clinic_info.setOnClickListener(this);
+        llBlockInsurance.setOnClickListener(this);
+        rlAddRegistry.setOnClickListener(this);
+        llClinicInfo.setOnClickListener(this);
+        rlRegistryList.setOnClickListener(this);
+        rlClinicList.setOnClickListener(this);
+        llBlockStatistics.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        Log.d(IngosApplication.DEBUG_TAG, "Click!");
+
         int id = v.getId();
         switch (id){
-            case R.id.block_insuranse:
+            case R.id.fragment_main_block_insuranse:
                 homePresenter.onInsuranceInfoClick();
                 break;
-            case R.id.fragment_layout_main_btn_register:
+            case R.id.fragment_main_btn_register:
                 homePresenter.onNewRegistryBtnClick();
                 break;
-            case R.id.block_statistics:
+            case R.id.fragment_main_block_statistics:
                 homePresenter.onStatisticsClick();
                 break;
-            case R.id.btn_building_list:
+            case R.id.fragment_main_btn_building_list:
                 homePresenter.onBuildingListClick();
                 break;
-            case R.id.last_clinic_info:
+            case R.id.fragment_main_last_clinic_info:
                 homePresenter.onClinicInfoClick();
+                break;
+            case R.id.fragment_main_btn_registry_list:
+                homePresenter.onRegistryListClick();
                 break;
             default:
                 break;
@@ -114,31 +111,31 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
 
     @Override
     public void setLastClinicInfo(String name, String adress, String phone, String workHours) {
-        clinicName.setText(name);
-        clinicAdress.setText(adress);
-        clinicPhone.setText(phone);
-        clinicWorkHours.setText(workHours);
+        tvClinicName.setText(name);
+        tvClinicAdress.setText(adress);
+        tvClinicPhone.setText(phone);
+        tvClinicWorkHours.setText(workHours);
     }
 
     @Override
     public void setInsuranceInfo(String userName, String expire, Boolean isRed) {
-        insuranceFullname.setText(userName);
-        insuranceExpire.setText(expire);
+        tvInsuranceFullname.setText(userName);
+        tvInsuranceExpire.setText(expire);
 
         int red = ContextCompat.getColor(getActivity(), R.color.colorAccent);
         int white = ContextCompat.getColor(getActivity(), R.color.White);
 
-        insuranceExpire.setTextColor(isRed?red:white);
+        tvInsuranceExpire.setTextColor(isRed?red:white);
     }
 
     @Override
     public void showPrivateRoom() {
-        Utils.changerMainActivityFragment(FragmentPrivateRoom.class, getActivity());
+        Utils.changeMainActivityFragment(FragmentPrivateRoom.class, getActivity());
     }
 
     @Override
     public void showStatistics() {
-        Utils.changerMainActivityFragment(FragmentHistory.class, getActivity());
+        Utils.changeMainActivityFragment(FragmentHistory.class, getActivity());
     }
 
     @Override
@@ -150,13 +147,18 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     @Override
     public void showClinicsList()
     {
-        Utils.changerMainActivityFragment(FragmentClinicList.class, getActivity());
+        Utils.changeMainActivityFragment(FragmentClinicList.class, getActivity());
     }
 
     @Override
     public void showClinicInfo() {
         Intent clinicInfo = new Intent(getActivity(), ClinicInfoActivity.class);
         startActivity(clinicInfo);
+    }
+
+    @Override
+    public void showRegistryList() {
+        Utils.changeMainActivityFragment(FragmentRegistry.class, getActivity());
     }
 
     @Override

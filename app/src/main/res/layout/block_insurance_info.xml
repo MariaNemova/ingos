@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/block_insuranse"
+        android:id="@+id/fragment_main_block_insuranse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -21,7 +21,7 @@
                 android:textColor="@color/primaryLight"
                 android:textStyle="bold"/>
         <TextView
-                android:id="@+id/insuranse_username"
+                android:id="@+id/fragment_main_insuranse_username"
                 android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                     android:text="Истекает через:"
                     android:textColor="@color/White"/>
             <TextView
-                    android:id="@+id/insuranse_expire"
+                    android:id="@+id/fragment_main_insuranse_expire"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="5dp"

@@ -4,18 +4,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@android:color/white"
-        android:clickable="true"
-        >
+        android:background="@android:color/white">
 
     <LinearLayout
-            android:id="@+id/block_statistics"
+            android:id="@+id/fragment_main_block_statistics"
+            android:focusable="true"
+            android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/frag_global_padding"
             android:background="?android:attr/selectableItemBackground"
-            android:orientation="vertical"
-            android:focusable="true">
+            android:orientation="vertical">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,8 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Годовая"
-                android:textColor="@color/Black"
-                />
+                android:textColor="@color/Black"/>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,15 +37,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/Black"
-                    android:text="Всего обращений к врачу:"
-                    />
+                    android:text="Всего обращений к врачу:"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="5dp"
                     android:paddingLeft="5dp"
-                    android:text="15"
-                    />
+                    android:text="15"/>
         </LinearLayout>
         <LinearLayout
                 android:layout_width="match_parent"
@@ -66,8 +62,7 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="5dp"
                     android:paddingLeft="5dp"
-                    android:text="5"
-                    />
+                    android:text="5"/>
         </LinearLayout>
 
         <TextView
@@ -77,7 +72,6 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="Подробнее >"
-                android:textColor="@color/Black"
-                />
+                android:textColor="@color/Black"/>
     </LinearLayout>
 </LinearLayout>

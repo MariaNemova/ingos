@@ -23,14 +23,18 @@
                     android:layout_height="wrap_content"
 					android:elevation="4dp" tools:targetApi="lollipop">
                 <RelativeLayout
-                        android:id="@+id/btn_registry_list"
+
                         android:layout_width="128dp"
                         android:layout_height="match_parent"
                         android:background="@color/colorAccentDark">
-					<RelativeLayout android:layout_width="match_parent"
-									android:layout_height="match_parent"
-									android:background="?android:attr/selectableItemBackground"
-									android:padding="10dp">
+					<RelativeLayout
+                            android:id="@+id/fragment_main_btn_registry_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="true"
+                            android:clickable="true"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:padding="10dp">
 						<TextView
 								android:layout_width="match_parent"
 								android:layout_height="match_parent"
@@ -69,7 +73,7 @@
     </ScrollView>
 
     <RelativeLayout
-            android:id="@+id/fragment_layout_main_btn_register"
+            android:id="@+id/fragment_main_btn_register"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bootom_btn_height"
             android:layout_alignParentBottom="true"

@@ -10,7 +10,6 @@ public interface HomeView extends MvpView{
     void setLastClinicInfo(String name, String adress, String phone, String workHours);
     void setInsuranceInfo(String userName, String expire, Boolean isRed);
 
-
     @StateStrategyType(SkipStrategy.class)
     void showPrivateRoom();
     @StateStrategyType(SkipStrategy.class)
@@ -21,4 +20,6 @@ public interface HomeView extends MvpView{
     void showClinicsList();
     @StateStrategyType(SkipStrategy.class)
     void showClinicInfo();
+    @StateStrategyType(SkipStrategy.class)
+    void showRegistryList();
 }

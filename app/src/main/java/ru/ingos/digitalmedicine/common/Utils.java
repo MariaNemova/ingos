@@ -86,7 +86,7 @@ public class Utils {
         }
     }
 
-    public static void changerMainActivityFragment(Class<? extends MvpFragment> fragClass, Activity activity){
+    public static void changeMainActivityFragment(Class<? extends MvpFragment> fragClass, Activity activity){
         if(activity instanceof MainActivity){
             ((MainActivity) activity).setFragment(fragClass);
         }

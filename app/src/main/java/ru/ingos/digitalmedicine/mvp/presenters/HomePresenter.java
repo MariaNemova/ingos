@@ -80,4 +80,6 @@ public class HomePresenter extends MvpPresenter<HomeView> {
         getViewState().showClinicInfo();
     }
 
+    public void onRegistryListClick(){ getViewState().showRegistryList();}
+
 }
