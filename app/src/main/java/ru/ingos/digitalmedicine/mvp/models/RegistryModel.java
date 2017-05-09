@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.ui.models;
+package ru.ingos.digitalmedicine.mvp.models;
 
 public class RegistryModel {
 

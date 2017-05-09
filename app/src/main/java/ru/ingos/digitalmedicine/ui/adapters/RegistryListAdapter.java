@@ -7,25 +7,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.mvp.models.RegistryModel;
 import ru.ingos.digitalmedicine.ui.activities.RegistryInfoActivity;
 import ru.ingos.digitalmedicine.ui.listeners.OnClickListener;
-import ru.ingos.digitalmedicine.ui.models.RegistryModel;
 
 public class RegistryListAdapter extends RecyclerView.Adapter<RegistryListAdapter.RegistryHolder> {
+
+
 
     List<RegistryModel> registry;
     private final OnClickListener listener;
 
 
-    public RegistryListAdapter(List<RegistryModel> registry, Activity activity) {
-        this.registry = registry;
+    public RegistryListAdapter(Activity activity) {
         this.listener = new OnClickListener(activity, RegistryInfoActivity.class);
+    }
+
+    public void setRegistry(List<RegistryModel> registry) {
+        this.registry = registry;
     }
 
     @Override
@@ -51,6 +55,7 @@ public class RegistryListAdapter extends RecyclerView.Adapter<RegistryListAdapte
     public int getItemCount() {
         return registry.size();
     }
+
 
     public class RegistryHolder extends RecyclerView.ViewHolder {
 

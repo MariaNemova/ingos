@@ -8,48 +8,61 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.arellomobile.mvp.MvpFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
+import ru.ingos.digitalmedicine.mvp.models.RegistryModel;
+import ru.ingos.digitalmedicine.mvp.presenters.RegistryListPresenter;
+import ru.ingos.digitalmedicine.mvp.views.RegistryListView;
 import ru.ingos.digitalmedicine.ui.adapters.RegistryListAdapter;
-import ru.ingos.digitalmedicine.ui.models.RegistryModel;
 
-public class FragmentRegistry extends MvpFragment {
+public class FragmentRegistry extends MvpFragment implements RegistryListView {
 
-    @BindView(R.id.rvRegistry)
-    RecyclerView rvRegistry;
+
+    @InjectPresenter
+    RegistryListPresenter presenter;
+
+    private RegistryListAdapter adapter;
+    private Unbinder unbinder;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
-        super.onCreateView(inflater,container,savedInstance);
+        View mainView = inflater.inflate(R.layout.fragment_layout_registry, container, false);
+        unbinder = ButterKnife.bind(mainView);
+        RecyclerView rvRegistry = (RecyclerView) mainView.findViewById(R.id.rvRegistry);
+        adapter = new RegistryListAdapter(getActivity());
+        if (rvRegistry!=null){
+            rvRegistry.setAdapter(adapter);
+        }
+        presenter.setRegistry();
         Utils.setActivityTitle(R.string.frag_title_registry, getActivity());
-        return inflater.inflate(R.layout.fragment_layout_registry,container,false);
+        return mainView;
     }
 
     @Override
+    public void setRegistry(List<RegistryModel> registry) {
+        adapter.setRegistry(registry);
+    }
+
+    /*@Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
 
         rvRegistry.setLayoutManager(new LinearLayoutManager(null));
-        rvRegistry.setAdapter(new RegistryListAdapter(registry(), getActivity()));
+        //rvRegistry.setAdapter(new RegistryListAdapter(registry(), getActivity()));
     }
-
+*/
 
     //TODO перевести все на MVP
-    private List<RegistryModel> registry (){
-        List<RegistryModel> registry = new ArrayList<>();
-        registry.add(new RegistryModel("11 мая, 2017 год. 12:00", "ЛОР", "Ул. Пушкина, д. 12, каб. 112"));
-        registry.add(new RegistryModel("16 мая, 2017 год. 15:00", "Уролог", "Ул. Красная, д. 25, каб. 302"));
-        registry.add(new RegistryModel("1 июня, 2017 год. 11:00", "Окулист", "Ул. Семеновская, д. 31, каб. 202"));
 
-        return registry;
-    }
 
 }
