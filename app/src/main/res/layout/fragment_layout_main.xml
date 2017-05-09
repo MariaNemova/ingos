@@ -3,9 +3,10 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:background="@color/White"
-		android:clipToPadding="false">
+        android:clipToPadding="false">
 
     <ScrollView
             android:layout_width="match_parent"
@@ -20,7 +21,7 @@
                     android:id="@+id/swipt_registry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-					android:elevation="4dp">
+					android:elevation="4dp" tools:targetApi="lollipop">
                 <RelativeLayout
                         android:id="@+id/btn_registry_list"
                         android:layout_width="128dp"
@@ -59,6 +60,7 @@
             <include layout="@layout/block_recipe_info"/>
             <include layout="@layout/block_analys_info"/>
             <RelativeLayout
+                    android:background="@android:color/white"
                     android:layout_width="match_parent"
                     android:layout_height="64dp">
                   <!-- Костыль для корректного отображения -->
@@ -67,13 +69,12 @@
     </ScrollView>
 
     <RelativeLayout
-            android:id="@+id/btn_register"
+            android:id="@+id/fragment_layout_main_btn_register"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="@dimen/bootom_btn_height"
             android:layout_alignParentBottom="true"
             android:background="@color/colorAccentDark"
-            android:clipToPadding="false"
-            android:elevation="7dp">
+            android:clipToPadding="false">
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -86,9 +87,6 @@
                     android:textColor="@color/White"
                     android:text="@string/btn_register_in_med"/>
         </RelativeLayout>
-
-
-
     </RelativeLayout>
 
 </RelativeLayout>

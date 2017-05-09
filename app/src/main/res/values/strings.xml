@@ -78,6 +78,7 @@
     <string name="btn_register_in_med">ЗАПИСАТЬСЯ НА ПРИЕМ</string>
     <string name="btn_registry_list">К СПИСКУ ЗАПИСЕЙ</string>
     <string name="btn_building_list">К СПИСКУ ЦЕНТРОВ</string>
+    <string name="btn_delete_registry">ОТМЕНИТЬ ЗАПИСЬ</string>
 
     <string name="example_date">12.05.2017</string>
     <string name="example_time">14:30</string>
@@ -106,7 +107,6 @@
     <string name="info_field_adress_long">Полный адрес:</string>
     <string name="info_field_room">Кабинет:</string>
     <string name="info_field_speciality">Специальность:</string>
-
 
     <string name="registry_info_main">Основная информация</string>
     <string name="registry_info_clinic">Медицинский центр</string>

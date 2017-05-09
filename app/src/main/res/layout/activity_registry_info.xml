@@ -4,132 +4,30 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
-
     <LinearLayout
-            android:clipToPadding="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="?android:attr/colorBackground"
-            android:padding="10dp">
+            android:orientation="vertical">
         <LinearLayout
+                android:clipToPadding="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:focusable="true"
-                android:clickable="true"
                 android:orientation="vertical"
-                android:layout_marginBottom="10dp"
-                android:elevation="3dp" tools:targetApi="lollipop">
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/registry_info_main"
-                    android:textColor="@android:color/white"
-                    android:background="@color/colorPrimaryDark"
-                    android:padding="10dp"
-                    android:textSize="18sp"
-                    android:textAlignment="center"/>
+                android:background="?android:attr/colorBackground"
+                android:padding="10dp">
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:text="@string/info_field_registry_date"
-                        android:padding="8dp"
-                        android:textSize="16sp"/>
-                <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:text="@string/example_date"
-                        android:padding="8dp"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:text="@string/info_field_registry_time"
-                        android:padding="8dp"
-                        android:textSize="16sp"/>
-                <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:text="@string/example_time"
-                        android:padding="8dp"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:text="@string/info_field_adress"
-                        android:padding="8dp"
-                        android:textSize="16sp"/>
-                <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:text="@string/example_adress"
-                        android:padding="8dp"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:text="@string/info_field_room"
-                        android:padding="8dp"
-                        android:textSize="16sp"/>
-                <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:text="@string/example_room"
-                        android:padding="8dp"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/white"
-                android:layout_marginBottom="10dp"
-                android:elevation="3dp" tools:targetApi="lollipop">
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
+                    android:background="@android:color/white"
                     android:focusable="true"
                     android:clickable="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="3dp" tools:targetApi="lollipop">
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/registry_info_clinic"
+                        android:text="@string/registry_info_main"
                         android:textColor="@android:color/white"
                         android:background="@color/colorPrimaryDark"
                         android:padding="10dp"
@@ -143,14 +41,14 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="@string/info_field_adress_long"
+                            android:text="@string/info_field_registry_date"
                             android:padding="8dp"
                             android:textSize="16sp"/>
                     <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="@string/example_adress_long"
+                            android:text="@string/example_date"
                             android:padding="8dp"
                             android:textSize="16sp"
                             android:textColor="@android:color/black"/>
@@ -163,14 +61,14 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="@string/info_field_phone_number"
+                            android:text="@string/info_field_registry_time"
                             android:padding="8dp"
                             android:textSize="16sp"/>
                     <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="@string/example_phone_number"
+                            android:text="@string/example_time"
                             android:padding="8dp"
                             android:textSize="16sp"
                             android:textColor="@android:color/black"/>
@@ -183,165 +81,295 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".5"
-                            android:text="@string/info_field_work_hours"
+                            android:text="@string/info_field_adress"
                             android:padding="8dp"
                             android:textSize="16sp"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="@string/example_adress"
+                            android:padding="8dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="@string/info_field_room"
+                            android:padding="8dp"
+                            android:textSize="16sp"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:text="@string/example_room"
+                            android:padding="8dp"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/white"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="3dp" tools:targetApi="lollipop">
+                <LinearLayout
+                        android:id="@+id/activity_registry_info_clinic_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:focusable="true"
+                        android:clickable="true"
+
+                        android:orientation="vertical">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/registry_info_clinic"
+                            android:textColor="@android:color/white"
+                            android:background="@color/colorPrimaryDark"
+                            android:padding="10dp"
+                            android:textSize="18sp"
+                            android:textAlignment="center"/>
                     <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".5"
-                            android:orientation="vertical"
-                            android:padding="8dp">
+                            android:orientation="horizontal">
                         <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/black"
-                                android:textSize="16sp"
-                                android:text="@string/example_work_mon"/>
+                                android:layout_weight=".5"
+                                android:text="@string/info_field_adress_long"
+                                android:padding="8dp"
+                                android:textSize="16sp"/>
                         <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/black"
+                                android:layout_weight=".5"
+                                android:text="@string/example_adress_long"
+                                android:padding="8dp"
                                 android:textSize="16sp"
-                                android:text="@string/example_work_tue"/>
+                                android:textColor="@android:color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
                         <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/black"
-                                android:textSize="16sp"
-                                android:text="@string/example_work_wed"/>
+                                android:layout_weight=".5"
+                                android:text="@string/info_field_phone_number"
+                                android:padding="8dp"
+                                android:textSize="16sp"/>
                         <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight=".5"
+                                android:text="@string/example_phone_number"
+                                android:padding="8dp"
                                 android:textSize="16sp"
-                                android:textColor="@color/colorAccentDark"
-                                android:text="@string/example_work_thu"/>
+                                android:textColor="@android:color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
                         <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/black"
-                                android:textSize="16sp"
-                                android:text="@string/example_work_fri"/>
+                                android:layout_weight=".5"
+                                android:text="@string/info_field_work_hours"
+                                android:padding="8dp"
+                                android:textSize="16sp"/>
+                        <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".5"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="16sp"
+                                    android:text="@string/example_work_mon"/>
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="16sp"
+                                    android:text="@string/example_work_tue"/>
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="16sp"
+                                    android:text="@string/example_work_wed"/>
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/colorAccentDark"
+                                    android:text="@string/example_work_thu"/>
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="16sp"
+                                    android:text="@string/example_work_fri"/>
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="16sp"
+                                    android:text="@string/example_work_sat"/>
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="16sp"
+                                    android:text="@string/example_work_sun"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
                         <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/black"
-                                android:textSize="16sp"
-                                android:text="@string/example_work_sat"/>
+                                android:layout_weight=".5"
+                                android:text="@string/info_field_rating"
+                                android:padding="8dp"
+                                android:textSize="16sp"/>
                         <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/black"
+                                android:layout_weight=".5"
+                                android:text="@string/example_rating"
+                                android:padding="8dp"
                                 android:textSize="16sp"
-                                android:text="@string/example_work_sun"/>
+                                android:textColor="@android:color/black"/>
                     </LinearLayout>
                 </LinearLayout>
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".5"
-                            android:text="@string/info_field_rating"
-                            android:padding="8dp"
-                            android:textSize="16sp"/>
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".5"
-                            android:text="@string/example_rating"
-                            android:padding="8dp"
-                            android:textSize="16sp"
-                            android:textColor="@android:color/black"/>
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/white"
-                android:elevation="3dp" tools:targetApi="lollipop">
-            <LinearLayout
+            <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center"
+                    android:background="@android:color/white"
+                    android:elevation="3dp" tools:targetApi="lollipop">
+                <LinearLayout
+                        android:id="@+id/activity_registry_info_specialty_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:orientation="vertical">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/registry_info_special"
+                            android:textColor="@android:color/white"
+                            android:background="@color/colorPrimaryDark"
+                            android:padding="10dp"
+                            android:textSize="18sp"
+                            android:textAlignment="center"/>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".5"
+                                android:text="@string/info_field_fio"
+                                android:padding="8dp"
+                                android:textSize="16sp"/>
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".5"
+                                android:text="@string/example_fio"
+                                android:padding="8dp"
+                                android:textSize="16sp"
+                                android:textColor="@android:color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".5"
+                                android:text="@string/info_field_speciality"
+                                android:padding="8dp"
+                                android:textSize="16sp"/>
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".5"
+                                android:text="@string/example_speciality"
+                                android:padding="8dp"
+                                android:textSize="16sp"
+                                android:textColor="@android:color/black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".5"
+                                android:text="@string/info_field_rating"
+                                android:padding="8dp"
+                                android:textSize="16sp"/>
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".5"
+                                android:text="@string/example_rating"
+                                android:padding="8dp"
+                                android:textSize="16sp"
+                                android:textColor="@android:color/black"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bootom_btn_height"
+                android:background="@color/colorAccentDark"
+                android:clipToPadding="false">
+            <RelativeLayout
+                    android:id="@+id/activity_registry_info_btn_cancle"
                     android:focusable="true"
                     android:clickable="true"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackground">
                 <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/registry_info_special"
-                        android:textColor="@android:color/white"
-                        android:background="@color/colorPrimaryDark"
-                        android:padding="10dp"
-                        android:textSize="18sp"
-                        android:textAlignment="center"/>
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".5"
-                            android:text="@string/info_field_fio"
-                            android:padding="8dp"
-                            android:textSize="16sp"/>
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".5"
-                            android:text="@string/example_fio"
-                            android:padding="8dp"
-                            android:textSize="16sp"
-                            android:textColor="@android:color/black"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".5"
-                            android:text="@string/info_field_speciality"
-                            android:padding="8dp"
-                            android:textSize="16sp"/>
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".5"
-                            android:text="@string/example_speciality"
-                            android:padding="8dp"
-                            android:textSize="16sp"
-                            android:textColor="@android:color/black"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".5"
-                            android:text="@string/info_field_rating"
-                            android:padding="8dp"
-                            android:textSize="16sp"/>
-                    <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".5"
-                            android:text="@string/example_rating"
-                            android:padding="8dp"
-                            android:textSize="16sp"
-                            android:textColor="@android:color/black"/>
-                </LinearLayout>
-            </LinearLayout>
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/White"
+                        android:text="@string/btn_delete_registry"/>
+            </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
 

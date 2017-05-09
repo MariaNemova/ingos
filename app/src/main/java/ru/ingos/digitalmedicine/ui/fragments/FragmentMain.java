@@ -50,7 +50,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     RelativeLayout swipe_right_btn;
     @BindView(R.id.block_insuranse)
     LinearLayout block_insurance;
-    @BindView(R.id.btn_register)
+    @BindView(R.id.fragment_layout_main_btn_register)
     RelativeLayout add_registry;
     @BindView(R.id.last_clinic_info)
     LinearLayout clinic_info;
@@ -95,7 +95,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
             case R.id.block_insuranse:
                 homePresenter.onInsuranceInfoClick();
                 break;
-            case R.id.btn_register:
+            case R.id.fragment_layout_main_btn_register:
                 homePresenter.onNewRegistryBtnClick();
                 break;
             case R.id.block_statistics:

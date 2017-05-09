@@ -14,4 +14,6 @@
     <dimen name="frag_icon_padding">8dp</dimen>
     <dimen name="frag_block_height">128dp</dimen>
 
+    <dimen name="bootom_btn_height">64dp</dimen>
+
 </resources>
