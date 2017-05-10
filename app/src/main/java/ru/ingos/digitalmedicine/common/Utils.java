@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import com.arellomobile.mvp.MvpPresenter;
 import ru.ingos.digitalmedicine.IngosApplication;
@@ -74,14 +75,13 @@ public class Utils {
     }
 
     public static void setActivityTitle(int pointer, Activity activity){
-        ActionBar actionBar = null;
-        if(activity instanceof MainActivity) actionBar = ((MainActivity) activity).getSupportActionBar();
-        if(activity instanceof FragmentHolderActivity) actionBar = ((FragmentHolderActivity) activity).getSupportActionBar();
-
-        if(actionBar != null){
-            actionBar.setTitle(pointer);
-        } else {
-            Log.w(IngosApplication.DEBUG_TAG, "Can't setup activity\'s title! Activity has wrong class");
+        if(activity instanceof AppCompatActivity){
+            ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
+            if(actionBar != null){
+                actionBar.setTitle(pointer);
+            } else {
+                Log.w(IngosApplication.DEBUG_TAG, "Can't setup activity\'s title! Activity has wrong class");
+            }
         }
     }
 
