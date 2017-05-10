@@ -20,24 +20,35 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.arellomobile.mvp.MvpFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.PresenterType;
+
+import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
+import ru.ingos.digitalmedicine.mvp.presenters.ClinicListPresenter;
+import ru.ingos.digitalmedicine.mvp.views.ClinicListView;
 import ru.ingos.digitalmedicine.ui.activities.FragmentHolderActivity;
 import ru.ingos.digitalmedicine.ui.activities.MainActivity;
-import ru.ingos.digitalmedicine.ui.models.ClinicModel;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.R;
 
-public class FragmentClinicList extends MvpFragment {
+public class FragmentClinicList extends MvpFragment implements ClinicListView {
 
-    @BindView(R.id.tab_host)
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "ClinicListPresenter")
+    ClinicListPresenter presenter;
+
+    @BindView(R.id.fragment_clinic_list_tab_host)
     TabHost tabHost;
 
-    @BindView(R.id.clinic_list_recycler_view)
-    RecyclerView recyclerView;
+    @BindView(R.id.fragment_clinic_list_recycler_view)
+    RecyclerView rvClinicList;
+
+    private ClinicListAdapter mAdapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanse) {
-        super.onCreateView(inflater,container,savedInstanse);//не забывать вызывать родительский метод
-        return inflater.inflate(R.layout.fragment_layout_list, container, false);
+        super.onCreateView(inflater,container,savedInstanse);
+        return inflater.inflate(R.layout.fragment_clinic_list, container, false);
     }
 
     @Override
@@ -53,8 +64,10 @@ public class FragmentClinicList extends MvpFragment {
             ((TextView)widget.getChildAt(i).findViewById(android.R.id.title)).setTextColor(Color.WHITE);
         }
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(null));
-        recyclerView.setAdapter(new ClinicListAdapter(createData(), getActivity()));
+        mAdapter = new ClinicListAdapter(getActivity());
+
+        rvClinicList.setAdapter(mAdapter);
+        rvClinicList.setLayoutManager(new LinearLayoutManager(null));
 
     }
 
@@ -72,18 +85,6 @@ public class FragmentClinicList extends MvpFragment {
         tabHost.addTab(tabSpec);
     }
 
-    //халтура. используй MVP.
-    private List<ClinicModel> createData() {
-        List<ClinicModel> clinics = new ArrayList<>();
-        clinics.add(new ClinicModel("Будь здоров", "ул. Пушкина, д. 15"));
-        clinics.add(new ClinicModel("Клиника 2", "ул. Ленина, д. 22"));
-        clinics.add(new ClinicModel("Клиника 3", "ул. Васина, д. 41"));
-        clinics.add(new ClinicModel("Клиника 4", "ул. Петина, д. 67"));
-        clinics.add(new ClinicModel("Клиника 5", "ул. Иванова, д. 23"));
-        clinics.add(new ClinicModel("Клиника 6", "ул. Кек, д. 74"));
-        clinics.add(new ClinicModel("Клиника 7", "ул. Лел, д. 111"));
-        return clinics;
-    }
 
     private void setActivityTitle(){
         Activity activity = getActivity();
@@ -92,5 +93,10 @@ public class FragmentClinicList extends MvpFragment {
         }else if(activity instanceof FragmentHolderActivity){
             ((FragmentHolderActivity) activity).getSupportActionBar().setTitle("Доступные клиники");
         }
+    }
+
+    @Override
+    public void setClinics(List<ClinicListModel> clinics) {
+        mAdapter.setmClinics(clinics);
     }
 }
