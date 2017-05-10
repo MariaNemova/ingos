@@ -16,7 +16,7 @@ import ru.ingos.digitalmedicine.ui.models.ReceptionModel;
 
 public class ReceptionListAdapter extends RecyclerView.Adapter<ReceptionListAdapter.ReceptionHolder> {
 
-    List<ReceptionModel> receptions;
+    private List<ReceptionModel> receptions;
     private final OnClickListener listener;
 
 
@@ -29,6 +29,10 @@ public class ReceptionListAdapter extends RecyclerView.Adapter<ReceptionListAdap
     public ReceptionHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_history, parent, false);
 
+        RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) view.getLayoutParams();
+        params.setMargins(0,0,0,3);
+
+        view.setLayoutParams(params);
         return new ReceptionHolder(view);
     }
 
@@ -36,7 +40,6 @@ public class ReceptionListAdapter extends RecyclerView.Adapter<ReceptionListAdap
     public void onBindViewHolder(ReceptionHolder holder, int position) {
         ReceptionModel current = receptions.get(position);
         holder.setData(current);
-
         holder.setOnClickListener(listener);
 
     }
@@ -46,13 +49,13 @@ public class ReceptionListAdapter extends RecyclerView.Adapter<ReceptionListAdap
         return receptions.size();
     }
 
-    public class ReceptionHolder extends RecyclerView.ViewHolder {
+    class ReceptionHolder extends RecyclerView.ViewHolder {
 
         private TextView tvSpecDoctor;
         private TextView tvDate;
         private View view;
 
-        public ReceptionHolder(View itemView) {
+        ReceptionHolder(View itemView) {
             super(itemView);
 
             tvSpecDoctor = (TextView) itemView.findViewById(R.id.tvSpecDoctor);
@@ -60,12 +63,12 @@ public class ReceptionListAdapter extends RecyclerView.Adapter<ReceptionListAdap
             this.view = itemView;
         }
 
-        public void setData(ReceptionModel currentObject){
+        void setData(ReceptionModel currentObject){
             this.tvSpecDoctor.setText(currentObject.getDocSpec());
             this.tvDate.setText(currentObject.getReceptionDate());
         }
 
-        public void setOnClickListener(View.OnClickListener listener){
+        void setOnClickListener(View.OnClickListener listener){
             view.setOnClickListener(listener);
         }
 

@@ -35,7 +35,7 @@ public class FragmentRegistry extends MvpFragment implements RegistryListView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         Utils.setActivityTitle(R.string.frag_title_registry, getActivity());
-        return inflater.inflate(R.layout.fragment_layout_registry, container, false);
+        return inflater.inflate(R.layout.fragment_registry, container, false);
     }
 
     @Override

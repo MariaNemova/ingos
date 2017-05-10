@@ -22,7 +22,7 @@ public class FragmentPrivateRoom extends MvpFragment {
         super.onCreateView(inflater, container, savedInstance);
         Utils.setActivityTitle(R.string.frag_title_lk, getActivity());
 
-        return inflater.inflate(R.layout.fragment_layout_private_room, container, false);
+        return inflater.inflate(R.layout.fragment_private_room, container, false);
     }
 
     @Override

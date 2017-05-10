@@ -1,10 +1,9 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
 import android.app.Activity;
-import android.content.ContentProvider;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,16 +27,13 @@ import ru.ingos.digitalmedicine.R;
 
 public class FragmentClinicList extends MvpFragment {
 
-    @BindView(R.id.tab_host)
-    TabHost tabHost;
-
-    @BindView(R.id.clinic_list_recycler_view)
-    RecyclerView recyclerView;
+    @BindView(R.id.fragment_clinic_list_tab_host) TabHost tabHost;
+    @BindView(R.id.fragment_clinic_list_recycler_view) RecyclerView rvClinicList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanse) {
         super.onCreateView(inflater,container,savedInstanse);//не забывать вызывать родительский метод
-        return inflater.inflate(R.layout.fragment_layout_list, container, false);
+        return inflater.inflate(R.layout.fragment_clinic_list, container, false);
     }
 
     @Override
@@ -53,8 +49,8 @@ public class FragmentClinicList extends MvpFragment {
             ((TextView)widget.getChildAt(i).findViewById(android.R.id.title)).setTextColor(Color.WHITE);
         }
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(null));
-        recyclerView.setAdapter(new ClinicListAdapter(createData(), getActivity()));
+        rvClinicList.setLayoutManager(new LinearLayoutManager(null));
+        rvClinicList.setAdapter(new ClinicListAdapter(createData(), getActivity()));
 
     }
 
@@ -88,9 +84,11 @@ public class FragmentClinicList extends MvpFragment {
     private void setActivityTitle(){
         Activity activity = getActivity();
         if(activity instanceof MainActivity){
-            ((MainActivity) activity).getSupportActionBar().setTitle("Список клиник");
+            ActionBar actionBar = ((MainActivity) activity).getSupportActionBar();
+            if(actionBar != null) actionBar.setTitle("Список клиник");
         }else if(activity instanceof FragmentHolderActivity){
-            ((FragmentHolderActivity) activity).getSupportActionBar().setTitle("Доступные клиники");
+            ActionBar actionBar = ((FragmentHolderActivity) activity).getSupportActionBar();
+            if(actionBar != null) actionBar.setTitle("Доступные клиники");
         }
     }
 }
