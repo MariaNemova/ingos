@@ -8,18 +8,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.arellomobile.mvp.MvpFragment;
+import com.arellomobile.mvp.MvpView;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.PresenterType;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
+import ru.ingos.digitalmedicine.mvp.models.ReceptionModel;
+import ru.ingos.digitalmedicine.mvp.presenters.ReceptionListPresenter;
+import ru.ingos.digitalmedicine.mvp.views.ReceptionListView;
 import ru.ingos.digitalmedicine.ui.adapters.ReceptionListAdapter;
-import ru.ingos.digitalmedicine.ui.models.ReceptionModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentHistory extends MvpFragment {
+public class FragmentHistory extends MvpFragment implements ReceptionListView{
+
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "ReceptionListPresenter")
+    ReceptionListPresenter presenter;
+
+    private ReceptionListAdapter mAdapter;
 
     @BindView(R.id.fragment_history_recyler) RecyclerView rvMedHistory;
 
@@ -34,18 +44,16 @@ public class FragmentHistory extends MvpFragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
+        mAdapter = new ReceptionListAdapter(getActivity());
+
+        rvMedHistory.setAdapter(mAdapter);
         rvMedHistory.setLayoutManager(new LinearLayoutManager(null));
-        rvMedHistory.setAdapter(new ReceptionListAdapter(createData(), getActivity()));
+
     }
 
-    private List<ReceptionModel> createData() {
-        List<ReceptionModel> receptions = new ArrayList<>();
 
-        receptions.add(new ReceptionModel("Невролог", "5 мая, 2016 год"));
-        receptions.add(new ReceptionModel("Терапевт", "10 апреля, 2016 год"));
-        receptions.add(new ReceptionModel("ЛОР", "23 марта, 2016 год"));
-        receptions.add(new ReceptionModel("Терапевт", "11 января, 2016 год"));
-
-        return receptions;
+    @Override
+    public void setReceptions(List<ReceptionModel> receptions) {
+        mAdapter.setReceptions(receptions);
     }
 }

@@ -10,18 +10,22 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.mvp.models.ReceptionModel;
 import ru.ingos.digitalmedicine.ui.activities.MedCardActivity;
 import ru.ingos.digitalmedicine.ui.listeners.OnClickListener;
-import ru.ingos.digitalmedicine.ui.models.ReceptionModel;
 
 public class ReceptionListAdapter extends RecyclerView.Adapter<ReceptionListAdapter.ReceptionHolder> {
 
     private List<ReceptionModel> receptions;
+
+    public void setReceptions(List<ReceptionModel> receptions) {
+        this.receptions = receptions;
+    }
+
     private final OnClickListener listener;
 
 
-    public ReceptionListAdapter(List<ReceptionModel> receptions, Activity activity) {
-        this.receptions = receptions;
+    public ReceptionListAdapter(Activity activity) {
         listener = new OnClickListener(activity, MedCardActivity.class);
     }
 
