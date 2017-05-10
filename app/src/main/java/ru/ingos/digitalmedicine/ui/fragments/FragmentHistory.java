@@ -31,7 +31,7 @@ public class FragmentHistory extends MvpFragment implements ReceptionListView{
 
     private ReceptionListAdapter mAdapter;
 
-    @BindView(R.id.fragment_history_recyler) RecyclerView rvMedHistory;
+    @BindView(R.id.fragment_history_recycler_view) RecyclerView rvMedHistory;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){

@@ -3,6 +3,7 @@ package ru.ingos.digitalmedicine.ui.activities;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 
@@ -31,5 +32,9 @@ public class SelectRegistryActivity extends MvpAppCompatActivity {
         rvSelectRegistry.setAdapter(new SelectRegistryAdapter());
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
+    }
 }

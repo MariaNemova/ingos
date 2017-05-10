@@ -27,7 +27,7 @@ public class FragmentRegistry extends MvpFragment implements RegistryListView {
     @InjectPresenter(type = PresenterType.GLOBAL, tag = "RegistryListPresenter")
     RegistryListPresenter presenter;
 
-    @BindView(R.id.rvRegistry)
+    @BindView(R.id.fragment_registry_recycler_view)
     RecyclerView rvRegistry;
 
     private RegistryListAdapter adapter;

@@ -31,8 +31,8 @@ import ru.ingos.digitalmedicine.ui.adapters.RecipeListAdapter;
 
 public class FragmentRecipes extends MvpFragment implements RecipeListView {
 
-    @BindView(R.id.floatingActionButton)
-    FloatingActionButton floatingActionButton;
+    @BindView(R.id.fragment_recipes_fab)
+    FloatingActionButton fabBtnRecipe;
     @BindView(R.id.fragment_recipes_recycler_view)
     RecyclerView rvRecipeslist;
 
@@ -54,7 +54,7 @@ public class FragmentRecipes extends MvpFragment implements RecipeListView {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        fabBtnRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddRecipeActivity.class);

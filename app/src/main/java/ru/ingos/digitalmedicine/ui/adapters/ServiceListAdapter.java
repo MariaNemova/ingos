@@ -53,7 +53,7 @@ public class ServiceListAdapter extends BaseAdapter {
         }else {
             view = convertView;
         }
-        TextView tvService = (TextView) view.findViewById(R.id.tvSpeciality);
+        TextView tvService = (TextView) view.findViewById(R.id.item_speciality_text_view_spec);
         tvService.setText(((Service) getItem(position)).getName());
         return view;
     }

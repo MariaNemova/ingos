@@ -61,10 +61,10 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         public RecipeHolder(View itemView) {
             super(itemView);
 
-            cvRecipe = (CardView) itemView.findViewById(R.id.cvRecipe);
-            tvRecipeName = (TextView) itemView.findViewById(R.id.tvRecipeName);
-            tvRecipeManual = (TextView) itemView.findViewById(R.id.tvRecipeManual);
-            ivDel = (ImageView) itemView.findViewById(R.id.ivDel);
+            cvRecipe = (CardView) itemView.findViewById(R.id.item_recipe_card_view);
+            tvRecipeName = (TextView) itemView.findViewById(R.id.item_recipe_text_view_name);
+            tvRecipeManual = (TextView) itemView.findViewById(R.id.item_recipe_text_view_manual);
+            ivDel = (ImageView) itemView.findViewById(R.id.item_list_image_view_del);
         }
 
         public void setData(RecipeModel currentObject, int position){
@@ -81,7 +81,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.ivDel:
+                case R.id.item_list_image_view_del:
                     removeItem(position);
                     break;
             }

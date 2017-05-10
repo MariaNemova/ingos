@@ -40,6 +40,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     @BindView(R.id.fragment_main_btn_registry_list) RelativeLayout rlRegistryList;
     @BindView(R.id.fragment_main_btn_building_list) RelativeLayout rlClinicList;
     @BindView(R.id.fragment_main_block_statistics) LinearLayout llBlockStatistics;
+    @BindView(R.id.fragment_main_recipe_info) LinearLayout llRecipeList;
 
     @InjectPresenter(type = PresenterType.GLOBAL, tag = "HomePresenter") HomePresenter homePresenter;
 
@@ -72,6 +73,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
         rlRegistryList.setOnClickListener(this);
         rlClinicList.setOnClickListener(this);
         llBlockStatistics.setOnClickListener(this);
+        llRecipeList.setOnClickListener(this);
     }
 
     @Override
@@ -98,6 +100,8 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
             case R.id.fragment_main_btn_registry_list:
                 homePresenter.onRegistryListClick();
                 break;
+            case R.id.fragment_main_recipe_info:
+                homePresenter.onRecipeListClick();
             default:
                 break;
         }
@@ -151,15 +155,24 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     }
 
     @Override
+    public void showRecipeList() {
+        Utils.showFragmentInActivity(FragmentRecipes.class, getActivity());
+    }
+
+    @Override
     public void showRegistryList() {
         Utils.showFragmentInActivity(FragmentRegistry.class, getActivity());
     }
+
+
 
     @Override
     public void onDestroyView(){
         unbinder.unbind();
         super.onDestroyView();
     }
+
+
 
     @Override
     public void onDestroy(){

@@ -15,11 +15,11 @@ import ru.ingos.digitalmedicine.R;
 
 public class AddRecipeActivity extends MvpAppCompatActivity {
 
-    @BindView(R.id.btn_add)
+    @BindView(R.id.activity_add_recipe_btn_add)
     Button btn_add;
-    @BindView(R.id.etName)
+    @BindView(R.id.activity_add_recipe_edit_name)
     EditText etName;
-    @BindView(R.id.etManual)
+    @BindView(R.id.activity_add_recipe_edit_manual)
     EditText etManual;
 
     @Override

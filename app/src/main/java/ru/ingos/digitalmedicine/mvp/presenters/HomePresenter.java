@@ -82,4 +82,6 @@ public class HomePresenter extends MvpPresenter<HomeView> {
 
     public void onRegistryListClick(){ getViewState().showRegistryList();}
 
+    public void onRecipeListClick() {getViewState().showRecipeList();}
+
 }

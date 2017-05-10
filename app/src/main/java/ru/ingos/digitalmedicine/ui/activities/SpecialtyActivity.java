@@ -23,8 +23,8 @@ import ru.ingos.digitalmedicine.ui.models.SpecialityModel;
 
 public class SpecialtyActivity extends MvpAppCompatActivity implements AdapterView.OnItemClickListener {
 
-    @BindView(R.id.specialityList)
-    ListView specialityList;
+    @BindView(R.id.activity_speciality_list_view)
+    ListView lvSpecialityList;
 //    @BindView(R.id.specListToolbar)
 //    Toolbar toolbar;
 
@@ -40,8 +40,8 @@ public class SpecialtyActivity extends MvpAppCompatActivity implements AdapterVi
         this.getSupportActionBar().setHomeButtonEnabled(true);
         this.getSupportActionBar().setTitle("Выберите специалиста");
 
-        specialityList.setAdapter(new SpecialityListAdapter(this, createData()));
-        specialityList.setOnItemClickListener(this);
+        lvSpecialityList.setAdapter(new SpecialityListAdapter(this, createData()));
+        lvSpecialityList.setOnItemClickListener(this);
     }
 
     private List<SpecialityModel> createData(){
