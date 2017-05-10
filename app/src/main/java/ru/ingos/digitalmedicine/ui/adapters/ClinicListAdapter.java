@@ -9,11 +9,13 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import android.widget.TextView;
+
+import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
+import ru.ingos.digitalmedicine.mvp.models.ClinicModel;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
 import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 import ru.ingos.digitalmedicine.ui.activities.NewRegistryActivity;
 import ru.ingos.digitalmedicine.ui.listeners.OnClickListener;
-import ru.ingos.digitalmedicine.ui.models.ClinicModel;
 import ru.ingos.digitalmedicine.R;
 
 /**
@@ -23,20 +25,24 @@ import ru.ingos.digitalmedicine.R;
 
 public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.ClinicHolder> {
 
-    private List<ClinicModel> clinics;
-    private final OnClickListener listener;
+    private List<ClinicListModel> mClinics;
 
-    public ClinicListAdapter(List<ClinicModel> data, Activity activity) {
-        this.clinics = data;
-        if(activity == null){
+    public void setmClinics(List<ClinicListModel> mClinics) {
+        this.mClinics = mClinics;
+    }
+
+    private final OnClickListener mListener;
+
+    public ClinicListAdapter(Activity activity) {
+          if(activity == null){
             throw  new RuntimeException("You must set an actibity for the ClinicsList!");
         }
 
         boolean isMainActivity = activity instanceof MainActivity;
         if(isMainActivity){
-            listener = new OnClickListener(activity, ClinicInfoActivity.class);
+            mListener = new OnClickListener(activity, ClinicInfoActivity.class);
         }else {
-            listener = new OnClickListener(activity, NewRegistryActivity.class);
+            mListener = new OnClickListener(activity, NewRegistryActivity.class);
         }
     }
 
@@ -49,17 +55,17 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
 
     @Override
     public void onBindViewHolder(ClinicHolder holder, int position) {
-        String clinicName = clinics.get(position).getNameClinic();
-        String cliniAdress = clinics.get(position).getAddresClinic();
+        String clinicName = mClinics.get(position).getNameClinic();
+        String cliniAdress = mClinics.get(position).getAddresClinic();
 
         holder.setClinicName(clinicName);
         holder.setClinicAdress(cliniAdress);
-        holder.setOnClickListener(listener);
+        holder.setOnClickListener(mListener);
     }
 
     @Override
     public int getItemCount() {
-        return clinics.size();
+        return mClinics.size();
     }
 
 
