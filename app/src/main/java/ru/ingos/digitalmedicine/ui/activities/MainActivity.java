@@ -22,21 +22,21 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.presenters.FragmentBinderPresenter;
+import ru.ingos.digitalmedicine.mvp.presenters.MainMenuPresenter;
 import ru.ingos.digitalmedicine.mvp.views.FragmentBinderView;
+import ru.ingos.digitalmedicine.mvp.views.MainMenuView;
 import ru.ingos.digitalmedicine.ui.fragments.*;
 
 
 public class MainActivity extends MvpAppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, FragmentBinderView {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, FragmentBinderView, MainMenuView {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawer;
-    @BindView(R.id.toolbar)
-    Toolbar appBar;
+    @BindView(R.id.actibity_main_drawer_layout) DrawerLayout dlSideMenu;
+    @BindView(R.id.activity_main_toolbar) Toolbar tAppBar;
+    @BindView(R.id.acntivity_main_nav_view) NavigationView nvMenuView;
 
-    @InjectPresenter(type = PresenterType.GLOBAL, tag = "FragmentBinderPresenter")
-    FragmentBinderPresenter presenter;
-
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "FragmentBinderPresenter") FragmentBinderPresenter prFragmentBinder;
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "MainMenuPresenter") MainMenuPresenter prMainMenu;
 
     private Unbinder unbinder;
 
@@ -46,39 +46,23 @@ public class MainActivity extends MvpAppCompatActivity
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
 
-        setSupportActionBar(this.appBar);
+        setSupportActionBar(this.tAppBar);
         ActionBar actionBar = getSupportActionBar();
         if(actionBar!=null){
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
         }
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, dlSideMenu, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        dlSideMenu.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        nvMenuView.setNavigationItemSelectedListener(this);
 
         //Перехватываю клик по шапке меню
-        View header_view = navigationView.getHeaderView(0);
-        LinearLayout header = (LinearLayout) header_view.findViewById(R.id.nav_header);
+        View headerView = nvMenuView.getHeaderView(0);
+        LinearLayout header = (LinearLayout) headerView.findViewById(R.id.nav_header);
         header.setOnClickListener(this);
-    }
-
-
-
-    @Override
-    protected void onStart(){
-        super.onStart();
-
-        //Cразу после запуска, показываю главный фргмент, делая его активным
-        //TODO: Добавить проверку авторизации
-
-//        this.presenter.bindFragment(FragmentMain.class, false);
-        NavigationView view = (NavigationView)findViewById(R.id.nav_view);
-        view.getMenu().getItem(0).setChecked(true);
     }
 
     /**
@@ -99,12 +83,12 @@ public class MainActivity extends MvpAppCompatActivity
     }
 
     public void setFragment(Class<? extends MvpFragment> fragment){
-        this.presenter.bindFragment(fragment, true);
+        this.prFragmentBinder.bindFragment(fragment, true);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.actibity_main_drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -112,43 +96,43 @@ public class MainActivity extends MvpAppCompatActivity
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Class<? extends MvpFragment> fragmentClass = null;
+
         if (id == R.id.nav_clinics) {
-            this.presenter.bindFragment(FragmentClinicList.class, false);
+            fragmentClass = FragmentClinicList.class;
         } else if (id == R.id.nav_main) {
-            this.presenter.bindFragment(FragmentMain.class, false);
+            fragmentClass = FragmentMain.class;
         } else if (id == R.id.nav_history) {
-            this.presenter.bindFragment(FragmentHistory.class, false);
+            fragmentClass = FragmentHistory.class;
         } else if (id == R.id.nav_registry) {
-            this.presenter.bindFragment(FragmentRegistry.class, false);
+            fragmentClass = FragmentRegistry.class;
         } else if (id == R.id.nav_settings) {
-            this.presenter.bindFragment(FragmentSettings.class, false);
+            fragmentClass = FragmentSettings.class;
         } else if (id == R.id.nav_recipes) {
-            this.presenter.bindFragment(FragmentRecipes.class, false);
+            fragmentClass = FragmentRecipes.class;
         }
 
-        this.drawer.closeDrawer(GravityCompat.START);
-        return true;
+        if(fragmentClass != null){
+            this.prFragmentBinder.bindFragment(fragmentClass, false);
+            this.prMainMenu.changeSelection(fragmentClass);
+        }
+
+        this.dlSideMenu.closeDrawer(GravityCompat.START);
+        return false;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.drawer.openDrawer(GravityCompat.START);
+                this.dlSideMenu.openDrawer(GravityCompat.START);
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
     }
 
     @Override
@@ -161,13 +145,22 @@ public class MainActivity extends MvpAppCompatActivity
     //перехватывает клик по шапке меню
     @Override
     public void onClick(View v) {
-        this.presenter.bindFragment(FragmentPrivateRoom.class, true); //показываю окно
-        this.drawer.closeDrawer(GravityCompat.START); //скрываю меню
+        this.prFragmentBinder.bindFragment(FragmentPrivateRoom.class, true); //показываю окно
+        this.prMainMenu.diselectAll();
+        this.dlSideMenu.closeDrawer(GravityCompat.START); //скрываю меню
+    }
 
-        NavigationView view = (NavigationView)findViewById(R.id.nav_view);
-        Menu menu = view.getMenu();
+    private void diselectAllMenuItems(){
+        Menu menu = nvMenuView.getMenu();
         for(int i = 0; i<menu.size(); i++){
             menu.getItem(i).setChecked(false);
         }
+    }
+
+    @Override
+    public void replaceCheck(int num) {
+        this.diselectAllMenuItems();
+        Menu menu = nvMenuView.getMenu();
+        if(num>=0 && num<menu.size()) menu.getItem(num).setChecked(true);
     }
 }

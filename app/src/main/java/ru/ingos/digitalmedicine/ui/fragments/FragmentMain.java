@@ -26,12 +26,6 @@ import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
 import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
 
-/**
- * Created by Александр Шиян on 11.04.2017.
- *
- * Фрагмент, представляющий собой главный экран приложения. На нем располагаются ключевые кнопки, информация о
- * состоянии страховки и последняя активная запись к врачу.
- */
 public class FragmentMain extends MvpFragment implements HomeView, AdapterView.OnClickListener{
 
     @BindView(R.id.fragment_main_last_clinic_name) TextView tvClinicName;
