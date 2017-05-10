@@ -145,9 +145,9 @@ public class MainActivity extends MvpAppCompatActivity
     //перехватывает клик по шапке меню
     @Override
     public void onClick(View v) {
-        this.prFragmentBinder.bindFragment(FragmentPrivateRoom.class, true); //показываю окно
+        this.prFragmentBinder.bindFragment(FragmentPrivateRoom.class, false);
         this.prMainMenu.diselectAll();
-        this.dlSideMenu.closeDrawer(GravityCompat.START); //скрываю меню
+        this.dlSideMenu.closeDrawer(GravityCompat.START);
     }
 
     private void diselectAllMenuItems(){

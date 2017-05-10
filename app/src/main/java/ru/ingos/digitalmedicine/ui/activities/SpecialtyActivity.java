@@ -3,7 +3,6 @@ package ru.ingos.digitalmedicine.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -62,7 +61,7 @@ public class SpecialtyActivity extends MvpAppCompatActivity implements AdapterVi
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, FragmentHolderActivity.class);
-        intent.putExtra(IngosApplication.EXTRA_CLASSNAME_NAME, FragmentClinicList.class.getName());
+        intent.putExtra(IngosApplication.EXTRA_FRAGMENT_CLASSNAME, FragmentClinicList.class.getName());
         startActivity(intent);
     }
 

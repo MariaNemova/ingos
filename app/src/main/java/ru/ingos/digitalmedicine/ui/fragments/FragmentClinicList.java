@@ -43,12 +43,22 @@ public class FragmentClinicList extends MvpFragment {
     @Override
     public void onViewCreated(View view, Bundle instance){
         super.onViewCreated(view, instance);
-        ButterKnife.bind(this, view);
-
         setActivityTitle();
 
+        ButterKnife.bind(this, view);
         tabHost.setup();
+        setupTabs();
+        TabWidget widget = tabHost.getTabWidget();
+        for(int i = 0; i<widget.getChildCount(); i++){
+            ((TextView)widget.getChildAt(i).findViewById(android.R.id.title)).setTextColor(Color.WHITE);
+        }
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(null));
+        recyclerView.setAdapter(new ClinicListAdapter(createData(), getActivity()));
+
+    }
+
+    private void setupTabs(){
         TabHost.TabSpec tabSpec;
 
         tabSpec = tabHost.newTabSpec("tab1");
@@ -60,17 +70,6 @@ public class FragmentClinicList extends MvpFragment {
         tabSpec.setIndicator(getString(R.string.tab2_text));
         tabSpec.setContent(R.id.tab2);
         tabHost.addTab(tabSpec);
-
-        TabWidget widget = tabHost.getTabWidget();
-        for(int i = 0; i<widget.getChildCount(); i++){
-            ((TextView)widget.getChildAt(i).findViewById(android.R.id.title)).setTextColor(Color.WHITE);
-        }
-//        int selectedTab = ContextCompat.getColor(getActivity(), R.color.colorAccent);
-//        ((TextView)widget.getChildAt(tabHost.getCurrentTab()).findViewById(android.R.id.title)).setTextColor(selectedTab);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(null));
-        recyclerView.setAdapter(new ClinicListAdapter(createData(), getActivity()));
-
     }
 
     //халтура. используй MVP.

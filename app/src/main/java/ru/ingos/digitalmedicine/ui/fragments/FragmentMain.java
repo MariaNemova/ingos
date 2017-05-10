@@ -124,12 +124,12 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
 
     @Override
     public void showPrivateRoom() {
-        Utils.changeMainActivityFragment(FragmentPrivateRoom.class, getActivity());
+        Utils.showFragmentInActivity(FragmentPrivateRoom.class, getActivity());
     }
 
     @Override
     public void showStatistics() {
-        Utils.changeMainActivityFragment(FragmentHistory.class, getActivity());
+        Utils.showFragmentInActivity(FragmentHistory.class, getActivity());
     }
 
     @Override
@@ -141,7 +141,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     @Override
     public void showClinicsList()
     {
-        Utils.changeMainActivityFragment(FragmentClinicList.class, getActivity());
+        Utils.showFragmentInActivity(FragmentClinicList.class, getActivity());
     }
 
     @Override
@@ -152,7 +152,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
 
     @Override
     public void showRegistryList() {
-        Utils.changeMainActivityFragment(FragmentRegistry.class, getActivity());
+        Utils.showFragmentInActivity(FragmentRegistry.class, getActivity());
     }
 
     @Override
@@ -165,4 +165,6 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     public void onDestroy(){
         super.onDestroy();
     }
+    
+    
 }

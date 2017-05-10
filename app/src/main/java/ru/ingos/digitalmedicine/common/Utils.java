@@ -1,12 +1,15 @@
 package ru.ingos.digitalmedicine.common;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.MvpPresenter;
 import ru.ingos.digitalmedicine.IngosApplication;
+import ru.ingos.digitalmedicine.ui.activities.FragmentHolderActivity;
 import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 
 import java.util.Calendar;
@@ -78,21 +81,24 @@ public class Utils {
 //    }
 
     public static void setActivityTitle(int pointer, Activity activity){
-        if(activity instanceof MainActivity){
-            ActionBar actionBar = ((MainActivity) activity).getSupportActionBar();
-            if(actionBar != null){
-                actionBar.setTitle(pointer);
-            }
-        }
-    }
+        ActionBar actionBar = null;
+        if(activity instanceof MainActivity) actionBar = ((MainActivity) activity).getSupportActionBar();
+        if(activity instanceof FragmentHolderActivity) actionBar = ((FragmentHolderActivity) activity).getSupportActionBar();
 
-    public static void changeMainActivityFragment(Class<? extends MvpFragment> fragClass, Activity activity){
-        if(activity instanceof MainActivity){
-            ((MainActivity) activity).setFragment(fragClass);
+        if(actionBar != null){
+            actionBar.setTitle(pointer);
+        } else {
+            Log.w(IngosApplication.DEBUG_TAG, "Can't setup activity\'s title! Activity has wrong class");
         }
     }
 
     public static void logPresenterCreated(Class<? extends MvpPresenter> presenterClass){
         Log.d(IngosApplication.DEBUG_TAG, "Presenter: \""+presenterClass.getSimpleName()+"\" created");
+    }
+
+    public static void showFragmentInActivity(Class<? extends Fragment> fragmentClass, Activity parent){
+        Intent intent = new Intent(parent, FragmentHolderActivity.class);
+        intent.putExtra(IngosApplication.EXTRA_FRAGMENT_CLASSNAME, fragmentClass.getName());
+        parent.startActivity(intent);
     }
 }
