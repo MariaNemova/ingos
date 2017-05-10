@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arellomobile.mvp.MvpFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.PresenterType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +23,23 @@ import butterknife.ButterKnife;
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
+import ru.ingos.digitalmedicine.mvp.models.RecipeModel;
+import ru.ingos.digitalmedicine.mvp.presenters.RecipeListPresenter;
+import ru.ingos.digitalmedicine.mvp.views.RecipeListView;
 import ru.ingos.digitalmedicine.ui.activities.AddRecipeActivity;
 import ru.ingos.digitalmedicine.ui.adapters.RecipeListAdapter;
-import ru.ingos.digitalmedicine.ui.models.RecipeModel;
 
-public class FragmentRecipes extends MvpFragment {
+public class FragmentRecipes extends MvpFragment implements RecipeListView {
 
     @BindView(R.id.floatingActionButton)
     FloatingActionButton floatingActionButton;
-    @BindView(R.id.rvRecipeslist)
-    RecyclerView recyclerView;
+    @BindView(R.id.fragment_recipes_recycler_view)
+    RecyclerView rvRecipeslist;
+
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "RecipeListPresenter")
+    RecipeListPresenter presenter;
+
+    private RecipeListAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
@@ -53,18 +62,14 @@ public class FragmentRecipes extends MvpFragment {
             }
         });
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(null));
-        recyclerView.setAdapter(new RecipeListAdapter(recipes()));
+        mAdapter = new RecipeListAdapter(getActivity());
+
+        rvRecipeslist.setAdapter(mAdapter);
+        rvRecipeslist.setLayoutManager(new LinearLayoutManager(null));
+
     }
 
-    // сделал халтурно, попозже исправлю
-    private List<RecipeModel> recipes() {
-        List<RecipeModel> recipes = new ArrayList<>();
-        recipes.add(new RecipeModel("Арбидол", "2 раза в день"));
-        recipes.add(new RecipeModel("Арбидол", "2 раза в день"));
-        recipes.add(new RecipeModel("Арбидол", "2 раза в день"));
-        return recipes;
-    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -72,9 +77,14 @@ public class FragmentRecipes extends MvpFragment {
             Log.d(IngosApplication.DEBUG_TAG, "Add recipe form returned not data!");
             return;
         }
-        RecyclerView.Adapter adapter = recyclerView.getAdapter();
+        RecyclerView.Adapter adapter = rvRecipeslist.getAdapter();
         if(adapter instanceof RecipeListAdapter){
             ((RecipeListAdapter) adapter).addItem(data.getStringExtra("name"), data.getStringExtra("manual"));
         }
+    }
+
+    @Override
+    public void setRecipes(List<RecipeModel> recipes) {
+        mAdapter.setRecipes(recipes);
     }
 }

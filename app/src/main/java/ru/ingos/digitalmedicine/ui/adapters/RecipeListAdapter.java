@@ -1,5 +1,6 @@
 package ru.ingos.digitalmedicine.ui.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,14 +12,22 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.ingos.digitalmedicine.R;
-import ru.ingos.digitalmedicine.ui.models.RecipeModel;
+import ru.ingos.digitalmedicine.mvp.models.RecipeModel;
 
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.RecipeHolder>{
 
     private List<RecipeModel> recipes;
 
-    public RecipeListAdapter(List<RecipeModel> recipes) {
+    public void setRecipes(List<RecipeModel> recipes) {
         this.recipes = recipes;
+    }
+
+    private LayoutInflater mInflater;
+
+    public RecipeListAdapter(Context context) {
+        super();
+
+        this.mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);;
     }
 
     @Override

@@ -51,8 +51,6 @@ public class SpecialityListAdapter extends BaseAdapter {
         TextView tvSpeciality = (TextView) view.findViewById(R.id.tvSpeciality);
         tvSpeciality.setText(specialityModel.getName());
 
-
-
         return view;
     }
 

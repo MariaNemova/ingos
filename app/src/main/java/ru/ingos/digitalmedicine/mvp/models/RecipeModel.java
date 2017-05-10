@@ -1,4 +1,4 @@
-package ru.ingos.digitalmedicine.ui.models;
+package ru.ingos.digitalmedicine.mvp.models;
 
 public class RecipeModel {
 
@@ -14,15 +14,7 @@ public class RecipeModel {
         return recipeName;
     }
 
-    public void setRecipeName(String recipeName) {
-        this.recipeName = recipeName;
-    }
-
     public String getRecipeManual() {
         return recipeManual;
-    }
-
-    public void setRecipeManual(String recipeManual) {
-        this.recipeManual = recipeManual;
     }
 }
