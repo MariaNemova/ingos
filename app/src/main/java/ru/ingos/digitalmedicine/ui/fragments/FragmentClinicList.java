@@ -1,8 +1,10 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
 import android.app.Activity;
+import android.content.ContentProvider;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,29 +20,19 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.arellomobile.mvp.MvpFragment;
-import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.arellomobile.mvp.presenter.PresenterType;
-
-import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
-import ru.ingos.digitalmedicine.mvp.presenters.ClinicListPresenter;
-import ru.ingos.digitalmedicine.mvp.views.ClinicListView;
 import ru.ingos.digitalmedicine.ui.activities.FragmentHolderActivity;
 import ru.ingos.digitalmedicine.ui.activities.MainActivity;
+import ru.ingos.digitalmedicine.ui.models.ClinicModel;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.R;
 
-public class FragmentClinicList extends MvpFragment implements ClinicListView {
-
-    @InjectPresenter(type = PresenterType.GLOBAL, tag = "ClinicListPresenter")
-    ClinicListPresenter presenter;
+public class FragmentClinicList extends MvpFragment {
 
     @BindView(R.id.tab_host)
     TabHost tabHost;
 
     @BindView(R.id.clinic_list_recycler_view)
-    RecyclerView rvClinicList;
-
-    private ClinicListAdapter mAdapter;
+    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanse) {
@@ -61,13 +53,10 @@ public class FragmentClinicList extends MvpFragment implements ClinicListView {
             ((TextView)widget.getChildAt(i).findViewById(android.R.id.title)).setTextColor(Color.WHITE);
         }
 
-        mAdapter = new ClinicListAdapter(getActivity());
+        recyclerView.setLayoutManager(new LinearLayoutManager(null));
+        recyclerView.setAdapter(new ClinicListAdapter(createData(), getActivity()));
 
-        rvClinicList.setAdapter(mAdapter);;
-        rvClinicList.setLayoutManager(new LinearLayoutManager(null));
     }
-
-
 
     private void setupTabs(){
         TabHost.TabSpec tabSpec;
@@ -83,6 +72,18 @@ public class FragmentClinicList extends MvpFragment implements ClinicListView {
         tabHost.addTab(tabSpec);
     }
 
+    //халтура. используй MVP.
+    private List<ClinicModel> createData() {
+        List<ClinicModel> clinics = new ArrayList<>();
+        clinics.add(new ClinicModel("Будь здоров", "ул. Пушкина, д. 15"));
+        clinics.add(new ClinicModel("Клиника 2", "ул. Ленина, д. 22"));
+        clinics.add(new ClinicModel("Клиника 3", "ул. Васина, д. 41"));
+        clinics.add(new ClinicModel("Клиника 4", "ул. Петина, д. 67"));
+        clinics.add(new ClinicModel("Клиника 5", "ул. Иванова, д. 23"));
+        clinics.add(new ClinicModel("Клиника 6", "ул. Кек, д. 74"));
+        clinics.add(new ClinicModel("Клиника 7", "ул. Лел, д. 111"));
+        return clinics;
+    }
 
     private void setActivityTitle(){
         Activity activity = getActivity();
@@ -91,10 +92,5 @@ public class FragmentClinicList extends MvpFragment implements ClinicListView {
         }else if(activity instanceof FragmentHolderActivity){
             ((FragmentHolderActivity) activity).getSupportActionBar().setTitle("Доступные клиники");
         }
-    }
-
-    @Override
-    public void setClinics(List<ClinicListModel> clinics) {
-        mAdapter.setmClinics(clinics);
     }
 }

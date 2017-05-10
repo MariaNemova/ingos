@@ -18,22 +18,15 @@ import ru.ingos.digitalmedicine.ui.models.ReceptionModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
-/**
- * Created by Александр Шиян on 11.04.2017.
- *
- * Экран карты пциэнта, содержащий историю посещений, текущие направления, рецепты и прочее.
- */
 public class FragmentHistory extends MvpFragment {
 
-    @BindView(R.id.rvMedHistory)
-    RecyclerView rvMedHistory;
+    @BindView(R.id.fragment_history_recyler) RecyclerView rvMedHistory;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         Utils.setActivityTitle(R.string.frag_title_history, getActivity());
-        return inflater.inflate(R.layout.fragment_layout_history, container, false);
+        return inflater.inflate(R.layout.fragment_history, container, false);
     }
 
     @Override

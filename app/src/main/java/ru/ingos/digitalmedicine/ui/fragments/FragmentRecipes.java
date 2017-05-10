@@ -10,8 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpFragment;
 
@@ -24,7 +22,6 @@ import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.activities.AddRecipeActivity;
-import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.ui.adapters.RecipeListAdapter;
 import ru.ingos.digitalmedicine.ui.models.RecipeModel;
 
@@ -40,7 +37,7 @@ public class FragmentRecipes extends MvpFragment {
         super.onCreateView(inflater,container,savedInstance);
         Utils.setActivityTitle(R.string.frag_title_recipes, getActivity());
 
-        return inflater.inflate(R.layout.fragment_layout_recipes, container, false);
+        return inflater.inflate(R.layout.fragment_recipes, container, false);
     }
 
     @Override
