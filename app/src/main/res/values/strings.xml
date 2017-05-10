@@ -108,6 +108,9 @@
     <string name="info_field_room">Кабинет:</string>
     <string name="info_field_speciality">Специальность:</string>
 
+    <string name="item_select">Выбрать специальность</string>
+    <string name="title_select_activity">Выберите способ записи</string>
+
     <string name="registry_info_main">Основная информация</string>
     <string name="registry_info_clinic">Медицинский центр</string>
     <string name="registry_info_special">Принимающий специалист</string>

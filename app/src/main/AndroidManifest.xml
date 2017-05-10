@@ -33,6 +33,7 @@
         <activity android:name=".ui.activities.AddRecipeActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ui.activities.MedCardActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ui.activities.RegistryInfoActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.SelectRegistryActivity" android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

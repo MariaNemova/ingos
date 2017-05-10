@@ -24,7 +24,7 @@ import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
-import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
+import ru.ingos.digitalmedicine.ui.activities.SelectRegistryActivity;
 
 public class FragmentMain extends MvpFragment implements HomeView, AdapterView.OnClickListener{
 
@@ -135,7 +135,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     @Override
     public void createNewRegistry()
     {
-        startActivity(new Intent(getActivity(), SpecialtyActivity.class));
+        startActivity(new Intent(getActivity(), SelectRegistryActivity.class));
     }
 
     @Override
