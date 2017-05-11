@@ -65,21 +65,36 @@ public class MainActivity extends MvpAppCompatActivity
         header.setOnClickListener(this);
     }
 
-    /**
-     * Заменяет фрагмент в главном контейнере
-     * В качестве тега используется имя класса
-     * @param fragmentClass класс фрагмента, который необходимо добавить
-     */
+
     @Override
-    public void bindFragment(Class<? extends MvpFragment> fragmentClass, boolean add_to_back){
-        FragmentTransaction trans = getFragmentManager().beginTransaction();
-        try {
-            trans.replace(R.id.fragment_container, fragmentClass.newInstance());
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void bindFragment(Class fragmentClass, boolean add_to_back){
+        if(Mvp4Fragment.class.isAssignableFrom(fragmentClass)){
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            try{
+                trans.replace(R.id.fragment_container, ((Class<? extends Mvp4Fragment>)fragmentClass).newInstance());
+            }catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+            if(add_to_back)trans.addToBackStack(null);
+            trans.commit();
+        }else{
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+
         }
-        if(add_to_back)trans.addToBackStack(null);
-        trans.commit();
+        if(MvpFragment.class.isAssignableFrom(fragmentClass)){
+            FragmentTransaction trans = getFragmentManager().beginTransaction();
+            try {
+                trans.replace(R.id.fragment_container, ((Class<? extends MvpFragment>)fragmentClass).newInstance());
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+            if(add_to_back)trans.addToBackStack(null);
+            trans.commit();
+        }
     }
 
     public void setFragment(Class<? extends MvpFragment> fragment){
@@ -100,7 +115,7 @@ public class MainActivity extends MvpAppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        Class<? extends MvpFragment> fragmentClass = null;
+        Class fragmentClass = null;
 
         if (id == R.id.nav_clinics) {
             fragmentClass = FragmentClinicList.class;

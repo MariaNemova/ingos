@@ -26,7 +26,7 @@ import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
 import ru.ingos.digitalmedicine.ui.activities.SpecialtyActivity;
 
-public class FragmentMain extends MvpFragment implements HomeView, AdapterView.OnClickListener{
+public class FragmentMain extends Mvp4Fragment implements HomeView, AdapterView.OnClickListener{
 
     @BindView(R.id.fragment_main_last_clinic_name) TextView tvClinicName;
     @BindView(R.id.fragment_main_last_clinic_tel) TextView tvClinicPhone;

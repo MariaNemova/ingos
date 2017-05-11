@@ -12,7 +12,8 @@ import java.util.List;
 @InjectViewState
 public class MainMenuPresenter extends MvpPresenter<MainMenuView> {
 
-    private static List<Class<? extends MvpFragment>> sFragmentClassesList = new ArrayList<>();
+    private static List<Class> sFragmentClassesList = new ArrayList<>();
+
 
     @Override
     public void onFirstViewAttach(){
@@ -20,7 +21,7 @@ public class MainMenuPresenter extends MvpPresenter<MainMenuView> {
         getViewState().replaceCheck(0);
     }
 
-    public void changeSelection(Class<? extends MvpFragment> fragmentClass){
+    public void changeSelection(Class fragmentClass){
         if(!MainMenuPresenter.sFragmentClassesList.contains(fragmentClass)) {
             getViewState().replaceCheck(-1);
         }else {

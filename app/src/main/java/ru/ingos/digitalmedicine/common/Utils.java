@@ -1,7 +1,6 @@
 package ru.ingos.digitalmedicine.common;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.ActionBar;
@@ -10,7 +9,6 @@ import android.util.Log;
 import com.arellomobile.mvp.MvpPresenter;
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.ui.activities.FragmentHolderActivity;
-import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -89,7 +87,7 @@ public class Utils {
         Log.d(IngosApplication.DEBUG_TAG, "Presenter: \""+presenterClass.getSimpleName()+"\" created");
     }
 
-    public static void showFragmentInActivity(Class<? extends Fragment> fragmentClass, Activity parent){
+    public static void showFragmentInActivity(Class fragmentClass, Activity parent){
         Intent intent = new Intent(parent, FragmentHolderActivity.class);
         intent.putExtra(IngosApplication.EXTRA_FRAGMENT_CLASSNAME, fragmentClass.getName());
         parent.startActivity(intent);

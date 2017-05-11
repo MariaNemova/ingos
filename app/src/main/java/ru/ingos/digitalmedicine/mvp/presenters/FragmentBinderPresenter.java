@@ -16,7 +16,7 @@ public class FragmentBinderPresenter extends MvpPresenter<FragmentBinderView> {
         getViewState().bindFragment(FragmentMain.class, false);
     }
 
-    public void bindFragment(Class<? extends MvpFragment> fragmentClass, boolean addToBackStack){
+    public void bindFragment(Class fragmentClass, boolean addToBackStack){
         if(fragmentClass == null){
             Log.w(IngosApplication.DEBUG_TAG, "Can't set fragment! Fragment is null!");
             return;

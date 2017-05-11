@@ -27,7 +27,7 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
 
     private List<ClinicListModel> mClinics;
 
-    public void setmClinics(List<ClinicListModel> mClinics) {
+    public void setClinics(List<ClinicListModel> mClinics) {
         this.mClinics = mClinics;
     }
 
