@@ -14,19 +14,28 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.mvp.models.SpecialityModel;
+import ru.ingos.digitalmedicine.mvp.presenters.SpecialityListPresenter;
+import ru.ingos.digitalmedicine.mvp.views.SpecialityListView;
 import ru.ingos.digitalmedicine.ui.adapters.SpecialityListAdapter;
 import ru.ingos.digitalmedicine.ui.fragments.FragmentClinicList;
-import ru.ingos.digitalmedicine.ui.models.SpecialityModel;
 
 
-public class SpecialtyActivity extends MvpAppCompatActivity implements AdapterView.OnItemClickListener {
+public class SpecialtyActivity extends MvpAppCompatActivity implements AdapterView.OnItemClickListener, SpecialityListView {
 
     @BindView(R.id.activity_speciality_list_view)
     ListView lvSpecialityList;
 //    @BindView(R.id.specListToolbar)
 //    Toolbar toolbar;
+
+    @InjectPresenter
+    SpecialityListPresenter presenter;
+
+    private SpecialityListAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,24 +47,17 @@ public class SpecialtyActivity extends MvpAppCompatActivity implements AdapterVi
 //        this.setSupportActionBar(toolbar);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.getSupportActionBar().setHomeButtonEnabled(true);
-        this.getSupportActionBar().setTitle("Выберите специалиста");
+        this.getSupportActionBar().setTitle(R.string.frag_title_spec);
 
-        lvSpecialityList.setAdapter(new SpecialityListAdapter(this, createData()));
+        mAdapter = new SpecialityListAdapter(getApplicationContext());
+        lvSpecialityList.setAdapter(mAdapter);
         lvSpecialityList.setOnItemClickListener(this);
+
     }
 
-    private List<SpecialityModel> createData(){
-        List<SpecialityModel> specialties = new ArrayList<>();
-
-        specialties.add(new SpecialityModel("Терапевт"));
-        specialties.add(new SpecialityModel("Ортопед"));
-        specialties.add(new SpecialityModel("Гематолог"));
-        specialties.add(new SpecialityModel("Логопед"));
-        specialties.add(new SpecialityModel("ЛОР"));
-        specialties.add(new SpecialityModel("Онколог"));
-        specialties.add(new SpecialityModel("Хирург"));
-
-        return specialties;
+    @Override
+    public void setSpecialties(List<SpecialityModel> specialties) {
+        mAdapter.setSpecialties(specialties);
     }
 
     @Override

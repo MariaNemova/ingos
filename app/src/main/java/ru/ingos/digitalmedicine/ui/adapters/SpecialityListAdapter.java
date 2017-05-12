@@ -10,28 +10,35 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.ingos.digitalmedicine.R;
-import ru.ingos.digitalmedicine.ui.models.SpecialityModel;
+import ru.ingos.digitalmedicine.mvp.models.SpecialityModel;
 
 
 public class SpecialityListAdapter extends BaseAdapter {
 
-    private List<SpecialityModel> specialties;
+    private List<SpecialityModel> mSpecialties;
     private LayoutInflater layoutInflater;
 
-    public SpecialityListAdapter(Context context, List<SpecialityModel> specialties) {
-        this.specialties = specialties;
+    public SpecialityListAdapter(Context context) {
+        super();
+
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public void setSpecialties(List<SpecialityModel> specialties) {
+        this.mSpecialties = specialties;
     }
 
     @Override
     public int getCount() {
-        return specialties.size();
+        if(mSpecialties == null){
+            return 0;
+        }
+        return mSpecialties.size();
     }
 
     @Override
     public Object getItem(int position) {
-        notifyDataSetChanged();
-        return specialties.get(position);
+        return mSpecialties.get(position);
     }
 
     @Override
@@ -46,17 +53,11 @@ public class SpecialityListAdapter extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.item_speciality, parent, false);
         }
 
-        SpecialityModel specialityModel = getSpecialityModel(position);
 
         TextView tvSpeciality = (TextView) view.findViewById(R.id.item_speciality_text_view_spec);
-        tvSpeciality.setText(specialityModel.getName());
+        tvSpeciality.setText(((SpecialityModel) getItem(position)).getNameSpec());
 
         return view;
-    }
-
-
-    private SpecialityModel getSpecialityModel(int position){
-        return (SpecialityModel) getItem(position);
     }
 }
 
