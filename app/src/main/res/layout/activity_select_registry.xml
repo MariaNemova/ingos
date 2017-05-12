@@ -1,10 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/activity_select_registry_recycler_view"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_weight="0.34"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <Button
+            android:id="@+id/activity_select_registry_btn_spec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:drawableLeft="@drawable/ic_clinic_sign"
+            android:text="@string/select_spec"
+            android:textColor="@color/White"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.34"
+        android:padding="4dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/activity_select_registry_btn_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:drawableLeft="@drawable/ic_doctor"
+            android:text="@string/select_doctor"
+            android:textColor="@color/White"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.34"
+        android:padding="4dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/activity_select_registry_btn_clinic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:drawableLeft="@drawable/ic_clinic_marker"
+            android:text="@string/select_clinic"
+            android:textColor="@color/White"
+            android:textSize="18dp" />
+    </LinearLayout>
+
 </LinearLayout>
