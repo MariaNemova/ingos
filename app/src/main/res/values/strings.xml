@@ -43,6 +43,7 @@
     <string name="frag_title_spec">Выберите специалиста</string>
     <string name="frag_title_doctor">Выберите врача</string>
 
+
     <string name="personal_information">Персональные данные</string>
     <string name="edit_information">Изменение ваших данных и пароля</string>
     <string name="insurance_information">Информация о страховке</string>
@@ -114,6 +115,8 @@
     <string name="select_spec">Выбрать специальность</string>
     <string name="select_doctor">Выбрать врача</string>
     <string name="select_clinic">Выбрать клинику рядом</string>
+
+    <string name="title_insurance_services_activity">Услуги по страховке</string>
 
     <string name="registry_info_main">Основная информация</string>
     <string name="registry_info_clinic">Медицинский центр</string>
