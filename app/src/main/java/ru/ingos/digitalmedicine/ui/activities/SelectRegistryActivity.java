@@ -19,6 +19,9 @@ public class SelectRegistryActivity extends MvpAppCompatActivity implements View
     @BindView(R.id.activity_select_registry_btn_spec)
     Button btnSelectSpec;
 
+    @BindView(R.id.activity_select_registry_btn_doctor)
+    Button btnSelectDoctor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class SelectRegistryActivity extends MvpAppCompatActivity implements View
         getSupportActionBar().setTitle(R.string.title_select_activity);
 
         btnSelectSpec.setOnClickListener(this);
+        btnSelectDoctor.setOnClickListener(this);
 
 
     }
@@ -45,6 +49,9 @@ public class SelectRegistryActivity extends MvpAppCompatActivity implements View
         switch (v.getId()){
             case R.id.activity_select_registry_btn_spec:
                 startActivity(new Intent(this, SpecialtyActivity.class));
+                break;
+            case R.id.activity_select_registry_btn_doctor:
+                startActivity(new Intent(this, DoctorsActivity.class));
                 break;
             default:
         }
