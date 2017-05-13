@@ -9,6 +9,6 @@ import ru.ingos.digitalmedicine.ui.fragments.Mvp4Fragment;
 @StateStrategyType(SingleStateStrategy.class)
 public interface FragmentBinderView extends MvpView{
 
-    void bindFragment(Class fragmentClass, boolean addToBackStack);
+    void bindFragmentSupport(Class fragmentClass, boolean addToBackStack);
 
 }

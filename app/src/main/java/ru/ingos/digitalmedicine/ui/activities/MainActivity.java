@@ -9,17 +9,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.presenters.FragmentBinderPresenter;
 import ru.ingos.digitalmedicine.mvp.presenters.MainMenuPresenter;
@@ -38,13 +39,11 @@ public class MainActivity extends MvpAppCompatActivity
     @InjectPresenter(type = PresenterType.GLOBAL, tag = "FragmentBinderPresenter") FragmentBinderPresenter prFragmentBinder;
     @InjectPresenter(type = PresenterType.GLOBAL, tag = "MainMenuPresenter") MainMenuPresenter prMainMenu;
 
-    private Unbinder unbinder;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        unbinder = ButterKnife.bind(this);
+        ButterKnife.bind(this);
 
         setSupportActionBar(this.tAppBar);
         ActionBar actionBar = getSupportActionBar();
@@ -65,40 +64,59 @@ public class MainActivity extends MvpAppCompatActivity
         header.setOnClickListener(this);
     }
 
-
+    /**
+     * Метод меняет фрагменты в главном контейнере на MainActivity
+     * Метод работает сразу с двумя классами фрагментов: Основным и из библиотеки support.v4
+     * @param fragmentClass класс фрагмента на который необходимо заменить содержание контейнера
+     * @param add_to_back необходимо ли добавлять на back_stack предыдущий фрагмент.
+     */
     @Override
-    public void bindFragment(Class fragmentClass, boolean add_to_back){
+    public void bindFragmentSupport(Class fragmentClass, boolean add_to_back){
         if(Mvp4Fragment.class.isAssignableFrom(fragmentClass)){
+            bindFragmentV4(fragmentClass, add_to_back);
+        }else if(getSupportFragmentManager().findFragmentByTag("SupportFragment") != null){
             android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            try{
-                trans.replace(R.id.fragment_container, ((Class<? extends Mvp4Fragment>)fragmentClass).newInstance());
-            }catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            }
-            if(add_to_back)trans.addToBackStack(null);
+            trans.remove(getSupportFragmentManager().findFragmentByTag("SupportFragment"));
             trans.commit();
-        }else{
-            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-
         }
+
         if(MvpFragment.class.isAssignableFrom(fragmentClass)){
+            bindFragment(fragmentClass, add_to_back);
+        }else if(getFragmentManager().findFragmentByTag("MainFragment") != null){
             FragmentTransaction trans = getFragmentManager().beginTransaction();
-            try {
-                trans.replace(R.id.fragment_container, ((Class<? extends MvpFragment>)fragmentClass).newInstance());
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            }
-            if(add_to_back)trans.addToBackStack(null);
+            trans.remove(getFragmentManager().findFragmentByTag("MainFragment"));
             trans.commit();
         }
     }
 
-    public void setFragment(Class<? extends MvpFragment> fragment){
-        this.prFragmentBinder.bindFragment(fragment, true);
+    private void bindFragment(Class fragmentClass, boolean add_to_back){
+        FragmentTransaction trans = getFragmentManager().beginTransaction();
+        try {
+            //предупреждение необсановано. проверка проведена в вызывающем методе.
+            trans.replace(R.id.fragment_container, ((Class<? extends MvpFragment>)fragmentClass).newInstance(), "MainFragment");
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            Log.e(IngosApplication.DEBUG_TAG, "Instanitation exception!");
+            e.printStackTrace();
+        }
+        if(add_to_back)trans.addToBackStack(null);
+        trans.commit();
+    }
+
+    private void bindFragmentV4(Class fragmentClass, boolean add_to_back){
+        android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+        try{
+            //предупреждение необсановано. проверка проведена в вызывающем методе.
+            trans.replace(R.id.fragment_container, ((Class<? extends Mvp4Fragment>)fragmentClass).newInstance(), "SupportFragment");
+        }catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            Log.e(IngosApplication.DEBUG_TAG, "Instanitation exception!");
+            e.printStackTrace();
+        }
+        if(add_to_back)trans.addToBackStack(null);
+        trans.commit();
     }
 
     @Override
@@ -148,13 +166,6 @@ public class MainActivity extends MvpAppCompatActivity
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onDestroy(){
-        unbinder.unbind();
-
-        super.onDestroy();
     }
 
     //перехватывает клик по шапке меню
