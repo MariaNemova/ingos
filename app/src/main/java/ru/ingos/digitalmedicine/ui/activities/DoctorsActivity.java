@@ -2,19 +2,16 @@ package ru.ingos.digitalmedicine.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
-import com.arellomobile.mvp.MvpAppCompatActivity;
-import com.arellomobile.mvp.presenter.InjectPresenter;
-
-import java.util.List;
-
-import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.DoctorModel;
@@ -22,12 +19,14 @@ import ru.ingos.digitalmedicine.mvp.presenters.DoctorListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.DoctorListView;
 import ru.ingos.digitalmedicine.ui.adapters.DoctorListAdapter;
 
+import java.util.List;
+
 public class DoctorsActivity extends MvpAppCompatActivity implements DoctorListView, ListView.OnItemClickListener{
 
     @BindView(R.id.activity_doctor_list_list_view)
     ListView lvDoctorList;
 
-    @InjectPresenter
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "DoctorListPresenter")
     DoctorListPresenter presenter;
 
     private DoctorListAdapter mAdapter;
@@ -38,14 +37,21 @@ public class DoctorsActivity extends MvpAppCompatActivity implements DoctorListV
         setContentView(R.layout.activity_doctor_list);
         ButterKnife.bind(this);
 
-        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        this.getSupportActionBar().setHomeButtonEnabled(true);
-        this.getSupportActionBar().setTitle(R.string.frag_title_doctor);
+        ActionBar actionBar = getSupportActionBar();
 
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setTitle(R.string.frag_title_doctor);
+        }
+        
         mAdapter = new DoctorListAdapter(getApplicationContext());
         lvDoctorList.setAdapter(mAdapter);
         lvDoctorList.setOnItemClickListener(this);
-
+        
+        String clinicName = getIntent().getStringExtra(IngosApplication.EXTRA_CLINIC_NAME);
+        presenter.loadDoctors(clinicName==null, clinicName);
+        presenter.setDoctors();
     }
 
     @Override
@@ -56,6 +62,7 @@ public class DoctorsActivity extends MvpAppCompatActivity implements DoctorListV
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, NewRegistryActivity.class);
+        intent.putExtra(IngosApplication.EXTRA_DOCTOR_ID, 2);
         startActivity(intent);
     }
 

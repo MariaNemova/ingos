@@ -42,6 +42,7 @@
     <string name="frag_title_recipes">Рецепты</string>
     <string name="frag_title_spec">Выберите специалиста</string>
     <string name="frag_title_doctor">Выберите врача</string>
+    <string name="activity_new_registry">Время записи</string>
 
     <string name="personal_information">Персональные данные</string>
     <string name="edit_information">Изменение ваших данных и пароля</string>

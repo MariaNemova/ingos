@@ -1,5 +1,6 @@
 package ru.ingos.digitalmedicine.mvp.presenters;
 
+import android.support.annotation.Nullable;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
@@ -29,8 +30,13 @@ public class DoctorListPresenter extends MvpPresenter<DoctorListView> {
     @Override
     protected void onFirstViewAttach() {
         Utils.logPresenterCreated(DoctorListPresenter.class);
-        doctors = loadDoctors();
-        setDoctors();
+
+    }
+
+    public void loadDoctors(boolean all, @Nullable String clinicName){
+        if(all){
+            this.doctors = loadDoctors();
+        }
     }
 
     public void setDoctors() {

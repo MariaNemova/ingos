@@ -1,9 +1,9 @@
 package ru.ingos.digitalmedicine.ui.activities;
 
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -12,15 +12,16 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.common.Utils;
+import ru.ingos.digitalmedicine.ui.fragments.FragmentClinicList;
 
 public class SelectRegistryActivity extends MvpAppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.activity_select_registry_btn_spec)
-    Button btnSelectSpec;
-
-    @BindView(R.id.activity_select_registry_btn_doctor)
-    Button btnSelectDoctor;
+    @BindView(R.id.activity_select_registry_btn_spec) Button btnSelectSpec;
+    @BindView(R.id.activity_select_registry_btn_doctor) Button btnSelectDoctor;
+    @BindView(R.id.activity_select_registry_btn_clinic) Button btnSelectClinic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +29,14 @@ public class SelectRegistryActivity extends MvpAppCompatActivity implements View
         setContentView(R.layout.activity_select_registry);
         ButterKnife.bind(this);
 
-        this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        this.getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle(R.string.title_select_activity);
-
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setTitle(R.string.title_select_activity);
+        }
         btnSelectSpec.setOnClickListener(this);
         btnSelectDoctor.setOnClickListener(this);
-
 
     }
 
@@ -51,9 +53,14 @@ public class SelectRegistryActivity extends MvpAppCompatActivity implements View
                 startActivity(new Intent(this, SpecialtyActivity.class));
                 break;
             case R.id.activity_select_registry_btn_doctor:
-                startActivity(new Intent(this, DoctorsActivity.class));
+                Intent intent = new Intent(this, DoctorsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.activity_select_registry_btn_clinic:
+                Utils.showFragmentInActivity(FragmentClinicList.class, this);
                 break;
             default:
+                break;
         }
     }
 }
