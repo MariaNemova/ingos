@@ -1,25 +1,19 @@
 package ru.ingos.digitalmedicine.ui.activities;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.presenters.PersonalDataPresenter;
 import ru.ingos.digitalmedicine.mvp.views.PersonalDataView;
@@ -54,16 +48,17 @@ public class PersonalDataActivity extends MvpAppCompatActivity implements Person
         ibEditPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MaterialDialog.Builder(PersonalDataActivity.this)
+                MaterialDialog.Builder build = new MaterialDialog.Builder(PersonalDataActivity.this)
                         .content(R.string.title_box)
-                        .inputType(InputType.TYPE_CLASS_TEXT)
-                        .input("Номер телефона", "", new MaterialDialog.InputCallback() {
+                        .inputType(InputType.TYPE_CLASS_PHONE)
+                        .inputRangeRes(12,12, R.color.colorAccent)
+                        .input("Номер телефона", "+79", new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
-                                tvPhoneNumber.setText(input.toString());
-                                Toast.makeText(PersonalDataActivity.this, "Номер телефона изменен!", Toast.LENGTH_SHORT).show();
+                                presenter.updateNumber(input);
                             }
-                        }).show();
+                        });
+                build.show();
             }
         });
     }
@@ -84,4 +79,16 @@ public class PersonalDataActivity extends MvpAppCompatActivity implements Person
         tvEndInsurance.setText(endInsurance);
         tvPhoneNumber.setText(phoneNumber);
     }
+
+    @Override
+    public void updatePhone(String phone){
+        tvPhoneNumber.setText(phone);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(PersonalDataActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+
 }

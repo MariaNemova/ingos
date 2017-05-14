@@ -1,8 +1,8 @@
 package ru.ingos.digitalmedicine.mvp.presenters;
 
+import android.support.annotation.Nullable;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.models.PersonalDataModel;
@@ -28,7 +28,7 @@ public class PersonalDataPresenter extends MvpPresenter<PersonalDataView> {
         setPersonalData();
     }
 
-    public void setPersonalData() {
+    private void setPersonalData() {
         loadPersonalData();
         getViewState().setPersonalData(
                 personalData.getFullName(),
@@ -38,5 +38,17 @@ public class PersonalDataPresenter extends MvpPresenter<PersonalDataView> {
                 personalData.getEndInsurance(),
                 personalData.getPhoneNumber()
         );
+    }
+
+    public void updateNumber(@Nullable CharSequence inputNumber){
+        if(inputNumber == null) return;
+        this.personalData.setPhoneNumber(inputNumber.toString());
+
+        if(this.personalData.isNumSetted()) {
+            getViewState().updatePhone(this.personalData.getPhoneNumber());
+            getViewState().showMessage("Номер телефона успешно обновлен");
+        }else{
+            getViewState().showMessage("Неверно введен номер телефона");
+        }
     }
 }
