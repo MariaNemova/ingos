@@ -127,7 +127,8 @@
     <string name="insurance_end">Срок окончания страховки</string>
     <string name="contact_phone">Контактный телефон</string>
     <string name="title_box">Введите новый номер телефона</string>
-    <string name="edit_phone">Изменить!</string>
+
+    <string name="title_stats">Статистика</string>
 
     <string name="registry_info_main">Основная информация</string>
     <string name="registry_info_clinic">Медицинский центр</string>
