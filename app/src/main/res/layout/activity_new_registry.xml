@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:agendaCalendar="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@android:color/white">
-    <com.alamkanak.weekview.WeekView
-            android:id="@+id/activty_new_registry_week_view"
+    <com.github.tibolte.agendacalendarview.AgendaCalendarView
+            android:id="@+id/activity_new_registry_agenda_calendar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:textSize="12sp"
-            app:hourHeight="60dp"
-            app:headerColumnPadding="8dp"
-            app:headerRowPadding="12dp"
-            app:columnGap="8dp"
-            app:noOfVisibleDays="1"
-             />
+            agendaCalendar:agendaCurrentDayTextColor="@android:color/white"
+            agendaCalendar:calendarColor="@color/colorPrimary"
+            agendaCalendar:calendarCurrentDayTextColor="@color/colorAccent"
+            agendaCalendar:calendarDayTextColor="@android:color/white"
+            agendaCalendar:calendarHeaderColor="@color/colorPrimaryDark"
+            agendaCalendar:calendarPastDayTextColor="@android:color/white"
+            agendaCalendar:fabColor="@color/colorAccent" />
 </LinearLayout>
