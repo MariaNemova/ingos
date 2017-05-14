@@ -78,6 +78,7 @@
     <string name="btn_full_info">Информация о клинике</string>
     <string name="btn_edit_registry">Изменить запись</string>
     <string name="full_information_from_registry">Информация о записи</string>
+    <string name="full_information_registry_confirmation">Подтвердите запись</string>
 
     <string name="btn_register_in_med">ЗАПИСАТЬСЯ НА ПРИЕМ</string>
     <string name="btn_registry_list">К СПИСКУ ЗАПИСЕЙ</string>

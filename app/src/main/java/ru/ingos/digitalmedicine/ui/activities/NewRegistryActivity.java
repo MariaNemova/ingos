@@ -1,5 +1,6 @@
 package ru.ingos.digitalmedicine.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
@@ -81,7 +82,10 @@ public class NewRegistryActivity extends MvpAppCompatActivity implements Timetab
 
     @Override
     public void onEventSelected(CalendarEvent calendarEvent) {
+        Intent intent = new Intent(this, RegistryInfoActivity.class);
+        intent.putExtra(IngosApplication.EXTRA_IS_CONFIRMATION, true);
 
+        startActivity(intent);
     }
 
     @Override

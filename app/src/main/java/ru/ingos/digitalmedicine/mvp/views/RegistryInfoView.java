@@ -11,5 +11,6 @@ public interface RegistryInfoView extends MvpView{
     void registryCanceled();
     @StateStrategyType(SkipStrategy.class)
     void startChildActivity(Class<? extends MvpAppCompatActivity> activityClass);
-
+    @StateStrategyType(SkipStrategy.class)
+    void registryConfirmed();
 }

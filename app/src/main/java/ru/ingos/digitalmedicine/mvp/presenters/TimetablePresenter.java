@@ -40,11 +40,11 @@ public class TimetablePresenter extends MvpPresenter<TimetableView> {
 
     private void loadTimetable(){
         for(int i = 0; i<30; i++){
-            addRandomEvent(30);
+            addRandomEvent(i, 30);
         }
     }
 
-    private void addRandomEvent(int nextDaysAmount){
+    private void addRandomEvent(long id, int nextDaysAmount){
         int day = (int)(nextDaysAmount*Utils.GLOBAL_RANDOM.nextFloat());
         int hour = (int)(8+10*Utils.GLOBAL_RANDOM.nextFloat());
 
@@ -58,7 +58,9 @@ public class TimetablePresenter extends MvpPresenter<TimetableView> {
         end.set(Calendar.MINUTE, 0);
         end.add(Calendar.DAY_OF_MONTH, day);
 
-        BaseCalendarEvent calendarEvent = new BaseCalendarEvent(hour+":00-"+hour+":30","", "Иванов Иван Иванович", day%2==0?Color.GRAY:Color.DKGRAY, start, end, false);
+        BaseCalendarEvent calendarEvent = new BaseCalendarEvent(id, day%2==0?Color.GRAY:Color.DKGRAY,
+                hour+":00-"+hour+":30","", "Иванов Иван Иванович",
+                start.getTimeInMillis(), end.getTimeInMillis(), 0, "30");
 
         this.mTimetable.add(calendarEvent);
     }

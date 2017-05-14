@@ -12,4 +12,5 @@ public class IngosApplication extends Application{
     public final static String EXTRA_FRAGMENT_CLASSNAME = "EXTRA_CLASSNAME";
     public final static String EXTRA_CLINIC_NAME = "CLINIC_NAME";
     public final static String EXTRA_DOCTOR_ID = "EXTRA_DOCTOR_ID";
+    public final static String EXTRA_IS_CONFIRMATION = "IS_CONFIRMATION";
 }

@@ -16,6 +16,10 @@ public class RegistryInfoPresenter extends MvpPresenter<RegistryInfoView> {
         //just do nothing
     }
 
+    public void onConfirmRegistry(){
+        getViewState().registryConfirmed();
+    }
+
     public void onCancleRegistry(){
         getViewState().registryCanceled();
     }
