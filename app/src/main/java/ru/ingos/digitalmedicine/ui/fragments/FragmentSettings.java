@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.adapters.SettingsAdapter;
+import ru.ingos.digitalmedicine.ui.listeners.SettingsListener;
 
 
 public class FragmentSettings extends MvpFragment {
@@ -21,12 +22,10 @@ public class FragmentSettings extends MvpFragment {
     @BindView(R.id.fragment_settings_recycler_view)
     RecyclerView rvSettings;
 
-    private SettingsAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         super.onCreateView(inflater,container,savedInstance);
-        Utils.setActivityTitle(R.string.frag_title_settings, getActivity());
         return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
@@ -35,10 +34,8 @@ public class FragmentSettings extends MvpFragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        mAdapter = new SettingsAdapter();
-
         rvSettings.setLayoutManager(new LinearLayoutManager(null));
-        rvSettings.setAdapter(mAdapter);
+        rvSettings.setAdapter(new SettingsAdapter(new SettingsListener(rvSettings, getActivity())));
 
     }
 }

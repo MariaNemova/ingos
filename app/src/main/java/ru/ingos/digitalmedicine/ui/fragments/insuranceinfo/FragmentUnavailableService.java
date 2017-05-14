@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import java.util.List;
@@ -16,6 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.models.InsuranceServiceModel;
 import ru.ingos.digitalmedicine.mvp.presenters.InsuranceServicesPresenter;
 import ru.ingos.digitalmedicine.mvp.views.InsuranceServicesView;
@@ -35,7 +35,8 @@ public class FragmentUnavailableService extends MVP4Fragment implements Insuranc
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_unavailable_service, container, false);
+        Utils.setActivityTitle(R.string.frag_title_recipes, getActivity());
+        return inflater.inflate(R.layout.pager_fragment_unavailable_service, container, false);
     }
 
     @Override

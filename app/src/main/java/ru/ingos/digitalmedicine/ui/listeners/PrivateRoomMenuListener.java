@@ -7,6 +7,7 @@ import android.view.View;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.activities.InsuranceServicesInfoActivity;
 import ru.ingos.digitalmedicine.ui.activities.PersonalDataActivity;
+import ru.ingos.digitalmedicine.ui.activities.StatsActivity;
 import ru.ingos.digitalmedicine.ui.fragments.FragmentSettings;
 
 public class PrivateRoomMenuListener implements View.OnClickListener {
@@ -37,7 +38,8 @@ public class PrivateRoomMenuListener implements View.OnClickListener {
                 Utils.showFragmentInActivity(FragmentSettings.class, head);
                 break;
             case 3: //Статистика
-
+                Intent i3 = new Intent(head, StatsActivity.class);
+                head.startActivity(i3);
                 break;
         }
     }
