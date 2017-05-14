@@ -1,5 +1,8 @@
 package ru.ingos.digitalmedicine.mvp.models;
 
+import com.redmadrobot.inputmask.helper.Mask;
+import com.redmadrobot.inputmask.model.CaretString;
+
 public class PersonalDataModel {
 
     private String fullName;
@@ -9,13 +12,15 @@ public class PersonalDataModel {
     private String endInsurance;
     private String phoneNumber;
 
+    private boolean errorWhileSettingNumber = false;
+
     public PersonalDataModel(String fullName, String birthday, String numberInsurance, String jobPlace, String endInsurance, String phoneNumber) {
         this.fullName = fullName;
         this.birthday = birthday;
         this.numberInsurance = numberInsurance;
         this.jobPlace = jobPlace;
         this.endInsurance = endInsurance;
-        this.phoneNumber = phoneNumber;
+        setPhoneNumber(phoneNumber);
     }
 
     public String getFullName() {
@@ -43,6 +48,23 @@ public class PersonalDataModel {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.errorWhileSettingNumber = false;
+        final Mask mask = new Mask("+7([000])[000]-[00]-[00]");
+        final Mask.Result result = mask.apply(
+                new CaretString(
+                        phoneNumber,
+                        phoneNumber.length()
+                ),
+                false
+        );
+        if(result.getComplete()){
+            this.phoneNumber = result.getFormattedText().getString();
+        }else {
+            this.errorWhileSettingNumber = true;
+        }
+    }
+
+    public boolean isNumSetted(){
+        return !this.errorWhileSettingNumber;
     }
 }
