@@ -119,12 +119,15 @@
 
     <string name="title_insurance_services_activity">Услуги по страховке</string>
 
+    <string name="title_personal_data">Персональные данные</string>
     <string name="full_name">Полное имя</string>
     <string name="birthday">Дата рождения</string>
     <string name="insurance_number">Номер страховки</string>
     <string name="job_place">Место работы</string>
     <string name="insurance_end">Срок окончания страховки</string>
     <string name="contact_phone">Контактный телефон</string>
+    <string name="title_box">Введите новый номер телефона</string>
+    <string name="edit_phone">Изменить!</string>
 
     <string name="registry_info_main">Основная информация</string>
     <string name="registry_info_clinic">Медицинский центр</string>

@@ -36,6 +36,8 @@
         <activity android:name=".ui.activities.SelectRegistryActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ui.activities.DoctorsActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ui.activities.InsuranceServicesInfoActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.PersonalDataActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.StatsActivity" android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

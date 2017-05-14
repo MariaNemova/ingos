@@ -21,7 +21,7 @@ public class PrivateRoomMenuAdapter extends RecyclerView.Adapter<PrivateRoomMenu
 
     public  PrivateRoomMenuAdapter(PrivateRoomMenuListener listener){
         this.listener = listener;
-        items.add(new PrivateRoomMenuItem("Персональные данные", "Изменение ваших данных и пароля", R.drawable.ic_profile));
+        items.add(new PrivateRoomMenuItem("Персональные данные", "Имя, номер страховки, срок окончания", R.drawable.ic_profile));
         items.add(new PrivateRoomMenuItem("Информация о страховке", "Доступные услуги, сроки окончания", R.drawable.ic_info));
         items.add(new PrivateRoomMenuItem("Сервисы", "Изменить программу, продлить полис", R.drawable.ic_service));
         items.add(new PrivateRoomMenuItem("Статистика", "Инормация о посещенных клиниках", R.drawable.ic_stats));

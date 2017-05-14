@@ -31,7 +31,7 @@ public class FragmentPrivateRoom extends MvpFragment {
         ButterKnife.bind(this, view);
 
         menu.setLayoutManager(new LinearLayoutManager(getActivity()));
-        menu.setAdapter(new PrivateRoomMenuAdapter(new PrivateRoomMenuListener(menu)));
+        menu.setAdapter(new PrivateRoomMenuAdapter(new PrivateRoomMenuListener(menu, getActivity())));
     }
 
 }
