@@ -8,15 +8,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.PrivateRoomMenuItem;
+import ru.ingos.digitalmedicine.ui.listeners.PrivateRoomMenuListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PrivateRoomMenuAdapter extends RecyclerView.Adapter<PrivateRoomMenuAdapter.PrivateRoomMenuHolder> {
 
-    List<PrivateRoomMenuItem> items = new ArrayList<>();
+    private List<PrivateRoomMenuItem> items = new ArrayList<>();
 
-    public  PrivateRoomMenuAdapter(){
+    private final PrivateRoomMenuListener listener;
+
+    public  PrivateRoomMenuAdapter(PrivateRoomMenuListener listener){
+        this.listener = listener;
         items.add(new PrivateRoomMenuItem("Персональные данные", "Изменение ваших данных и пароля", R.drawable.ic_profile));
         items.add(new PrivateRoomMenuItem("Информация о страховке", "Доступные услуги, сроки окончания", R.drawable.ic_info));
         items.add(new PrivateRoomMenuItem("Сервисы", "Изменить программу, продлить полис", R.drawable.ic_service));
@@ -26,6 +30,7 @@ public class PrivateRoomMenuAdapter extends RecyclerView.Adapter<PrivateRoomMenu
     @Override
     public PrivateRoomMenuHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_icon, parent, false);
+        view.setOnClickListener(listener);
         return new PrivateRoomMenuHolder(view);
     }
 
@@ -42,13 +47,13 @@ public class PrivateRoomMenuAdapter extends RecyclerView.Adapter<PrivateRoomMenu
         return this.items.size();
     }
 
-    public static class PrivateRoomMenuHolder extends RecyclerView.ViewHolder {
+    static class PrivateRoomMenuHolder extends RecyclerView.ViewHolder {
 
         private TextView name;
         private TextView description;
         private AppCompatImageView icon;
 
-        public PrivateRoomMenuHolder(View itemView) {
+        PrivateRoomMenuHolder(View itemView) {
             super(itemView);
 
             name = (TextView) itemView.findViewById(R.id.iconed_list_item_name);
@@ -60,15 +65,15 @@ public class PrivateRoomMenuAdapter extends RecyclerView.Adapter<PrivateRoomMenu
 
         }
 
-        public void setNameTV (String name){
+        void setNameTV(String name){
             this.name.setText(name);
         }
 
-        public void setDescriptionTV(String description){
+        void setDescriptionTV(String description){
             this.description.setText(description);
         }
 
-        public void setIcon(int iconPointer){
+        void setIcon(int iconPointer){
             this.icon.setImageResource(iconPointer);
         }
 

@@ -4,52 +4,51 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
-    android:focusable="true"
-    android:clickable="true"
 	android:background="@android:color/white">
 
     <LinearLayout
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:focusable="true"
-        android:clickable="true"
-		android:background="?android:attr/selectableItemBackground">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="?android:attr/selectableItemBackground">
 
-            <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/iconed_list_item_icon"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".15"
-                    android:src="@drawable/ic_location_pin"/>
-            <LinearLayout
-                android:layout_width="0dp"
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iconed_list_item_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".15"
+            android:src="@drawable/ic_location_pin"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".85"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/iconed_list_item_name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight=".85"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/iconed_list_item_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="6dp"
-                    android:text="@string/insurance_information"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-                <TextView
-                    android:id="@+id/iconed_list_item_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="6dp"
-                    android:text="@string/insurance_information_global"
-                    android:textColor="@color/Black"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                android:paddingLeft="6dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/insurance_information"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/iconed_list_item_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="6dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/insurance_information_global"
+                android:textColor="@color/Black"
+                android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

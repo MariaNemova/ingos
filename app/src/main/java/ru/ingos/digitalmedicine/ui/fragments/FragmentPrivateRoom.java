@@ -12,6 +12,7 @@ import com.arellomobile.mvp.MvpFragment;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.adapters.PrivateRoomMenuAdapter;
+import ru.ingos.digitalmedicine.ui.listeners.PrivateRoomMenuListener;
 
 public class FragmentPrivateRoom extends MvpFragment {
 
@@ -30,7 +31,7 @@ public class FragmentPrivateRoom extends MvpFragment {
         ButterKnife.bind(this, view);
 
         menu.setLayoutManager(new LinearLayoutManager(getActivity()));
-        menu.setAdapter(new PrivateRoomMenuAdapter());
+        menu.setAdapter(new PrivateRoomMenuAdapter(new PrivateRoomMenuListener(menu)));
     }
 
 }
