@@ -21,6 +21,7 @@ import ru.ingos.digitalmedicine.mvp.presenters.InsuranceServicesPresenter;
 import ru.ingos.digitalmedicine.mvp.views.InsuranceServicesView;
 import ru.ingos.digitalmedicine.ui.adapters.InsuranceServiceAdapter;
 import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
+import ru.ingos.digitalmedicine.ui.listeners.ServicesListener;
 
 public class FragmentUnavailableService extends MVP4Fragment implements InsuranceServicesView{
 
@@ -40,10 +41,10 @@ public class FragmentUnavailableService extends MVP4Fragment implements Insuranc
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        Utils.setActivityTitle(R.string.frag_title_unavailable_services, getActivity());
         ButterKnife.bind(this, view);
 
-
-        mAdapter = new InsuranceServiceAdapter(getActivity());
+        mAdapter = new InsuranceServiceAdapter(getContext(), new ServicesListener(getActivity()));
 
         rvUnavailableService.setLayoutManager(new LinearLayoutManager(null));
         rvUnavailableService.setAdapter(mAdapter);

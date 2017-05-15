@@ -20,6 +20,7 @@ import ru.ingos.digitalmedicine.mvp.presenters.InsuranceServicesPresenter;
 import ru.ingos.digitalmedicine.mvp.views.InsuranceServicesView;
 import ru.ingos.digitalmedicine.ui.adapters.InsuranceServiceAdapter;
 import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
+import ru.ingos.digitalmedicine.ui.listeners.ServicesListener;
 
 public class FragmentAvailableService extends MVP4Fragment implements InsuranceServicesView{
 
@@ -41,7 +42,7 @@ public class FragmentAvailableService extends MVP4Fragment implements InsuranceS
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         ButterKnife.bind(this, view);
 
-        mAdapter = new InsuranceServiceAdapter(getActivity());
+        mAdapter = new InsuranceServiceAdapter(getContext(), new ServicesListener(getActivity()));
 
         rvAvailableServices.setLayoutManager(new LinearLayoutManager(null));
         rvAvailableServices.setAdapter(mAdapter);

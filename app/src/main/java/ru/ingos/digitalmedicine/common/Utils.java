@@ -11,6 +11,8 @@ import com.arellomobile.mvp.MvpPresenter;
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.ui.activities.FragmentHolderActivity;
 import ru.ingos.digitalmedicine.ui.activities.MainActivity;
+import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
+import ru.ingos.digitalmedicine.ui.fragments.insuranceinfo.FragmentUnavailableService;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -92,6 +94,12 @@ public class Utils {
     public static void showFragmentInActivity(Class<? extends Fragment> fragmentClass, Activity parent){
         Intent intent = new Intent(parent, FragmentHolderActivity.class);
         intent.putExtra(IngosApplication.EXTRA_FRAGMENT_CLASSNAME, fragmentClass.getName());
+        parent.startActivity(intent);
+    }
+
+    public static void showFragment(Class<? extends MVP4Fragment> fragment, Activity parent){
+        Intent intent = new Intent(parent, FragmentHolderActivity.class);
+        intent.putExtra(IngosApplication.EXTRA_FRAGMENT_CLASSNAME, fragment.getName());
         parent.startActivity(intent);
     }
 }

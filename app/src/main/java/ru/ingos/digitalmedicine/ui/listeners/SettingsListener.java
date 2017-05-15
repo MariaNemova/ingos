@@ -11,6 +11,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.fragments.FragmentMain;
+import ru.ingos.digitalmedicine.ui.fragments.insuranceinfo.FragmentUnavailableService;
 
 public class SettingsListener implements View.OnClickListener {
 
@@ -29,6 +30,7 @@ public class SettingsListener implements View.OnClickListener {
 
         switch (position){
             case 0: // Подключить услуги
+                Utils.showFragment(FragmentUnavailableService.class, activity);
                 break;
             case 1: // Поменять пароль
                 new MaterialDialog.Builder(activity)

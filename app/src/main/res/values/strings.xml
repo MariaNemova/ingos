@@ -119,6 +119,10 @@
     <string name="select_clinic">Выбрать клинику рядом</string>
 
     <string name="title_insurance_services_activity">Услуги по страховке</string>
+    <string name="frag_title_unavailable_services">Недоступные услуги</string>
+    <string name="builder_content">Вы уверены?</string>
+    <string name="builder_yes">Да</string>
+    <string name="builder_no">Нет</string>
 
     <string name="title_personal_data">Персональные данные</string>
     <string name="full_name">Полное имя</string>
