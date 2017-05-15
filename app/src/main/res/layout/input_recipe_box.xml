@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_vertical_margin">
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/drug_name"
+                    android:textColor="@color/Black" />
+
+                <EditText
+                    android:id="@+id/input_box_edit_text_drug_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/drug_manual"
+                    android:textColor="@color/Black" />
+
+                <EditText
+                    android:id="@+id/input_box_edit_text_drug_manual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+                <Button
+                    android:id="@+id/input_box_add_recipe"
+                    android:layout_width="144dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="@color/colorPrimaryDark"
+                    android:onClick="addRecipe"
+                    android:text="@string/btn_add_recipe"
+                    android:textColor="@color/White" />
+        </LinearLayout>
+
+</LinearLayout>

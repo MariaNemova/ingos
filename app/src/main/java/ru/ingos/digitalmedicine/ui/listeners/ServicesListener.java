@@ -23,8 +23,6 @@ public class ServicesListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
-
         MaterialDialog.Builder builder = new MaterialDialog.Builder(activity)
                 .content(R.string.builder_content)
                 .positiveText(R.string.builder_yes)
@@ -43,8 +41,5 @@ public class ServicesListener implements View.OnClickListener {
                 });
 
         builder.show();
-    }
-
-    private void removeService(int position) {
     }
 }
