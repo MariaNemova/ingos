@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 public class FragmentHolderActivity extends MvpAppCompatActivity{
 
@@ -53,6 +54,11 @@ public class FragmentHolderActivity extends MvpAppCompatActivity{
         if(Fragment.class.isAssignableFrom(fragment.getClass())){
             Fragment frag = (Fragment) fragment;
             FragmentTransaction trans = getFragmentManager().beginTransaction();
+            trans.replace(R.id.fragment_holder, frag);
+            trans.commit();
+        }else if(MVP4Fragment.class.isAssignableFrom(fragment.getClass())){
+            MVP4Fragment frag = (MVP4Fragment) fragment;
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
             trans.replace(R.id.fragment_holder, frag);
             trans.commit();
         }else{
