@@ -51,4 +51,10 @@ public class FragmentAvailableService extends MVP4Fragment implements InsuranceS
     public void setInsuranceServices(List<InsuranceServiceModel> insuranceServices) {
         mAdapter.setmInsuranceServices(insuranceServices);
     }
+
+    @Override
+    public void setClosedInsuranceServices(List<InsuranceServiceModel> closedInsuranceServices) {
+        return;
+    }
+
 }

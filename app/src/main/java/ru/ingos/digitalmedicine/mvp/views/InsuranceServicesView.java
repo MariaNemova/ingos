@@ -10,4 +10,5 @@ public interface InsuranceServicesView extends MvpView {
 
     void setInsuranceServices(List<InsuranceServiceModel> insuranceServices);
 
+    void setClosedInsuranceServices(List<InsuranceServiceModel> closedInsuranceServices);
 }

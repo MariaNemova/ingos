@@ -1,7 +1,6 @@
 package ru.ingos.digitalmedicine.ui.listeners;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.view.View;

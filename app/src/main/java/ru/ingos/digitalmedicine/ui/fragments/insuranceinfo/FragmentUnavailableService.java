@@ -35,7 +35,6 @@ public class FragmentUnavailableService extends MVP4Fragment implements Insuranc
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        Utils.setActivityTitle(R.string.frag_title_recipes, getActivity());
         return inflater.inflate(R.layout.pager_fragment_unavailable_service, container, false);
     }
 
@@ -52,6 +51,11 @@ public class FragmentUnavailableService extends MVP4Fragment implements Insuranc
 
     @Override
     public void setInsuranceServices(List<InsuranceServiceModel> insuranceServices) {
-        mAdapter.setmInsuranceServices(insuranceServices);
+        return;
+    }
+
+    @Override
+    public void setClosedInsuranceServices(List<InsuranceServiceModel> closedInsuranceServices) {
+        mAdapter.setmInsuranceServices(closedInsuranceServices);
     }
 }

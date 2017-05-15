@@ -14,6 +14,7 @@ import ru.ingos.digitalmedicine.mvp.views.InsuranceServicesView;
 public class InsuranceServicesPresenter extends MvpPresenter<InsuranceServicesView> {
 
     List<InsuranceServiceModel> insuranceServices;
+    List<InsuranceServiceModel> closedInsuranceServices;
 
     private List<InsuranceServiceModel> loadInsuranceServices() {
         List<InsuranceServiceModel> insuranceServices = new ArrayList<>();
@@ -26,14 +27,30 @@ public class InsuranceServicesPresenter extends MvpPresenter<InsuranceServicesVi
         return insuranceServices;
     }
 
+    private List<InsuranceServiceModel> loadClosedInsuranceServices() {
+        List<InsuranceServiceModel> closedInsuranceServices = new ArrayList<>();
+
+        closedInsuranceServices.add(new InsuranceServiceModel("Не подключенная услуга 1"));
+        closedInsuranceServices.add(new InsuranceServiceModel("Не подключенная услуга 2"));
+        closedInsuranceServices.add(new InsuranceServiceModel("Не подключенная услуга 3"));
+
+        return closedInsuranceServices;
+    }
+
     @Override
     protected void onFirstViewAttach() {
         Utils.logPresenterCreated(InsuranceServicesPresenter.class);
         this.insuranceServices = loadInsuranceServices();
+        this.closedInsuranceServices = loadClosedInsuranceServices();
         setInsuranceServices();
+        setClosedInsuranceServices();
     }
 
-    public void setInsuranceServices() {
+    private void setClosedInsuranceServices() {
+        getViewState().setClosedInsuranceServices(new ArrayList<>(closedInsuranceServices));
+    }
+
+    private void setInsuranceServices() {
         getViewState().setInsuranceServices(new ArrayList<>(insuranceServices));
     }
 }
