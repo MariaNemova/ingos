@@ -118,6 +118,7 @@
     <string name="select_clinic">Выбрать клинику рядом</string>
 
     <string name="title_insurance_services_activity">Услуги по страховке</string>
+    <string name="frag_title_available_services">Доступные услуги</string>
     <string name="frag_title_unavailable_services">Недоступные услуги</string>
     <string name="builder_content">Вы уверены?</string>
     <string name="builder_yes">Да</string>
@@ -135,6 +136,11 @@
     <string name="input_new_password">Введите новый пароль</string>
 
     <string name="title_stats">Статистика</string>
+    <string name="quantity_doctor">Количество обращений к врачу</string>
+    <string name="quantily_call_doctor">Количество вызовов врача на дом</string>
+    <string name="quantily_call_help">Количество вызовов скорой помощи</string>
+    <string name="quantily_duty_doctor">Количество обращений к дежурному врачу</string>
+    <string name="quantily_recipes">Количество выписанных рецептов</string>
 
     <string name="registry_info_main">Основная информация</string>
     <string name="registry_info_clinic">Медицинский центр</string>

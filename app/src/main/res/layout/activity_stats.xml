@@ -3,4 +3,23 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ru.ingos.digitalmedicine.ui.layouts.CustomPager
+        android:id="@+id/activity_stats_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false">
+
+        <android.support.v4.view.PagerTabStrip
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@color/colorPrimary"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@android:color/white">
+
+        </android.support.v4.view.PagerTabStrip>
+
+    </ru.ingos.digitalmedicine.ui.layouts.CustomPager>
+
 </LinearLayout>

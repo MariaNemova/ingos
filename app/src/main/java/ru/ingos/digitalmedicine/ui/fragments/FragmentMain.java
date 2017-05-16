@@ -25,6 +25,7 @@ import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
 import ru.ingos.digitalmedicine.ui.activities.SelectRegistryActivity;
+import ru.ingos.digitalmedicine.ui.activities.StatsActivity;
 
 public class FragmentMain extends MvpFragment implements HomeView, AdapterView.OnClickListener{
 
@@ -133,7 +134,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
 
     @Override
     public void showStatistics() {
-        Utils.showFragmentInActivity(FragmentHistory.class, getActivity());
+        startActivity(new Intent(getActivity(), StatsActivity.class));
     }
 
     @Override
