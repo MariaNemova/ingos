@@ -84,4 +84,8 @@ public class HomePresenter extends MvpPresenter<HomeView> {
 
     public void onRecipeListClick() {getViewState().showRecipeList();}
 
+    public void onFabClick(){
+        getViewState().showSosAcivity();
+    }
+
 }
