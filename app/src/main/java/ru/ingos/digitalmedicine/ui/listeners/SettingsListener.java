@@ -30,7 +30,7 @@ public class SettingsListener implements View.OnClickListener {
 
         switch (position){
             case 0: // Подключить услуги
-                Utils.showFragment(FragmentUnavailableService.class, activity);
+                Utils.showFragmentSupportInActivity(FragmentUnavailableService.class, activity);
                 break;
             case 1: // Поменять пароль
                 new MaterialDialog.Builder(activity)

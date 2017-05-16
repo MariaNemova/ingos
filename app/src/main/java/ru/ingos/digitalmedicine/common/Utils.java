@@ -98,7 +98,7 @@ public class Utils {
         parent.startActivity(intent);
     }
 
-    public static void showFragment(Class<? extends MVP4Fragment> fragment, Activity parent){
+    public static void showFragmentSupportInActivity(Class<? extends MVP4Fragment> fragment, Activity parent){
         Intent intent = new Intent(parent, FragmentHolderActivity.class);
         intent.putExtra(IngosApplication.EXTRA_FRAGMENT_CLASSNAME, fragment.getName());
         parent.startActivity(intent);
