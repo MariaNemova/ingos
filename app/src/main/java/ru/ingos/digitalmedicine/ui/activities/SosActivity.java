@@ -65,7 +65,7 @@ public class SosActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private void callNumber(String number){
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
         startActivity(intent);
     }
 }
