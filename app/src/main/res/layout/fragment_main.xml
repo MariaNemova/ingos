@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:background="@color/White"
         android:clipToPadding="false">
@@ -72,6 +72,9 @@
         </LinearLayout>
     </ScrollView>
 
+
+
+
     <RelativeLayout
             android:id="@+id/fragment_main_btn_register"
             android:layout_width="match_parent"
@@ -92,6 +95,18 @@
                     android:text="@string/btn_register_in_med"/>
         </RelativeLayout>
     </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fragment_main_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="64dp"
+            android:src="@drawable/ic_sos"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            />
 
 </RelativeLayout>
 

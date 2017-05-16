@@ -1,8 +1,10 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +27,7 @@ import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
 import ru.ingos.digitalmedicine.ui.activities.SelectRegistryActivity;
+import ru.ingos.digitalmedicine.ui.activities.SosActivity;
 
 public class FragmentMain extends MvpFragment implements HomeView, AdapterView.OnClickListener{
 
@@ -41,6 +44,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     @BindView(R.id.fragment_main_btn_building_list) RelativeLayout rlClinicList;
     @BindView(R.id.fragment_main_block_statistics) LinearLayout llBlockStatistics;
     @BindView(R.id.fragment_main_recipe_info) LinearLayout llRecipeList;
+    @BindView(R.id.fragment_main_fab) FloatingActionButton fabSos;
 
     @InjectPresenter(type = PresenterType.GLOBAL, tag = "HomePresenter") HomePresenter homePresenter;
 
@@ -74,12 +78,11 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
         rlClinicList.setOnClickListener(this);
         llBlockStatistics.setOnClickListener(this);
         llRecipeList.setOnClickListener(this);
+        fabSos.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Log.d(IngosApplication.DEBUG_TAG, "Click!");
-
         int id = v.getId();
         switch (id){
             case R.id.fragment_main_block_insuranse:
@@ -102,6 +105,10 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
                 break;
             case R.id.fragment_main_recipe_info:
                 homePresenter.onRecipeListClick();
+                break;
+            case R.id.fragment_main_fab:
+                homePresenter.onFabClick();
+                break;
             default:
                 break;
         }
@@ -160,6 +167,12 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     }
 
     @Override
+    public void showSosAcivity() {
+        Intent intent = new Intent(getActivity(), SosActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
     public void showRegistryList() {
         Utils.showFragmentInActivity(FragmentRegistry.class, getActivity());
     }
@@ -178,6 +191,5 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     public void onDestroy(){
         super.onDestroy();
     }
-    
-    
+
 }
