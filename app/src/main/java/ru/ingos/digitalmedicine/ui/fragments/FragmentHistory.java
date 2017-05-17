@@ -36,6 +36,8 @@ public class FragmentHistory extends MvpFragment implements ReceptionListView{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         Utils.setActivityTitle(R.string.frag_title_history, getActivity());
+        if (this instanceof FragmentHistory)
+            Utils.setActivityIcon(0, getActivity());
         return inflater.inflate(R.layout.fragment_history, container, false);
     }
 

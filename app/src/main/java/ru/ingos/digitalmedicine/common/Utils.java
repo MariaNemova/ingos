@@ -4,16 +4,13 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import com.arellomobile.mvp.MvpPresenter;
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.ui.activities.FragmentHolderActivity;
-import ru.ingos.digitalmedicine.ui.activities.MainActivity;
 import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
-import ru.ingos.digitalmedicine.ui.fragments.insuranceinfo.FragmentUnavailableService;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -82,6 +79,17 @@ public class Utils {
             ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
             if(actionBar != null){
                 actionBar.setTitle(pointer);
+            } else {
+                Log.w(IngosApplication.DEBUG_TAG, "Can't setup activity\'s title! Activity has wrong class");
+            }
+        }
+    }
+
+    public static void setActivityIcon(int icon, Activity activity){
+        if(activity instanceof AppCompatActivity){
+            ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
+            if(actionBar != null){
+                actionBar.setLogo(icon);
             } else {
                 Log.w(IngosApplication.DEBUG_TAG, "Can't setup activity\'s title! Activity has wrong class");
             }

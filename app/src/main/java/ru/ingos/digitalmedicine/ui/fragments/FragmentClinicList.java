@@ -1,10 +1,8 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
 import android.app.Activity;
-import android.content.ContentProvider;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TabHost;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.widget.TabWidget;
@@ -23,6 +20,7 @@ import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
 
+import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
 import ru.ingos.digitalmedicine.mvp.presenters.ClinicListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.ClinicListView;
@@ -48,13 +46,15 @@ public class FragmentClinicList extends MvpFragment implements ClinicListView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanse) {
         super.onCreateView(inflater,container,savedInstanse);
+        Utils.setActivityTitle(R.string.frag_title_clinics, getActivity());
+        if (this instanceof FragmentClinicList)
+            Utils.setActivityIcon(0, getActivity());
         return inflater.inflate(R.layout.fragment_clinic_list, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle instance){
         super.onViewCreated(view, instance);
-        setActivityTitle();
 
         ButterKnife.bind(this, view);
         tabHost.setup();

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +21,6 @@ import butterknife.Unbinder;
 import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
-import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
@@ -66,7 +64,8 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        Utils.setActivityTitle(R.string.frag_title_main, getActivity());
+        if (this instanceof FragmentMain)
+            Utils.setActivityIcon(R.drawable.ingo_logo, getActivity());
         setHasOptionsMenu(true);
 
         return view;

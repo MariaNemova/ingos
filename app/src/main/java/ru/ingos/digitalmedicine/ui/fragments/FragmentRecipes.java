@@ -43,6 +43,8 @@ public class FragmentRecipes extends MvpFragment implements RecipeListView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         super.onCreateView(inflater,container,savedInstance);
         Utils.setActivityTitle(R.string.frag_title_recipes, getActivity());
+        if (this instanceof FragmentRecipes)
+            Utils.setActivityIcon(0, getActivity());
 
         return inflater.inflate(R.layout.fragment_recipes, container, false);
     }

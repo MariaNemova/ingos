@@ -27,6 +27,8 @@ public class FragmentSettings extends MvpFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         super.onCreateView(inflater,container,savedInstance);
         Utils.setActivityTitle(R.string.frag_title_settings, getActivity());
+        if (this instanceof FragmentSettings)
+            Utils.setActivityIcon(0, getActivity());
         return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
