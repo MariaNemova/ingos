@@ -42,4 +42,5 @@ dependencies {
     compile 'com.github.alamkanak:android-week-view:1.2.6'
     compile 'com.redmadrobot:inputmask:2.2.1'
     compile 'com.github.tibolte:agendacalendarview:1.0.4'
+    compile 'me.himanshusoni.chatmessageview:chat-message-view:1.0.7'
 }

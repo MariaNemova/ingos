@@ -7,6 +7,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -24,6 +27,7 @@ import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
+import ru.ingos.digitalmedicine.ui.activities.ChatActivity;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
 import ru.ingos.digitalmedicine.ui.activities.SelectRegistryActivity;
 import ru.ingos.digitalmedicine.ui.activities.SosActivity;
@@ -63,6 +67,7 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         Utils.setActivityTitle(R.string.frag_title_main, getActivity());
+        setHasOptionsMenu(true);
 
         return view;
     }
@@ -131,6 +136,23 @@ public class FragmentMain extends MvpFragment implements HomeView, AdapterView.O
         int white = ContextCompat.getColor(getActivity(), R.color.White);
 
         tvInsuranceExpire.setTextColor(isRed?red:white);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.chat, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.chat:
+                startActivity(new Intent(getActivity(), ChatActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

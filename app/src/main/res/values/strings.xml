@@ -142,6 +142,9 @@
     <string name="quantily_duty_doctor">Количество обращений к дежурному врачу</string>
     <string name="quantily_recipes">Количество выписанных рецептов</string>
 
+    <string name="chat_with_doctor">Чат с врачом-куратором</string>
+    <string name="send_message">Отправить</string>
+
     <string name="registry_info_main">Основная информация</string>
     <string name="registry_info_clinic">Медицинский центр</string>
     <string name="registry_info_special">Принимающий специалист</string>
