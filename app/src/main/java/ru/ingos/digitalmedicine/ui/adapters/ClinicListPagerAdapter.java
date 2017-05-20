@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.View;
+import ru.ingos.digitalmedicine.common.CanPutIdExtra;
 import ru.ingos.digitalmedicine.ui.fragments.cliniclist.FragmentList;
 import ru.ingos.digitalmedicine.ui.fragments.cliniclist.FragmentMap;
 
@@ -48,5 +49,12 @@ public class ClinicListPagerAdapter extends FragmentStatePagerAdapter {
             default:
                 return "";
         }
+    }
+
+    public void setId(long id){
+        for(Fragment frag:mFragments)
+            if (frag instanceof CanPutIdExtra){
+                ((CanPutIdExtra) frag).putId(id);
+            }
     }
 }

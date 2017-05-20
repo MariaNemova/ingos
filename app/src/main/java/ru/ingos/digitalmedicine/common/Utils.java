@@ -111,4 +111,12 @@ public class Utils {
         intent.putExtra(IngosApplication.EXTRA_FRAGMENT_CLASSNAME, fragment.getName());
         parent.startActivity(intent);
     }
+
+    public static void showFragmentSupportInActivity(Class<? extends android.support.v4.app.Fragment> fragment, Activity parent, long extraId){
+        Intent intent = new Intent(parent, FragmentHolderActivity.class);
+        intent.putExtra(IngosApplication.EXTRA_FRAGMENT_CLASSNAME, fragment.getName());
+        intent.putExtra(IngosApplication.EXTRA_ID_FOR_FRAGMENT, extraId);
+        parent.startActivity(intent);
+
+    }
 }

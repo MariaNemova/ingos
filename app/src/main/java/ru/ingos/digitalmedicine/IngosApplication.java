@@ -14,4 +14,5 @@ public class IngosApplication extends Application{
     public final static String EXTRA_DOCTOR_ID = "EXTRA_DOCTOR_ID";
     public final static String EXTRA_IS_CONFIRMATION = "IS_CONFIRMATION";
     public final static String EXTRA_IS_FROM_BRGINING = "FROM_BEGINIG";
+    public final static String EXTRA_ID_FOR_FRAGMENT = "ID_FOR_FRAGMENT";
 }

@@ -9,11 +9,14 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.common.CanPutIdExtra;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicListPagerAdapter;
 
-public class FragmentClinicList extends Fragment {
+public class FragmentClinicList extends Fragment implements CanPutIdExtra{
 
+    private ClinicListPagerAdapter pagerAdapter;
+    private long id = -1;
     @BindView(R.id.fragment_clinic_list_view_pager) ViewPager pager;
 
     @Override
@@ -27,10 +30,19 @@ public class FragmentClinicList extends Fragment {
         setActivityTitle();
 
         ButterKnife.bind(this, view);
-        pager.setAdapter(new ClinicListPagerAdapter(getChildFragmentManager()));
+        pagerAdapter = new ClinicListPagerAdapter(getChildFragmentManager());
+        if(id >= 0){
+            pagerAdapter.setId(id);
+        }
+        pager.setAdapter(pagerAdapter);
     }
 
     private void setActivityTitle(){
         Utils.setActivityTitle(R.string.frag_title_clinics, getActivity());
+    }
+
+    @Override
+    public void putId(long id) {
+         this.id = id;
     }
 }

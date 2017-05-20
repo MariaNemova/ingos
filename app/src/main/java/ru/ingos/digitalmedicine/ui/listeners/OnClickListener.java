@@ -12,11 +12,24 @@ public class OnClickListener implements View.OnClickListener {
     private final Activity parent;
     private Class childActivityClass;
     private String TAG;
+    private long value = 0;
 
     public OnClickListener(Activity parent, Class childActivityClass, String TAG) {
         this.parent = parent;
         this.childActivityClass = childActivityClass;
         this.TAG = TAG;
+//        this.value = value;
+    }
+
+    public OnClickListener(Activity parent, Class childActivityClass, String TAG, long value) {
+        this.parent = parent;
+        this.childActivityClass = childActivityClass;
+        this.TAG = TAG;
+        this.value = value;
+    }
+
+    public void setValue(long value){
+        this.value = value;
     }
 
     @Override
@@ -31,7 +44,8 @@ public class OnClickListener implements View.OnClickListener {
         }
 
         Intent intent = new Intent(parent, childActivityClass);
-        intent.putExtra(TAG, 2);
+        Log.d(IngosApplication.DEBUG_TAG, "Tag: "+TAG+" Value: "+this.value);
+        if(TAG != null)intent.putExtra(TAG, (int) this.value);
         parent.startActivity(intent);
     }
 }

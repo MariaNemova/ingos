@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.common.CanPutIdExtra;
 import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
 import ru.ingos.digitalmedicine.mvp.presenters.ClinicListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.ClinicListView;
@@ -23,9 +24,10 @@ import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 import java.util.List;
 
-public class FragmentList extends MVP4Fragment implements ClinicListView {
+public class FragmentList extends MVP4Fragment implements ClinicListView, CanPutIdExtra {
 
     private ClinicListAdapter mClinicListAdapter;
+    private long id = -1;
 
     @InjectPresenter(type=PresenterType.GLOBAL, tag="ClinicListPresenter") ClinicListPresenter presenter;
 
@@ -43,6 +45,7 @@ public class FragmentList extends MVP4Fragment implements ClinicListView {
         presenter.setClinics();
         rvHolder.setLayoutManager(new LinearLayoutManager(getContext()));
         rvHolder.setAdapter(mClinicListAdapter);
+
     }
 
     @Override
@@ -61,4 +64,9 @@ public class FragmentList extends MVP4Fragment implements ClinicListView {
 
     @Override
     public void addMarker(MarkerOptions mo) {    }
+
+    @Override
+    public void putId(long id) {
+        this.id = id;
+    }
 }

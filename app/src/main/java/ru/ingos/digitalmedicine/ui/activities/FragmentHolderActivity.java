@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.common.CanPutIdExtra;
 import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 public class FragmentHolderActivity extends MvpAppCompatActivity{
@@ -47,7 +48,16 @@ public class FragmentHolderActivity extends MvpAppCompatActivity{
             throw new RuntimeException(e);
         }
 
-        if(fragmentInstance != null) bindFragment(fragmentInstance);
+        if(fragmentInstance != null){
+            if(fragmentInstance instanceof CanPutIdExtra){
+                long id = getIntent().getLongExtra(IngosApplication.EXTRA_ID_FOR_FRAGMENT, -1);
+                if(id >= 0){
+                    ((CanPutIdExtra) fragmentInstance).putId(id);
+                }
+
+            }
+            bindFragment(fragmentInstance);
+        }
     }
 
     private void bindFragment(Object fragment){
@@ -56,8 +66,8 @@ public class FragmentHolderActivity extends MvpAppCompatActivity{
             FragmentTransaction trans = getFragmentManager().beginTransaction();
             trans.replace(R.id.activty_fragment_holder_holder, frag);
             trans.commit();
-        }else if(MVP4Fragment.class.isAssignableFrom(fragment.getClass())){
-            MVP4Fragment frag = (MVP4Fragment) fragment;
+        }else if(android.support.v4.app.Fragment.class.isAssignableFrom(fragment.getClass())){
+            android.support.v4.app.Fragment frag = (android.support.v4.app.Fragment) fragment;
             android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
             trans.replace(R.id.activty_fragment_holder_holder, frag);
             trans.commit();

@@ -7,7 +7,7 @@
             android:id="@+id/activty_fragment_holder_holder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent">
+            >
 
     </FrameLayout>
 </LinearLayout>

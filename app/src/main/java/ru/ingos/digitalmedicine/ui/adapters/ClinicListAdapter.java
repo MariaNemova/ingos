@@ -2,6 +2,7 @@ package ru.ingos.digitalmedicine.ui.adapters;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import android.widget.TextView;
 
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
 import ru.ingos.digitalmedicine.mvp.models.ClinicModel;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
@@ -43,7 +45,8 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
         if(isMainActivity){
             mListener = new OnClickListener(activity, ClinicInfoActivity.class, null);
         }else {
-            mListener = new OnClickListener(activity, NewRegistryActivity.class, null);
+            Log.d(IngosApplication.DEBUG_TAG, "Not main activity!");
+            mListener = new OnClickListener(activity, NewRegistryActivity.class, IngosApplication.EXTRA_DOCTOR_ID, -1);
         }
     }
 
@@ -61,6 +64,7 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
 
         holder.setClinicName(clinicName);
         holder.setClinicAdress(cliniAdress);
+        mListener.setValue(position);
         holder.setOnClickListener(mListener);
     }
 
