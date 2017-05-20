@@ -53,7 +53,8 @@ public class SosActivity extends AppCompatActivity implements View.OnClickListen
                 callNumber("+79154779946");
                 break;
             case R.id.activity_select_registry_btn_clinic:
-
+                Intent chatActivity = new Intent(this, ChatActivity.class);
+                startActivity(chatActivity);
                 break;
         }
     }
