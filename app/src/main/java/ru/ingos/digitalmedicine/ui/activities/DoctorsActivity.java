@@ -21,7 +21,7 @@ import ru.ingos.digitalmedicine.ui.adapters.DoctorListAdapter;
 
 import java.util.List;
 
-public class DoctorsActivity extends MvpAppCompatActivity implements DoctorListView, ListView.OnItemClickListener{
+public class DoctorsActivity extends MvpAppCompatActivity implements DoctorListView, ListView.OnItemClickListener, ListView.OnItemLongClickListener {
 
     @BindView(R.id.activity_doctor_list_list_view)
     ListView lvDoctorList;
@@ -48,6 +48,7 @@ public class DoctorsActivity extends MvpAppCompatActivity implements DoctorListV
         mAdapter = new DoctorListAdapter(getApplicationContext());
         lvDoctorList.setAdapter(mAdapter);
         lvDoctorList.setOnItemClickListener(this);
+        lvDoctorList.setOnItemLongClickListener(this);
         
         String clinicName = getIntent().getStringExtra(IngosApplication.EXTRA_CLINIC_NAME);
         presenter.loadDoctors(clinicName==null, clinicName);
@@ -66,9 +67,20 @@ public class DoctorsActivity extends MvpAppCompatActivity implements DoctorListV
         startActivity(intent);
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         onBackPressed();
+        return true;
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, DoctorProfileActivity.class);
+        intent.putExtra(IngosApplication.EXTRA_DOCTOR_ID, 2);
+        startActivity(intent);
+
         return true;
     }
 }
