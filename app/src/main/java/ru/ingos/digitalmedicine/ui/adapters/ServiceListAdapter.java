@@ -1,60 +1,56 @@
 package ru.ingos.digitalmedicine.ui.adapters;
 
-import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
-import ru.ingos.digitalmedicine.R;
-import ru.ingos.digitalmedicine.mvp.models.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
+import ru.ingos.digitalmedicine.R;
+import ru.ingos.digitalmedicine.mvp.models.Service;
 
-public class ServiceListAdapter extends BaseAdapter {
 
-    private List<Service> mServices;
+public class ServiceListAdapter extends RecyclerView.Adapter<ServiceListAdapter.ServiceListHolder>{
 
-    private LayoutInflater inflater;
+    private List<Service> services = new ArrayList<>();
 
-    public ServiceListAdapter(Context context){
-        super();
+    @Override
+    public ServiceListHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_speciality, parent, false);
 
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-
-    public void setServices(List<Service> services){
-        this.mServices = services;
+        return new ServiceListHolder(view);
     }
 
     @Override
-    public int getCount() {
-        if(mServices == null){
-            return 0;
+    public void onBindViewHolder(ServiceListHolder holder, int position) {
+        Service current = this.services.get(position);
+        holder.setData(current);
+    }
+
+    @Override
+    public int getItemCount() {
+        return this.services.size();
+    }
+
+    public void setServices(List<Service> services) {
+        this.services = services;
+    }
+
+    public class ServiceListHolder extends RecyclerView.ViewHolder {
+
+        TextView tvSpeciality;
+
+        public ServiceListHolder(View itemView) {
+            super(itemView);
+
+            tvSpeciality = (TextView) itemView.findViewById(R.id.item_speciality_text_view_spec);
         }
-        return mServices.size();
-    }
 
-    @Override
-    public Object getItem(int position) {
-        return mServices.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return mServices.get(position).getId();
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view;
-        if(convertView == null){
-            view = inflater.inflate(R.layout.item_speciality, parent, false);
-        }else {
-            view = convertView;
+        public void setData(Service currentObject) {
+            this.tvSpeciality.setText(currentObject.getName());
         }
-        TextView tvService = (TextView) view.findViewById(R.id.item_speciality_text_view_spec);
-        tvService.setText(((Service) getItem(position)).getName());
-        return view;
     }
 }
