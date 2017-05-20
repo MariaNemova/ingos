@@ -11,17 +11,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.RatingItemModel;
 import ru.ingos.digitalmedicine.mvp.presenters.RatingScreenPresenter;
 import ru.ingos.digitalmedicine.mvp.views.RatingView;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicRatingAdapter;
-import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
+import ru.ingos.digitalmedicine.ui.fragments.Mvp4Fragment;
 
 import java.util.List;
 
-public class FragmentRating extends MVP4Fragment implements RatingView{
+public class FragmentRating extends Mvp4Fragment implements RatingView{
 
     @InjectPresenter
     RatingScreenPresenter presenter;

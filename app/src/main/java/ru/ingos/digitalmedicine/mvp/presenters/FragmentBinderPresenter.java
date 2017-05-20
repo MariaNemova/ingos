@@ -2,7 +2,6 @@ package ru.ingos.digitalmedicine.mvp.presenters;
 
 import android.util.Log;
 import com.arellomobile.mvp.InjectViewState;
-import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.MvpPresenter;
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.mvp.views.FragmentBinderView;
@@ -13,15 +12,15 @@ public class FragmentBinderPresenter extends MvpPresenter<FragmentBinderView> {
 
     @Override
     protected void onFirstViewAttach(){
-        getViewState().bindFragment(FragmentMain.class, false);
+        getViewState().bindFragmentSupport(FragmentMain.class, false);
     }
 
-    public void bindFragment(Class<? extends MvpFragment> fragmentClass, boolean addToBackStack){
+    public void bindFragment(Class fragmentClass, boolean addToBackStack){
         if(fragmentClass == null){
             Log.w(IngosApplication.DEBUG_TAG, "Can't set fragment! Fragment is null!");
             return;
         }
-        getViewState().bindFragment(fragmentClass, addToBackStack);
+        getViewState().bindFragmentSupport(fragmentClass, addToBackStack);
     }
 
 }

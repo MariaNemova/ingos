@@ -4,18 +4,19 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -39,13 +40,11 @@ public class MainActivity extends MvpAppCompatActivity
     @InjectPresenter(type = PresenterType.GLOBAL, tag = "FragmentBinderPresenter") FragmentBinderPresenter prFragmentBinder;
     @InjectPresenter(type = PresenterType.GLOBAL, tag = "MainMenuPresenter") MainMenuPresenter prMainMenu;
 
-    private Unbinder unbinder;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        unbinder = ButterKnife.bind(this);
+        ButterKnife.bind(this);
 
         setSupportActionBar(this.tAppBar);
         ActionBar actionBar = getSupportActionBar();
@@ -74,24 +73,58 @@ public class MainActivity extends MvpAppCompatActivity
     }
 
     /**
-     * Заменяет фрагмент в главном контейнере
-     * В качестве тега используется имя класса
-     * @param fragmentClass класс фрагмента, который необходимо добавить
+     * Метод меняет фрагменты в главном контейнере на MainActivity
+     * Метод работает сразу с двумя классами фрагментов: Основным и из библиотеки support.v4
+     * @param fragmentClass класс фрагмента на который необходимо заменить содержание контейнера
+     * @param add_to_back необходимо ли добавлять на back_stack предыдущий фрагмент.
      */
     @Override
-    public void bindFragment(Class<? extends MvpFragment> fragmentClass, boolean add_to_back){
+    public void bindFragmentSupport(Class fragmentClass, boolean add_to_back){
+        if(Fragment.class.isAssignableFrom(fragmentClass)){
+            bindFragmentV4(fragmentClass, add_to_back);
+        }else if(getSupportFragmentManager().findFragmentByTag("SupportFragment") != null){
+            android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            trans.remove(getSupportFragmentManager().findFragmentByTag("SupportFragment"));
+            trans.commit();
+        }
+
+        if(MvpFragment.class.isAssignableFrom(fragmentClass)){
+            bindFragment(fragmentClass, add_to_back);
+        }else if(getFragmentManager().findFragmentByTag("MainFragment") != null){
+            FragmentTransaction trans = getFragmentManager().beginTransaction();
+            trans.remove(getFragmentManager().findFragmentByTag("MainFragment"));
+            trans.commit();
+        }
+    }
+
+    private void bindFragment(Class fragmentClass, boolean add_to_back){
         FragmentTransaction trans = getFragmentManager().beginTransaction();
         try {
-            trans.replace(R.id.fragment_container, fragmentClass.newInstance());
-        } catch (Exception e) {
+            //предупреждение необсановано. проверка проведена в вызывающем методе.
+            trans.replace(R.id.fragment_container, ((Class<? extends MvpFragment>)fragmentClass).newInstance(), "MainFragment");
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            Log.e(IngosApplication.DEBUG_TAG, "Instanitation exception!");
             e.printStackTrace();
         }
         if(add_to_back)trans.addToBackStack(null);
         trans.commit();
     }
 
-    public void setFragment(Class<? extends MvpFragment> fragment){
-        this.prFragmentBinder.bindFragment(fragment, true);
+    private void bindFragmentV4(Class fragmentClass, boolean add_to_back){
+        android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+        try{
+            //предупреждение необсановано. проверка проведена в вызывающем методе.
+            trans.replace(R.id.fragment_container, ((Class<? extends Mvp4Fragment>)fragmentClass).newInstance(), "SupportFragment");
+        }catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            Log.e(IngosApplication.DEBUG_TAG, "Instanitation exception!");
+            e.printStackTrace();
+        }
+        if(add_to_back)trans.addToBackStack(null);
+        trans.commit();
     }
 
     @Override
@@ -108,7 +141,7 @@ public class MainActivity extends MvpAppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        Class<? extends MvpFragment> fragmentClass = null;
+        Class fragmentClass = null;
 
         if (id == R.id.nav_clinics) {
             fragmentClass = FragmentClinicList.class;
@@ -141,13 +174,6 @@ public class MainActivity extends MvpAppCompatActivity
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onDestroy(){
-        unbinder.unbind();
-
-        super.onDestroy();
     }
 
     //перехватывает клик по шапке меню

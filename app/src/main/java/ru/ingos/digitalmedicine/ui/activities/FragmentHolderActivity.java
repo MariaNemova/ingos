@@ -54,7 +54,7 @@ public class FragmentHolderActivity extends MvpAppCompatActivity{
         if(Fragment.class.isAssignableFrom(fragment.getClass())){
             Fragment frag = (Fragment) fragment;
             FragmentTransaction trans = getFragmentManager().beginTransaction();
-            trans.replace(R.id.fragment_holder, frag);
+            trans.replace(R.id.activty_fragment_holder_holder, frag);
             trans.commit();
         }else if(MVP4Fragment.class.isAssignableFrom(fragment.getClass())){
             MVP4Fragment frag = (MVP4Fragment) fragment;

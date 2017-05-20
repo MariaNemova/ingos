@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.widget.TextView;
@@ -25,9 +26,9 @@ import ru.ingos.digitalmedicine.R;
 
 public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.ClinicHolder> {
 
-    private List<ClinicListModel> mClinics;
+    private List<ClinicListModel> mClinics = new ArrayList<>();
 
-    public void setmClinics(List<ClinicListModel> mClinics) {
+    public void setClinics(List<ClinicListModel> mClinics) {
         this.mClinics = mClinics;
     }
 
@@ -35,8 +36,8 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
 
     public ClinicListAdapter(Activity activity) {
           if(activity == null){
-            throw  new RuntimeException("You must set an actibity for the ClinicsList!");
-        }
+              throw  new RuntimeException("You must set an activity for the ClinicsList!");
+          }
 
         boolean isMainActivity = activity instanceof MainActivity;
         if(isMainActivity){
