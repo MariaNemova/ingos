@@ -40,9 +40,9 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
 
         boolean isMainActivity = activity instanceof MainActivity;
         if(isMainActivity){
-            mListener = new OnClickListener(activity, ClinicInfoActivity.class);
+            mListener = new OnClickListener(activity, ClinicInfoActivity.class, null);
         }else {
-            mListener = new OnClickListener(activity, NewRegistryActivity.class);
+            mListener = new OnClickListener(activity, NewRegistryActivity.class, null);
         }
     }
 

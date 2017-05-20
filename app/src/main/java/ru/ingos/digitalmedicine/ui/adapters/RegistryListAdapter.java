@@ -22,7 +22,7 @@ public class RegistryListAdapter extends RecyclerView.Adapter<RegistryListAdapte
     private final OnClickListener mListener;
 
     public RegistryListAdapter(Activity activity) {
-        this.mListener = new OnClickListener(activity, RegistryInfoActivity.class);
+        this.mListener = new OnClickListener(activity, RegistryInfoActivity.class, null);
     }
 
     @Override

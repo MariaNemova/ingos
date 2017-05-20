@@ -5,14 +5,18 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 
+import ru.ingos.digitalmedicine.IngosApplication;
+
 public class OnClickListener implements View.OnClickListener {
 
     private final Activity parent;
     private Class childActivityClass;
+    private String TAG;
 
-    public OnClickListener(Activity parent, Class childActivityClass) {
+    public OnClickListener(Activity parent, Class childActivityClass, String TAG) {
         this.parent = parent;
         this.childActivityClass = childActivityClass;
+        this.TAG = TAG;
     }
 
     @Override
@@ -27,6 +31,7 @@ public class OnClickListener implements View.OnClickListener {
         }
 
         Intent intent = new Intent(parent, childActivityClass);
+        intent.putExtra(TAG, 2);
         parent.startActivity(intent);
     }
 }
