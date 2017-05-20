@@ -116,7 +116,7 @@ public class MainActivity extends MvpAppCompatActivity
         android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
         try{
             //предупреждение необсановано. проверка проведена в вызывающем методе.
-            trans.replace(R.id.fragment_container, ((Class<? extends Mvp4Fragment>)fragmentClass).newInstance(), "SupportFragment");
+            trans.replace(R.id.fragment_container, ((Class<? extends MVP4Fragment>)fragmentClass).newInstance(), "SupportFragment");
         }catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

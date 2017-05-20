@@ -15,11 +15,11 @@ import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
 import ru.ingos.digitalmedicine.mvp.presenters.ClinicListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.ClinicListView;
-import ru.ingos.digitalmedicine.ui.fragments.Mvp4Fragment;
+import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 import java.util.List;
 
-public class FragmentMap extends Mvp4Fragment implements OnMapReadyCallback, ClinicListView{
+public class FragmentMap extends MVP4Fragment implements OnMapReadyCallback, ClinicListView{
 
     @InjectPresenter(type = PresenterType.GLOBAL, tag="ClinicListPresenter") ClinicListPresenter presenter;
 

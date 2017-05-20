@@ -59,7 +59,7 @@ public class FragmentHolderActivity extends MvpAppCompatActivity{
         }else if(MVP4Fragment.class.isAssignableFrom(fragment.getClass())){
             MVP4Fragment frag = (MVP4Fragment) fragment;
             android.support.v4.app.FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.replace(R.id.fragment_holder, frag);
+            trans.replace(R.id.activty_fragment_holder_holder, frag);
             trans.commit();
         }else{
             Log.e("MOJAR", "Fragment has wrong class! Class: "+fragment.getClass());

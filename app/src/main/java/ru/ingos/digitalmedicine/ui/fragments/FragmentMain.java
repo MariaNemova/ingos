@@ -18,7 +18,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
@@ -31,7 +30,7 @@ import ru.ingos.digitalmedicine.ui.activities.SelectRegistryActivity;
 import ru.ingos.digitalmedicine.ui.activities.SosActivity;
 import ru.ingos.digitalmedicine.ui.activities.StatsActivity;
 
-public class FragmentMain extends Mvp4Fragment implements HomeView, AdapterView.OnClickListener{
+public class FragmentMain extends MVP4Fragment implements HomeView, AdapterView.OnClickListener{
 
     @BindView(R.id.fragment_main_last_clinic_name) TextView tvClinicName;
     @BindView(R.id.fragment_main_last_clinic_tel) TextView tvClinicPhone;
@@ -173,7 +172,7 @@ public class FragmentMain extends Mvp4Fragment implements HomeView, AdapterView.
     @Override
     public void showClinicsList()
     {
-        Utils.showFragmentInActivity(FragmentClinicList.class, getActivity());
+        Utils.showFragmentSupportInActivity(FragmentClinicList.class, getActivity());
     }
 
     @Override

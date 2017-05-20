@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import com.arellomobile.mvp.MvpDelegate;
 
-public class Mvp4Fragment extends Fragment{
+public class MVP4Fragment extends Fragment{
 
     private boolean mIsStateSaved;
-    private MvpDelegate<? extends Mvp4Fragment> mMvpDelegate;
+    private MvpDelegate<? extends MVP4Fragment> mMvpDelegate;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

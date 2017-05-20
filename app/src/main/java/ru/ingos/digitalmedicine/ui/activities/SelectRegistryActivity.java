@@ -57,7 +57,7 @@ public class SelectRegistryActivity extends MvpAppCompatActivity implements View
                 startActivity(intent);
                 break;
             case R.id.activity_select_registry_btn_clinic:
-                Utils.showFragmentInActivity(FragmentClinicList.class, this);
+                Utils.showFragmentSupportInActivity(FragmentClinicList.class, this);
                 break;
             default:
                 break;

@@ -59,7 +59,7 @@ public class SpecialtyActivity extends MvpAppCompatActivity implements AdapterVi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Utils.showFragmentInActivity(FragmentClinicList.class, this);
+        Utils.showFragmentSupportInActivity(FragmentClinicList.class, this);
     }
 
     @Override

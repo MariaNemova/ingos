@@ -19,11 +19,11 @@ import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
 import ru.ingos.digitalmedicine.mvp.presenters.ClinicListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.ClinicListView;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
-import ru.ingos.digitalmedicine.ui.fragments.Mvp4Fragment;
+import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 import java.util.List;
 
-public class FragmentList extends Mvp4Fragment implements ClinicListView {
+public class FragmentList extends MVP4Fragment implements ClinicListView {
 
     private ClinicListAdapter mClinicListAdapter;
 

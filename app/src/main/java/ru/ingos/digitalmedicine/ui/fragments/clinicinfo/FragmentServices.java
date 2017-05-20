@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -15,11 +14,11 @@ import ru.ingos.digitalmedicine.mvp.models.Service;
 import ru.ingos.digitalmedicine.mvp.presenters.ServiceListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.ServiceListView;
 import ru.ingos.digitalmedicine.ui.adapters.ServiceListAdapter;
-import ru.ingos.digitalmedicine.ui.fragments.Mvp4Fragment;
+import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 import java.util.List;
 
-public class FragmentServices extends Mvp4Fragment implements ServiceListView{
+public class FragmentServices extends MVP4Fragment implements ServiceListView{
 
     @BindView(R.id.pager_fragment_services_recycler_view)
     RecyclerView rvServices;
