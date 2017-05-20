@@ -6,8 +6,6 @@ public class SpecialityModel {
 
     private String nameSpec;
 
-
-
     public SpecialityModel(String nameSpec) {
         this.nameSpec = nameSpec;
     }

@@ -1,6 +1,8 @@
 package ru.ingos.digitalmedicine.ui.fragments.clinicinfo;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +21,13 @@ import java.util.List;
 
 public class FragmentServices extends MVP4Fragment implements ServiceListView{
 
-    @BindView(R.id.clinic_info_services_list)
-    ListView services;
+    @BindView(R.id.pager_fragment_services_recycler_view)
+    RecyclerView rvServices;
 
     @InjectPresenter
     ServiceListPresenter presenter;
 
-    private ServiceListAdapter adapter;
+    private ServiceListAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
@@ -34,16 +36,17 @@ public class FragmentServices extends MVP4Fragment implements ServiceListView{
 
     @Override
     public void onViewCreated(View view, Bundle savedInstance){
-        ButterKnife.bind(view);
-        ListView serviceList = (ListView) view.findViewById(R.id.clinic_info_services_list);
-        adapter = new ServiceListAdapter(getContext());
-        if(serviceList!=null){
-            serviceList.setAdapter(adapter);
-        }
+        ButterKnife.bind(this, view);
+
+        mAdapter = new ServiceListAdapter();
+
+        rvServices.setLayoutManager(new LinearLayoutManager(null));
+        rvServices.setAdapter(mAdapter);
+
     }
 
     @Override
     public void setServices(List<Service> services) {
-        adapter.setServices(services);
+        mAdapter.setServices(services);
     }
 }
