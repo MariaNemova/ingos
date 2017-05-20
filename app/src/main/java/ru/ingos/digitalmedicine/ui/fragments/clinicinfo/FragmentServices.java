@@ -18,7 +18,7 @@ import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 import java.util.List;
 
-public class FragmentServices extends MVP4Fragment implements ServiceListView{
+public class FragmentServices extends MVP4Fragment implements ServiceListView {
 
     @BindView(R.id.pager_fragment_services_recycler_view)
     RecyclerView rvServices;
@@ -37,7 +37,7 @@ public class FragmentServices extends MVP4Fragment implements ServiceListView{
     public void onViewCreated(View view, Bundle savedInstance){
         ButterKnife.bind(this, view);
 
-        mAdapter = new ServiceListAdapter();
+        mAdapter = new ServiceListAdapter(getActivity());
 
         rvServices.setLayoutManager(new LinearLayoutManager(null));
         rvServices.setAdapter(mAdapter);

@@ -26,6 +26,7 @@ import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
 import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ChatActivity;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
+import ru.ingos.digitalmedicine.ui.activities.DoctorProfileActivity;
 import ru.ingos.digitalmedicine.ui.activities.SelectRegistryActivity;
 import ru.ingos.digitalmedicine.ui.activities.SosActivity;
 import ru.ingos.digitalmedicine.ui.activities.StatsActivity;

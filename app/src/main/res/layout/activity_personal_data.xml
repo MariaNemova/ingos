@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/full_name"
-                android:textColor="@color/Black"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
 
@@ -40,7 +40,7 @@
                 android:gravity="end"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/debug_text"
-                android:textColor="@color/Black"/>
+                android:textColor="@android:color/black"/>
         </LinearLayout>
 
         <LinearLayout
@@ -55,7 +55,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/birthday"
-                android:textColor="@color/Black"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
 
@@ -67,7 +67,7 @@
                 android:gravity="end"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/debug_text"
-                android:textColor="@color/Black"/>
+                android:textColor="@android:color/black"/>
         </LinearLayout>
 
         <LinearLayout
@@ -82,7 +82,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/insurance_number"
-                android:textColor="@color/Black"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
 
@@ -94,7 +94,7 @@
                 android:gravity="end"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/debug_text"
-                android:textColor="@color/Black"/>
+                android:textColor="@android:color/black"/>
         </LinearLayout>
 
         <LinearLayout
@@ -109,7 +109,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/job_place"
-                android:textColor="@color/Black"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
 
@@ -121,7 +121,7 @@
                 android:gravity="end"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/debug_text"
-                android:textColor="@color/Black"/>
+                android:textColor="@android:color/black"/>
         </LinearLayout>
 
         <LinearLayout
@@ -136,7 +136,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/insurance_end"
-                android:textColor="@color/Black"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
 
@@ -148,7 +148,7 @@
                 android:gravity="end"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/debug_text"
-                android:textColor="@color/Black"/>
+                android:textColor="@android:color/black"/>
         </LinearLayout>
 
         <LinearLayout
@@ -163,7 +163,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/contact_phone"
-                android:textColor="@color/Black"
+                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
 
@@ -175,13 +175,13 @@
                 android:gravity="end"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:text="@string/debug_text"
-                android:textColor="@color/Black"/>
+                android:textColor="@android:color/black"/>
 
             <ImageButton
                 android:id="@+id/activity_personal_data_image_btn_edit_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/White"
+                android:background="@android:color/black"
                 android:layout_weight="1"
                 android:paddingTop="10dp"
                 app:srcCompat="@drawable/ic_edit" />

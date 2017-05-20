@@ -26,7 +26,7 @@ public class ReceptionListAdapter extends RecyclerView.Adapter<ReceptionListAdap
 
 
     public ReceptionListAdapter(Activity activity) {
-        listener = new OnClickListener(activity, MedCardActivity.class);
+        listener = new OnClickListener(activity, MedCardActivity.class, null);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class ReceptionListAdapter extends RecyclerView.Adapter<ReceptionListAdap
     public void onBindViewHolder(ReceptionHolder holder, int position) {
         ReceptionModel current = receptions.get(position);
         holder.setData(current);
-        holder.setOnClickListener(listener);
+        holder.itemView.setOnClickListener(listener);
 
     }
 
@@ -57,25 +57,18 @@ public class ReceptionListAdapter extends RecyclerView.Adapter<ReceptionListAdap
 
         private TextView tvSpecDoctor;
         private TextView tvDate;
-        private View view;
 
         ReceptionHolder(View itemView) {
             super(itemView);
 
             tvSpecDoctor = (TextView) itemView.findViewById(R.id.tvSpecDoctor);
             tvDate = (TextView) itemView.findViewById(R.id.tvDate);
-            this.view = itemView;
         }
 
         void setData(ReceptionModel currentObject){
             this.tvSpecDoctor.setText(currentObject.getDocSpec());
             this.tvDate.setText(currentObject.getReceptionDate());
         }
-
-        void setOnClickListener(View.OnClickListener listener){
-            view.setOnClickListener(listener);
-        }
-
     }
 
 }

@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Иван Иванович Иванов"
-                android:textColor="@color/White"/>
+                android:textColor="@android:color/white"/>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Истекает через:"
-                    android:textColor="@color/White"/>
+                    android:textColor="@android:color/white"/>
             <TextView
                     android:id="@+id/fragment_main_insuranse_expire"
                     android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Посмотреть программу страхования >"
-                android:textColor="@color/White"
+                android:textColor="@android:color/white"
                 android:textStyle="bold"
                 />
     </LinearLayout>

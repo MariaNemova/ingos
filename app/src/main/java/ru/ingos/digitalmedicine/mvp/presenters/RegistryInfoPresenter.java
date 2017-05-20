@@ -4,6 +4,7 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import ru.ingos.digitalmedicine.mvp.views.RegistryInfoView;
 import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
+import ru.ingos.digitalmedicine.ui.activities.DoctorProfileActivity;
 
 @InjectViewState
 public class RegistryInfoPresenter extends MvpPresenter<RegistryInfoView> {
@@ -13,7 +14,7 @@ public class RegistryInfoPresenter extends MvpPresenter<RegistryInfoView> {
     }
 
     public void onSpecialistClick(){
-        //just do nothing
+        getViewState().startChildActivity(DoctorProfileActivity.class);
     }
 
     public void onConfirmRegistry(){

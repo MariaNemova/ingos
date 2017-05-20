@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Годовая"
-                android:textColor="@color/Black"/>
+                android:textColor="@android:color/black"/>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/Black"
+                    android:textColor="@android:color/black"
                     android:text="Всего обращений к врачу:"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/Black"
+                    android:textColor="@android:color/black"
                     android:text="Вызов врача на дом:"
                     />
             <TextView
@@ -72,6 +72,6 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="Подробнее >"
-                android:textColor="@color/Black"/>
+                android:textColor="@android:color/black"/>
     </LinearLayout>
 </LinearLayout>

@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="Наименование ??"
-            android:textColor="@color/White" />
+            android:textColor="@android:color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Начало курса:"
-                android:textColor="@color/White" />
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Окнчание курса:"
-                android:textColor="@color/White" />
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ближайший прием через:"
-                android:textColor="@color/White" />
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
             android:paddingLeft="5dp"
             android:paddingStart="5dp"
             android:text="Посмотреть полный график >"
-            android:textColor="@color/White"
+            android:textColor="@android:color/white"
             android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

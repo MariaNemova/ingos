@@ -38,6 +38,7 @@
         <activity android:name=".ui.activities.StatsActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ui.activities.SosActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ui.activities.ChatActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.DoctorProfileActivity" android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

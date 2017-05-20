@@ -57,4 +57,6 @@ public class DoctorListAdapter extends BaseAdapter {
 
         return view;
     }
+
+
 }

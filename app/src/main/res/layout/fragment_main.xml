@@ -5,13 +5,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/White"
+        android:background="@android:color/white"
         android:clipToPadding="false">
 
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/White"
+            android:background="@android:color/white"
             >
         <LinearLayout
                 android:layout_width="match_parent"
@@ -40,7 +40,7 @@
 								android:layout_height="match_parent"
 								android:gravity="center"
 								android:textStyle="bold"
-								android:textColor="@color/White"
+								android:textColor="@android:color/white"
 								android:text="@string/btn_registry_list"/>
 					</RelativeLayout>
 
@@ -91,7 +91,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="@color/White"
+                    android:textColor="@android:color/white"
                     android:text="@string/btn_register_in_med"/>
         </RelativeLayout>
     </RelativeLayout>
