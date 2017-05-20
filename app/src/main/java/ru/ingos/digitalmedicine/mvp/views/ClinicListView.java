@@ -10,11 +10,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
 
-@StateStrategyType(SkipStrategy.class)
+
 public interface ClinicListView extends MvpView {
 
     void setClinics(List<ClinicListModel> clinics);
+    @StateStrategyType(SkipStrategy.class)
     void moveMap(LatLng ll);
+    @StateStrategyType(SkipStrategy.class)
     void zoom(float zoom);
+    @StateStrategyType(SkipStrategy.class)
     void addMarker(MarkerOptions mo);
 }

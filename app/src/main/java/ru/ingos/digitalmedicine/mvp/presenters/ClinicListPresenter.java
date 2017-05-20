@@ -45,6 +45,7 @@ public class ClinicListPresenter extends MvpPresenter<ClinicListView> {
     }
 
     public void setClinics(){
+        Log.d(IngosApplication.DEBUG_TAG, "Setting clinic list! Presenter!");
         if(this.mClinics == null) requested=true;
         else getViewState().setClinics(new ArrayList<>(mClinics));
     }

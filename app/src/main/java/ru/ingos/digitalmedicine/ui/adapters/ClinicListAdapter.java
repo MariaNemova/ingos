@@ -36,8 +36,8 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
 
     public ClinicListAdapter(Activity activity) {
           if(activity == null){
-            throw  new RuntimeException("You must set an actibity for the ClinicsList!");
-        }
+              throw  new RuntimeException("You must set an activity for the ClinicsList!");
+          }
 
         boolean isMainActivity = activity instanceof MainActivity;
         if(isMainActivity){

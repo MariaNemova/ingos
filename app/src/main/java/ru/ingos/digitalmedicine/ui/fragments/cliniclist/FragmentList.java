@@ -1,14 +1,12 @@
 package ru.ingos.digitalmedicine.ui.fragments.cliniclist;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -41,8 +39,6 @@ public class FragmentList extends Mvp4Fragment implements ClinicListView {
     public void onViewCreated(View view, Bundle savedInstance){
         ButterKnife.bind(this, view);
 
-        Log.d(IngosApplication.DEBUG_TAG, view.getClass().getCanonicalName());
-
         mClinicListAdapter = new ClinicListAdapter(getActivity());
         presenter.setClinics();
         rvHolder.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -52,6 +48,7 @@ public class FragmentList extends Mvp4Fragment implements ClinicListView {
     @Override
     public void setClinics(List<ClinicListModel> clinics)
     {
+        Log.d(IngosApplication.DEBUG_TAG, "Setting clinics! View!");
         if(mClinicListAdapter != null) mClinicListAdapter.setClinics(clinics);
         else Log.w(IngosApplication.DEBUG_TAG, "ListAdapter in clinic list is null!");
     }

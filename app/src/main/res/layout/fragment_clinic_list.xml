@@ -15,9 +15,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                style="@style/viewPagerTitleStrip"
-
-                >
+                style="@style/viewPagerTitleStrip">
         </android.support.v4.view.PagerTabStrip>
     </android.support.v4.view.ViewPager>
 

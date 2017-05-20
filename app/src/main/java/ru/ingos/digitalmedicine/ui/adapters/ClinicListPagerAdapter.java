@@ -16,9 +16,9 @@ import ru.ingos.digitalmedicine.ui.fragments.cliniclist.FragmentMap;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClinicListPagerAdapter extends FragmentPagerAdapter {
+public class ClinicListPagerAdapter extends FragmentStatePagerAdapter {
 
-    private List<Mvp4Fragment> mFragments;
+    private List<Fragment> mFragments;
 
     public ClinicListPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -35,14 +35,12 @@ public class ClinicListPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Log.d(IngosApplication.DEBUG_TAG, "Getting page at position: "+position);
         return this.mFragments.get(position);
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        boolean isViewFromObject = view == ((Fragment)object).getView();
-        Log.d(IngosApplication.DEBUG_TAG, String.valueOf(isViewFromObject));
+        boolean isViewFromObject = view == ((Fragment)object).getView() || object == view;
         return isViewFromObject;
     }
 
