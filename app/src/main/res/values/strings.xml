@@ -153,4 +153,5 @@
     <string name="doc_experience">Опыт работы</string>
     <string name="doc_age">Возраст</string>
     <string name="title_doctor_profile">Информация о враче</string>
+    <string name="full_info_from_mc">Подробная информация</string>
 </resources>
