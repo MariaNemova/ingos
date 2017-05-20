@@ -17,7 +17,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
 
-                android:textColor="@color/White"
+                android:textColor="@android:color/white"
                 android:text="@string/btn_building_list"/>
     </RelativeLayout>
 </RelativeLayout>

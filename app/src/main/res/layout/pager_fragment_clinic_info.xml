@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Полное наименование клиники"
-                android:textColor="@color/White"
+                android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
         <TextView
@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Андрес:"
-                    android:textColor="@color/Black"
+                    android:textColor="@android:color/black"
                     android:textSize="16sp"
                     android:layout_marginBottom="4dp"/>
             <TextView
@@ -79,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Телефон:"
-                    android:textColor="@color/Black"
+                    android:textColor="@android:color/black"
                     android:textSize="16sp"
                     android:layout_marginBottom="4dp"/>
             <TextView
@@ -109,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Режим работы:"
-                android:textColor="@color/Black"
+                android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:layout_marginBottom="4dp"/>
             <TextView
@@ -171,7 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Комментарий:"
-                    android:textColor="@color/Black"
+                    android:textColor="@android:color/black"
                     android:textSize="16sp"
                     android:layout_marginBottom="4dp"/>
             <TextView

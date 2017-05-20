@@ -15,7 +15,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/drug_name"
-                    android:textColor="@color/Black" />
+                    android:textColor="@android:color/black" />
 
                 <EditText
                     android:id="@+id/input_box_edit_text_drug_name"
@@ -30,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/drug_manual"
-                    android:textColor="@color/Black" />
+                    android:textColor="@android:color/black" />
 
                 <EditText
                     android:id="@+id/input_box_edit_text_drug_manual"
@@ -47,7 +47,7 @@
                     android:background="@color/colorPrimaryDark"
                     android:onClick="addRecipe"
                     android:text="@string/btn_add_recipe"
-                    android:textColor="@color/White" />
+                    android:textColor="@android:color/white" />
         </LinearLayout>
 
 </LinearLayout>

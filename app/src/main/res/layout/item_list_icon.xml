@@ -46,7 +46,7 @@
                 android:paddingEnd="0dp"
                 android:paddingRight="0dp"
                 android:text="@string/insurance_information_global"
-                android:textColor="@color/Black"
+                android:textColor="@android:color/black"
                 android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>

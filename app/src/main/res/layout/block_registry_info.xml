@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Наименование услуги"
-            android:textColor="@color/Black" />
+            android:textColor="@android:color/black" />
         <TextView
                 android:layout_marginTop="48dp"
                 android:layout_width="wrap_content"

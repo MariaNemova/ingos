@@ -368,7 +368,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:textStyle="bold"
-                        android:textColor="@color/White"
+                        android:textColor="@android:color/white"
                         android:text="@string/btn_delete_registry"/>
             </RelativeLayout>
         </RelativeLayout>
