@@ -1,6 +1,7 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,7 @@ import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicListPagerAdapter;
 
-public class FragmentClinicList extends Mvp4Fragment{
+public class FragmentClinicList extends Fragment {
 
     @BindView(R.id.fragment_clinic_list_view_pager) ViewPager pager;
 

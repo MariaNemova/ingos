@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import ru.ingos.digitalmedicine.IngosApplication;
@@ -28,26 +30,31 @@ public class ClinicListPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        //return this.mFragments.size();
-        return 2;
+        return this.mFragments.size();
     }
 
     @Override
     public Fragment getItem(int position) {
         Log.d(IngosApplication.DEBUG_TAG, "Getting page at position: "+position);
-        //return this.mFragments.get(position);
-        try {
-            return FragmentList.class.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return this.mFragments.get(position);
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == object;
+        boolean isViewFromObject = view == ((Fragment)object).getView();
+        Log.d(IngosApplication.DEBUG_TAG, String.valueOf(isViewFromObject));
+        return isViewFromObject;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int pos){
+        switch (pos){
+            case 0:
+                return "Списком";
+            case 1:
+                return "На карте";
+            default:
+                return "";
+        }
     }
 }

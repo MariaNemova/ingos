@@ -47,10 +47,6 @@ public class FragmentList extends Mvp4Fragment implements ClinicListView {
         presenter.setClinics();
         rvHolder.setLayoutManager(new LinearLayoutManager(getContext()));
         rvHolder.setAdapter(mClinicListAdapter);
-
-        ViewPager.LayoutParams params = (ViewPager.LayoutParams) view.getLayoutParams();
-        params.height = 1024;
-        view.setLayoutParams(params);
     }
 
     @Override
