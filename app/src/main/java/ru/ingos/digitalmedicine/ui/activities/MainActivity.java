@@ -20,6 +20,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.PresenterType;
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.presenters.FragmentBinderPresenter;
 import ru.ingos.digitalmedicine.mvp.presenters.MainMenuPresenter;
@@ -63,6 +64,13 @@ public class MainActivity extends MvpAppCompatActivity
         View headerView = nvMenuView.getHeaderView(0);
         LinearLayout header = (LinearLayout) headerView.findViewById(R.id.nav_header);
         header.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        boolean startFromBeggining = getIntent().getBooleanExtra(IngosApplication.EXTRA_IS_FROM_BRGINING, false);
+        if(startFromBeggining) this.bindFragment(FragmentMain.class, false);
     }
 
     /**
