@@ -16,6 +16,7 @@ import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.fragments.FragmentClinicList;
+import ru.ingos.digitalmedicine.ui.fragments.cliniclist.FragmentMap;
 
 public class SelectRegistryActivity extends MvpAppCompatActivity implements View.OnClickListener {
 
@@ -37,6 +38,7 @@ public class SelectRegistryActivity extends MvpAppCompatActivity implements View
         }
         btnSelectSpec.setOnClickListener(this);
         btnSelectDoctor.setOnClickListener(this);
+        btnSelectClinic.setOnClickListener(this);
 
     }
 
@@ -57,7 +59,7 @@ public class SelectRegistryActivity extends MvpAppCompatActivity implements View
                 startActivity(intent);
                 break;
             case R.id.activity_select_registry_btn_clinic:
-                Utils.showFragmentSupportInActivity(FragmentClinicList.class, this);
+                Utils.showFragmentSupportInActivity(FragmentMap.class, this);
                 break;
             default:
                 break;

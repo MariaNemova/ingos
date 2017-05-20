@@ -12,9 +12,11 @@ import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import ru.ingos.digitalmedicine.IngosApplication;
+import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
 import ru.ingos.digitalmedicine.mvp.presenters.ClinicListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.ClinicListView;
+import ru.ingos.digitalmedicine.ui.activities.FragmentHolderActivity;
 import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 import java.util.List;
@@ -27,6 +29,9 @@ public class FragmentMap extends MVP4Fragment implements OnMapReadyCallback, Cli
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
+       /* if (getActivity() instanceof FragmentHolderActivity)
+            Utils.setActivityTitle(R.string.clinics_map, getActivity());*/
+
         return new FrameLayout(getActivity());
     }
 

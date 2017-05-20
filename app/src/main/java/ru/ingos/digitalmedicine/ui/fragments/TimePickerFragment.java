@@ -10,7 +10,6 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
     @Override
