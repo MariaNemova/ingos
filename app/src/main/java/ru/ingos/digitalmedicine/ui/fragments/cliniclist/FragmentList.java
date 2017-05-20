@@ -54,7 +54,7 @@ public class FragmentList extends Mvp4Fragment implements ClinicListView {
     public void setClinics(List<ClinicListModel> clinics)
     {
         if(mClinicListAdapter != null) mClinicListAdapter.setClinics(clinics);
-        Log.w(IngosApplication.DEBUG_TAG, "ListAdapter in clinic list is null!");
+        else Log.w(IngosApplication.DEBUG_TAG, "ListAdapter in clinic list is null!");
     }
 
     @Override
