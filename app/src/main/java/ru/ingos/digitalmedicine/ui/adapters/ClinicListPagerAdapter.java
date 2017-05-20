@@ -1,5 +1,6 @@
 package ru.ingos.digitalmedicine.ui.adapters;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -27,14 +28,22 @@ public class ClinicListPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return this.mFragments.size();
-
+        //return this.mFragments.size();
+        return 2;
     }
 
     @Override
     public Fragment getItem(int position) {
         Log.d(IngosApplication.DEBUG_TAG, "Getting page at position: "+position);
-        return this.mFragments.get(position);
+        //return this.mFragments.get(position);
+        try {
+            return FragmentList.class.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

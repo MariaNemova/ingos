@@ -50,7 +50,6 @@ public class ClinicListPresenter extends MvpPresenter<ClinicListView> {
     }
 
     public void setMapInfo(){
-        Log.d(IngosApplication.DEBUG_TAG, "ClinicList map info setted!");
         LatLng ll = new LatLng(55.751760, 37.618158);
 
         getViewState().moveMap(ll);
