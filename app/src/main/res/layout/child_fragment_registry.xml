@@ -3,8 +3,23 @@
 			  android:orientation="vertical"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent">
-	<android.support.v7.widget.RecyclerView android:layout_width="match_parent"
-											android:layout_height="wrap_content">
+	<Button android:id="@+id/child_fragment_registry_btn"
+			android:background="@color/colorAccentDark"
+			android:textSize="18sp"
+			android:textStyle="bold"
+			android:text="@string/btn_register_in_med"
+			android:textAlignment="center"
+			android:textColor="@android:color/white"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight=".10"/>
+	<android.support.v7.widget.RecyclerView
+			android:padding="8dp"
+			android:id="@+id/child_fragment_registry_recyclerview"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight=".90"
+			android:background="?android:attr/colorBackground">
 
 	</android.support.v7.widget.RecyclerView>
 
