@@ -45,7 +45,7 @@ public class FragmentUnavailableService extends MVP4Fragment implements Insuranc
         if(getActivity() instanceof FragmentHolderActivity)Utils.setActivityTitle(R.string.frag_title_unavailable_services, getActivity());
         ButterKnife.bind(this, view);
 
-        mAdapter = new InsuranceServiceAdapter(getContext(), new ServicesListener(getActivity()), null);
+        mAdapter = new InsuranceServiceAdapter(getActivity(), new ServicesListener(getActivity()), null);
 
         rvUnavailableService.setLayoutManager(new LinearLayoutManager(null));
         rvUnavailableService.setAdapter(mAdapter);
