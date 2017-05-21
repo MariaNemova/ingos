@@ -30,8 +30,8 @@
 
     <string name="activity_speciality">Это экран всех специальностей врачей!</string>
 
-    <string name="nav_header_usename">Иван Иванов</string>
-    <string name="nav_header_number">0000 0000 0000 0000</string>
+    <string name="nav_header_usename">Леонид Каприов</string>
+    <string name="nav_header_number">0000 0000 0000</string>
 
     <string name="frag_title_main">Ингосстрах</string>
     <string name="frag_title_lk">Личный кабинет</string>
