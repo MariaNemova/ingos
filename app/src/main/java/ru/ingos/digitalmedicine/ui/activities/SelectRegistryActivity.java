@@ -7,15 +7,12 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.arellomobile.mvp.MvpAppCompatActivity;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.arellomobile.mvp.MvpAppCompatActivity;
 import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
-import ru.ingos.digitalmedicine.ui.fragments.FragmentClinicList;
 import ru.ingos.digitalmedicine.ui.fragments.cliniclist.FragmentMap;
 
 public class SelectRegistryActivity extends MvpAppCompatActivity implements View.OnClickListener {
@@ -50,6 +47,7 @@ public class SelectRegistryActivity extends MvpAppCompatActivity implements View
 
     @Override
     public void onClick(View v) {
+        IngosApplication.SHOW_CLINIC_INFO = false; //FIXME: лютый костыль! все исправить
         switch (v.getId()){
             case R.id.activity_select_registry_btn_spec:
                 startActivity(new Intent(this, SpecialtyActivity.class));

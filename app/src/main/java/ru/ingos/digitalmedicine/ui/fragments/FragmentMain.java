@@ -1,57 +1,29 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.arellomobile.mvp.presenter.PresenterType;
 import ru.ingos.digitalmedicine.R;
-import ru.ingos.digitalmedicine.common.Utils;
-import ru.ingos.digitalmedicine.mvp.presenters.HomePresenter;
-import ru.ingos.digitalmedicine.mvp.views.HomeView;
 import ru.ingos.digitalmedicine.ui.activities.ChatActivity;
-import ru.ingos.digitalmedicine.ui.activities.ClinicInfoActivity;
-import ru.ingos.digitalmedicine.ui.activities.DoctorProfileActivity;
-import ru.ingos.digitalmedicine.ui.activities.SelectRegistryActivity;
 import ru.ingos.digitalmedicine.ui.activities.SosActivity;
-import ru.ingos.digitalmedicine.ui.activities.StatsActivity;
+import ru.ingos.digitalmedicine.ui.adapters.FragmentMainAdapter;
+import ru.ingos.digitalmedicine.ui.listeners.MainFragmentPagerListener;
 
-public class FragmentMain extends MVP4Fragment implements HomeView, AdapterView.OnClickListener{
+public class FragmentMain extends MVP4Fragment implements View.OnClickListener{
 
-    @BindView(R.id.fragment_main_last_clinic_name) TextView tvClinicName;
-    @BindView(R.id.fragment_main_last_clinic_tel) TextView tvClinicPhone;
-    @BindView(R.id.fragment_main_last_clinic_adress) TextView tvClinicAdress;
-    @BindView(R.id.fragment_main_last_clinic_work_hours) TextView tvClinicWorkHours;
-    @BindView(R.id.fragment_main_insuranse_username) TextView tvInsuranceFullname;
-    @BindView(R.id.fragment_main_insuranse_expire) TextView tvInsuranceExpire;
-    @BindView(R.id.fragment_main_block_insuranse) LinearLayout llBlockInsurance;
-    @BindView(R.id.fragment_main_btn_register) RelativeLayout rlAddRegistry;
-    @BindView(R.id.fragment_main_last_clinic_info) LinearLayout llClinicInfo;
-    @BindView(R.id.fragment_main_btn_registry_list) RelativeLayout rlRegistryList;
-    @BindView(R.id.fragment_main_btn_building_list) RelativeLayout rlClinicList;
-    @BindView(R.id.fragment_main_block_statistics) LinearLayout llBlockStatistics;
-    @BindView(R.id.fragment_main_recipe_info) LinearLayout llRecipeList;
-    @BindView(R.id.fragment_main_fab) FloatingActionButton fabSos;
-
-
-    @InjectPresenter(type = PresenterType.GLOBAL, tag = "HomePresenter") HomePresenter homePresenter;
+    @BindView(R.id.fragment_main_pager) ViewPager pager;
+    @BindView(R.id.fragment_main_fab) FloatingActionButton fabSOS;
 
     private Unbinder unbinder;
+    private FragmentMainAdapter adapter;
 
     public FragmentMain(){
         super();
@@ -64,77 +36,21 @@ public class FragmentMain extends MVP4Fragment implements HomeView, AdapterView.
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        if (this instanceof FragmentMain)
-            Utils.setActivityIcon(R.drawable.ingo_logo, getActivity());
         setHasOptionsMenu(true);
-
         return view;
     }
-
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstance){
         unbinder = ButterKnife.bind(this, view);
-        llBlockInsurance.setOnClickListener(this);
-        rlAddRegistry.setOnClickListener(this);
-        llClinicInfo.setOnClickListener(this);
-        rlRegistryList.setOnClickListener(this);
-        rlClinicList.setOnClickListener(this);
-        llBlockStatistics.setOnClickListener(this);
-        llRecipeList.setOnClickListener(this);
-        fabSos.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id){
-            case R.id.fragment_main_block_insuranse:
-                homePresenter.onInsuranceInfoClick();
-                break;
-            case R.id.fragment_main_btn_register:
-                homePresenter.onNewRegistryBtnClick();
-                break;
-            case R.id.fragment_main_block_statistics:
-                homePresenter.onStatisticsClick();
-                break;
-            case R.id.fragment_main_btn_building_list:
-                homePresenter.onBuildingListClick();
-                break;
-            case R.id.fragment_main_last_clinic_info:
-                homePresenter.onClinicInfoClick();
-                break;
-            case R.id.fragment_main_btn_registry_list:
-                homePresenter.onRegistryListClick();
-                break;
-            case R.id.fragment_main_recipe_info:
-                homePresenter.onRecipeListClick();
-            case R.id.fragment_main_fab:
-                homePresenter.onFabClick();
-                break;
-            default:
-                break;
+        Activity activity = getActivity();
+        adapter = new FragmentMainAdapter(getChildFragmentManager());
+        if(activity instanceof AppCompatActivity){
+            pager.addOnPageChangeListener(new MainFragmentPagerListener(((AppCompatActivity) activity).getSupportActionBar()));
         }
-    }
+        pager.setAdapter(adapter);
 
-    @Override
-    public void setLastClinicInfo(String name, String adress, String phone, String workHours) {
-        tvClinicName.setText(name);
-        tvClinicAdress.setText(adress);
-        tvClinicPhone.setText(phone);
-        tvClinicWorkHours.setText(workHours);
-    }
-
-    @Override
-    public void setInsuranceInfo(String userName, String expire, Boolean isRed) {
-        tvInsuranceFullname.setText(userName);
-        tvInsuranceExpire.setText(expire);
-
-        int red = ContextCompat.getColor(getActivity(), R.color.colorAccent);
-        int white = ContextCompat.getColor(getActivity(), R.color.White);
-
-        tvInsuranceExpire.setTextColor(isRed?red:white);
+        fabSOS.setOnClickListener(this);
     }
 
     @Override
@@ -155,63 +71,18 @@ public class FragmentMain extends MVP4Fragment implements HomeView, AdapterView.
     }
 
     @Override
-    public void showPrivateRoom() {
-        Utils.showFragmentInActivity(FragmentPrivateRoom.class, getActivity());
-    }
-
-    @Override
-    public void showStatistics() {
-        startActivity(new Intent(getActivity(), StatsActivity.class));
-    }
-
-    @Override
-    public void createNewRegistry()
-    {
-        startActivity(new Intent(getActivity(), SelectRegistryActivity.class));
-    }
-
-    @Override
-    public void showClinicsList()
-    {
-        Utils.showFragmentSupportInActivity(FragmentClinicList.class, getActivity());
-    }
-
-    @Override
-    public void showClinicInfo() {
-        Intent clinicInfo = new Intent(getActivity(), ClinicInfoActivity.class);
-        startActivity(clinicInfo);
-    }
-
-    @Override
-    public void showRecipeList() {
-        Utils.showFragmentInActivity(FragmentRecipes.class, getActivity());
-    }
-
-    @Override
-    public void showSosAcivity() {
-        Intent intent = new Intent(getActivity(), SosActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void showRegistryList() {
-        Utils.showFragmentInActivity(FragmentRegistry.class, getActivity());
-    }
-
-
-
-    @Override
     public void onDestroyView(){
         unbinder.unbind();
         super.onDestroyView();
     }
 
 
-
     @Override
-    public void onDestroy(){
-        super.onDestroy();
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fragment_main_fab:
+                startActivity(new Intent(getActivity(), SosActivity.class));
+                break;
+        }
     }
-    
-    
 }

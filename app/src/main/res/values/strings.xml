@@ -30,8 +30,8 @@
 
     <string name="activity_speciality">Это экран всех специальностей врачей!</string>
 
-    <string name="nav_header_usename">Иван Иванов</string>
-    <string name="nav_header_number">0000 0000 0000 0000</string>
+    <string name="nav_header_usename">Леонид Каприов</string>
+    <string name="nav_header_number">0000 0000 0000</string>
 
     <string name="frag_title_main">Ингосстрах</string>
     <string name="frag_title_lk">Личный кабинет</string>
@@ -120,6 +120,7 @@
     <string name="title_insurance_services_activity">Услуги по страховке</string>
     <string name="frag_title_available_services">Доступные услуги</string>
     <string name="frag_title_unavailable_services">Недоступные услуги</string>
+    <string name="btn_add_service">Подключить услугу</string>
     <string name="builder_content">Вы уверены?</string>
     <string name="builder_yes">Да</string>
     <string name="builder_no">Нет</string>
@@ -154,6 +155,8 @@
     <string name="doc_age">Возраст</string>
     <string name="title_doctor_profile">Информация о враче</string>
     <string name="full_info_from_mc">Подробная информация</string>
+
+    <string name="insurance_date">Истекает через:</string>
 
     <string name="activity_auth_title">Авторизация</string>
 </resources>

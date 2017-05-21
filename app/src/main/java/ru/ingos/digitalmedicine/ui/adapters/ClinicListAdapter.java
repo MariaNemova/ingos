@@ -36,13 +36,12 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
 
     private final OnClickListener mListener;
 
-    public ClinicListAdapter(Activity activity) {
+    public ClinicListAdapter(Activity activity, boolean shouldOpenInformation) {
           if(activity == null){
               throw  new RuntimeException("You must set an activity for the ClinicsList!");
           }
 
-        boolean isMainActivity = activity instanceof MainActivity;
-        if(isMainActivity){
+        if(shouldOpenInformation){
             mListener = new OnClickListener(activity, ClinicInfoActivity.class, null);
         }else {
             Log.d(IngosApplication.DEBUG_TAG, "Not main activity!");

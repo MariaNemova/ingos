@@ -4,6 +4,7 @@ package ru.ingos.digitalmedicine.ui.adapters;
 import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.RegistryModel;
 import ru.ingos.digitalmedicine.ui.activities.RegistryInfoActivity;
@@ -30,7 +32,6 @@ public class RegistryListAdapter extends RecyclerView.Adapter<RegistryListAdapte
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.block_registry_info, parent, false);
         RecyclerView.LayoutParams params = (RecyclerView.LayoutParams)view.getLayoutParams();
         params.setMargins(0,0,0,3);
-        view.setBackgroundColor(Color.WHITE);
         view.setLayoutParams(params);
 
         return new RegistryHolder(view);

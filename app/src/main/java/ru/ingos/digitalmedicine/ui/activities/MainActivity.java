@@ -153,6 +153,7 @@ public class MainActivity extends MvpAppCompatActivity
         Class fragmentClass = null;
 
         if (id == R.id.nav_clinics) {
+            IngosApplication.SHOW_CLINIC_INFO = true;
             fragmentClass = FragmentClinicList.class;
         } else if (id == R.id.nav_main) {
             fragmentClass = FragmentMain.class;

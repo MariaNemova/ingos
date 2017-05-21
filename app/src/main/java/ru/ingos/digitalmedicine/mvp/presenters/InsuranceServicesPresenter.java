@@ -23,6 +23,13 @@ public class InsuranceServicesPresenter extends MvpPresenter<InsuranceServicesVi
         insuranceServices.add(new InsuranceServiceModel("Услуга 2"));
         insuranceServices.add(new InsuranceServiceModel("Услуга 3"));
         insuranceServices.add(new InsuranceServiceModel("Услуга 4"));
+        insuranceServices.add(new InsuranceServiceModel("Услуга 5"));
+        insuranceServices.add(new InsuranceServiceModel("Услуга 6"));
+        insuranceServices.add(new InsuranceServiceModel("Услуга 7"));
+        insuranceServices.add(new InsuranceServiceModel("Услуга 8"));
+        insuranceServices.add(new InsuranceServiceModel("Услуга 9"));
+        insuranceServices.add(new InsuranceServiceModel("Услуга 10"));
+        insuranceServices.add(new InsuranceServiceModel("Услуга 11"));
 
         return insuranceServices;
     }

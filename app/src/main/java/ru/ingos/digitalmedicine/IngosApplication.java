@@ -24,9 +24,17 @@ public class IngosApplication extends Application{
 
     public static SharedPreferences GLOBAL_PREFERENCES;
 
+    public static boolean SHOW_CLINIC_INFO = true;
+
+    public static Context GLOBAL_CONTEXT;
+
+    public static int FAVORITE_CLINICS_COUNT = 0;
+
+
     @Override
     public void onCreate(){
         super.onCreate();
+        GLOBAL_CONTEXT = this;
         GLOBAL_PREFERENCES = getSharedPreferences(KEY_PREFS, MODE_PRIVATE);
     }
 

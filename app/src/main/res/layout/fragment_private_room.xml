@@ -10,7 +10,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
-            android:padding="6dp"
             android:elevation="3dp" tools:targetApi="LOLLIPOP"
             android:layout_marginBottom="10dp">
         <include layout="@layout/pr_block_general_info" />
