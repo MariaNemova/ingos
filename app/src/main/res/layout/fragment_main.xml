@@ -23,6 +23,6 @@
 			attr:piv_interactiveAnimation = "true"
 			attr:piv_animationType="swap"
 			attr:piv_selectedColor="@color/colorPrimaryDark"
-			attr:piv_unselectedColor="@color/colorPrimary"/>
+			attr:piv_unselectedColor="@color/colorPrimaryLight"/>
 </RelativeLayout>
 
