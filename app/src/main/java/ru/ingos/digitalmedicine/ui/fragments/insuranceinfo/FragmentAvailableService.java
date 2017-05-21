@@ -42,7 +42,7 @@ public class FragmentAvailableService extends MVP4Fragment implements InsuranceS
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         ButterKnife.bind(this, view);
 
-        mAdapter = new InsuranceServiceAdapter(getContext(), new ServicesListener(getActivity()));
+        mAdapter = new InsuranceServiceAdapter(getContext(), new ServicesListener(getActivity()), null);
 
         rvAvailableServices.setLayoutManager(new LinearLayoutManager(null));
         rvAvailableServices.setAdapter(mAdapter);

@@ -11,6 +11,7 @@ import java.util.List;
 
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.InsuranceServiceModel;
+import ru.ingos.digitalmedicine.ui.listeners.HomeServiceListener;
 import ru.ingos.digitalmedicine.ui.listeners.ServicesListener;
 
 public class InsuranceServiceAdapter extends RecyclerView.Adapter<InsuranceServiceAdapter.InsuranceServiceHolder>{
@@ -19,12 +20,14 @@ public class InsuranceServiceAdapter extends RecyclerView.Adapter<InsuranceServi
     private LayoutInflater mInflater;
 
     private ServicesListener listener;
+    private HomeServiceListener homeListener;
 
-    public InsuranceServiceAdapter(Context context, ServicesListener listener){
+    public InsuranceServiceAdapter(Context context, ServicesListener listener, HomeServiceListener homeListener){
         super();
 
         this.mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);;
         this.listener = listener;
+        this.homeListener = homeListener;
     }
 
     public void setmInsuranceServices(List<InsuranceServiceModel> mInsuranceServices) {
@@ -35,6 +38,7 @@ public class InsuranceServiceAdapter extends RecyclerView.Adapter<InsuranceServi
     public InsuranceServiceHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_speciality, parent, false);
         view.setOnClickListener(listener);
+        view.setOnClickListener(homeListener);
 
         return new InsuranceServiceHolder(view);
     }
