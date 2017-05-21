@@ -43,4 +43,6 @@ dependencies {
     compile 'com.redmadrobot:inputmask:2.2.1'
     compile 'com.github.tibolte:agendacalendarview:1.0.4'
     compile 'me.himanshusoni.chatmessageview:chat-message-view:1.0.7'
+
+    compile 'com.romandanylyk:pageindicatorview:0.1.2@aar'
 }

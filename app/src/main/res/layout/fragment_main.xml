@@ -1,112 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@android:color/white"
-        android:clipToPadding="false">
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" xmlns:attr="http://schemas.android.com/apk/res-auto"
+		android:orientation="vertical"
+		android:background="@android:color/white"
+		android:clipToPadding="false">
+	<android.support.v4.view.ViewPager
+			android:id="@+id/fragment_main_pager"
+			android:layout_width="match_parent"
+		    android:layout_height="match_parent"/>
 
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white"
-            >
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <com.daimajia.swipe.SwipeLayout
-                    android:id="@+id/swipt_registry"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-					android:elevation="4dp" tools:targetApi="lollipop">
-                <RelativeLayout
-
-                        android:layout_width="128dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorAccentDark">
-					<RelativeLayout
-                            android:id="@+id/fragment_main_btn_registry_list"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:focusable="true"
-                            android:clickable="true"
-                            android:background="?android:attr/selectableItemBackground"
-                            android:padding="10dp">
-						<TextView
-								android:layout_width="match_parent"
-								android:layout_height="match_parent"
-								android:gravity="center"
-								android:textStyle="bold"
-								android:textColor="@android:color/white"
-								android:text="@string/btn_registry_list"/>
-					</RelativeLayout>
-
-                </RelativeLayout>
-                <include layout="@layout/block_registry_info"/>
-
-            </com.daimajia.swipe.SwipeLayout>
-
-            <include layout="@layout/block_insurance_info"/>
-
-            <com.daimajia.swipe.SwipeLayout
-                    android:id="@+id/swipe_building"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:clickable="true">
-                <include layout="@layout/button_list_building_layout"/>
-                <include layout="@layout/block_building_info"/>
-            </com.daimajia.swipe.SwipeLayout>
-
-            <include layout="@layout/block_recipe_info"/>
-            <include layout="@layout/block_analys_info"/>
-            <RelativeLayout
-                    android:background="@android:color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp">
-                  <!-- Костыль для корректного отображения -->
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
-
-
-
-
-    <RelativeLayout
-            android:id="@+id/fragment_main_btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bootom_btn_height"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorAccentDark"
-            android:clipToPadding="false">
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="?android:attr/selectableItemBackground">
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:text="@string/btn_register_in_med"/>
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fragment_main_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="64dp"
-            android:src="@drawable/ic_sos"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            />
-
+	<com.rd.PageIndicatorView
+			android:id="@+id/fragment_main_pager_indicator"
+			android:layout_alignParentBottom="true"
+			android:layout_marginBottom="48dp"
+			android:layout_centerHorizontal="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			attr:piv_viewPager="@id/fragment_main_pager"
+			attr:piv_interactiveAnimation = "true"
+			attr:piv_animationType="swap"
+			attr:piv_selectedColor="@color/colorPrimaryDark"
+			attr:piv_unselectedColor="@color/colorPrimary"/>
 </RelativeLayout>
 
