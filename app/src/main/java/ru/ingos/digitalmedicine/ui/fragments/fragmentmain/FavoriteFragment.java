@@ -14,6 +14,7 @@ import ru.ingos.digitalmedicine.mvp.models.DoctorModel;
 import ru.ingos.digitalmedicine.mvp.views.FavoriteView;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.ui.adapters.EmptyListAdapter;
+import ru.ingos.digitalmedicine.ui.fragments.FragmentClinicList;
 import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 import java.util.List;
@@ -36,8 +37,8 @@ public class FavoriteFragment extends MVP4Fragment  implements FavoriteView{
     public void onViewCreated(View view, Bundle savedInstance){
         ButterKnife.bind(this, view);
 
-        rvClinics.setAdapter(new EmptyListAdapter("У вас нет избранных клиник", "Перейти к списку клиник>"));
-        rvDoctors.setAdapter(new EmptyListAdapter("У вас нет избранных специалистов", "Перейти к списку специалистов>"));
+        rvClinics.setAdapter(new EmptyListAdapter("У вас нет избранных клиник", "Перейти к списку клиник>", FragmentClinicList.class, getActivity()));
+        rvDoctors.setAdapter(new EmptyListAdapter("У вас нет избранных специалистов", ""));
 
         rvClinics.setLayoutManager(new LinearLayoutManager(getContext()));
         rvDoctors.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -51,7 +51,6 @@ public class FragmentList extends MVP4Fragment implements ClinicListView, CanPut
     @Override
     public void setClinics(List<ClinicListModel> clinics)
     {
-        Log.d(IngosApplication.DEBUG_TAG, "Setting clinics! View!");
         if(mClinicListAdapter != null) mClinicListAdapter.setClinics(clinics);
         else Log.w(IngosApplication.DEBUG_TAG, "ListAdapter in clinic list is null!");
     }
