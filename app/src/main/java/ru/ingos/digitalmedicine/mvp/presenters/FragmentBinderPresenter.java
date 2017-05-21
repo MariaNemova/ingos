@@ -11,8 +11,14 @@ import ru.ingos.digitalmedicine.ui.fragments.FragmentMain;
 public class FragmentBinderPresenter extends MvpPresenter<FragmentBinderView> {
 
     @Override
-    protected void onFirstViewAttach(){
-        getViewState().bindFragmentSupport(FragmentMain.class, false);
+    protected void onFirstViewAttach()
+    {
+        int session = IngosApplication.GLOBAL_PREFERENCES.getInt(IngosApplication.PREF_SESSION_ID, -1);
+        if(session == -1){
+            getViewState().showAuthorizeActivity();
+        }else {
+            getViewState().bindFragmentSupport(FragmentMain.class, false);
+        }
     }
 
     public void bindFragment(Class fragmentClass, boolean addToBackStack){

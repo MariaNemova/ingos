@@ -1,6 +1,7 @@
 package ru.ingos.digitalmedicine.ui.activities;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -95,6 +96,14 @@ public class MainActivity extends MvpAppCompatActivity
             trans.remove(getFragmentManager().findFragmentByTag("MainFragment"));
             trans.commit();
         }
+    }
+
+    @Override
+    public void showAuthorizeActivity() {
+        Intent intent = new Intent(this, AuthActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void bindFragment(Class fragmentClass, boolean add_to_back){
