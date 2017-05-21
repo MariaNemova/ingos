@@ -1,10 +1,7 @@
-package ru.ingos.digitalmedicine.ui.fragments.fragment_main;
+package ru.ingos.digitalmedicine.ui.fragments.fragmentmain;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +17,6 @@ import ru.ingos.digitalmedicine.mvp.presenters.RegistryListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.RegistryListView;
 import ru.ingos.digitalmedicine.ui.activities.SelectRegistryActivity;
 import ru.ingos.digitalmedicine.ui.adapters.RegistryListAdapter;
-import ru.ingos.digitalmedicine.ui.fragments.FragmentMain;
 import ru.ingos.digitalmedicine.ui.fragments.MVP4Fragment;
 
 import java.util.List;
