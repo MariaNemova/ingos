@@ -41,7 +41,7 @@ public class FragmentList extends MVP4Fragment implements ClinicListView, CanPut
     public void onViewCreated(View view, Bundle savedInstance){
         ButterKnife.bind(this, view);
 
-        mClinicListAdapter = new ClinicListAdapter(getActivity());
+        mClinicListAdapter = new ClinicListAdapter(getActivity(), IngosApplication.SHOW_CLINIC_INFO);
         presenter.setClinics();
         rvHolder.setLayoutManager(new LinearLayoutManager(getContext()));
         rvHolder.setAdapter(mClinicListAdapter);

@@ -46,7 +46,7 @@ public class FavoriteFragment extends MVP4Fragment  implements FavoriteView{
 
     @Override
     public void setClinics(List<ClinicListModel> clinics) {
-        adapterClinics = new ClinicListAdapter(getActivity());
+        adapterClinics = new ClinicListAdapter(getActivity(), true);
         adapterClinics.setClinics(clinics);
         rvClinics.setAdapter(adapterClinics);
     }
