@@ -24,5 +24,17 @@
 			attr:piv_animationType="swap"
 			attr:piv_selectedColor="@color/colorPrimaryDark"
 			attr:piv_unselectedColor="@color/colorPrimaryLight"/>
+
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/fragment_main_fab"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom|right"
+		android:layout_marginRight="32dp"
+		android:layout_marginBottom="64dp"
+		android:src="@drawable/ic_sos"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		/>
 </RelativeLayout>
 

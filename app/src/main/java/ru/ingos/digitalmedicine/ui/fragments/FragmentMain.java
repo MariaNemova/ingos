@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.*;
@@ -12,12 +13,14 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.ui.activities.ChatActivity;
+import ru.ingos.digitalmedicine.ui.activities.SosActivity;
 import ru.ingos.digitalmedicine.ui.adapters.FragmentMainAdapter;
 import ru.ingos.digitalmedicine.ui.listeners.MainFragmentPagerListener;
 
-public class FragmentMain extends MVP4Fragment{
+public class FragmentMain extends MVP4Fragment implements View.OnClickListener{
 
     @BindView(R.id.fragment_main_pager) ViewPager pager;
+    @BindView(R.id.fragment_main_fab) FloatingActionButton fabSOS;
 
     private Unbinder unbinder;
     private FragmentMainAdapter adapter;
@@ -46,6 +49,8 @@ public class FragmentMain extends MVP4Fragment{
             pager.addOnPageChangeListener(new MainFragmentPagerListener(((AppCompatActivity) activity).getSupportActionBar()));
         }
         pager.setAdapter(adapter);
+
+        fabSOS.setOnClickListener(this);
     }
 
     @Override
@@ -70,6 +75,14 @@ public class FragmentMain extends MVP4Fragment{
         unbinder.unbind();
         super.onDestroyView();
     }
-    
-    
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fragment_main_fab:
+                startActivity(new Intent(getActivity(), SosActivity.class));
+                break;
+        }
+    }
 }
