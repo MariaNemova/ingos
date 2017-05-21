@@ -31,6 +31,7 @@ import ru.ingos.digitalmedicine.mvp.presenters.RecipeListPresenter;
 import ru.ingos.digitalmedicine.mvp.views.RecipeListView;
 import ru.ingos.digitalmedicine.ui.adapters.RecipeListAdapter;
 
+import static android.R.attr.fragment;
 import static ru.ingos.digitalmedicine.R.id.input_box_next_step;
 
 public class FragmentRecipes extends MvpFragment implements RecipeListView {
@@ -88,9 +89,13 @@ public class FragmentRecipes extends MvpFragment implements RecipeListView {
         btnNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment fragment = new TimePickerFragment();
-                fragment.show(getFragmentManager(), "TimePicker");
-                dialog.dismiss();
+                if (etDrugName.getText().toString().trim().length() == 0){
+                    Toast.makeText(getActivity(), "Введите название лекарства", Toast.LENGTH_SHORT).show();
+                } else {
+                    DialogFragment fragment = new TimePickerFragment();
+                    fragment.show(getFragmentManager(), "TimePicker");
+                    dialog.dismiss();
+                }
             }
         });
         dialog.show();
