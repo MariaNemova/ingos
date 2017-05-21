@@ -3,14 +3,18 @@ package ru.ingos.digitalmedicine.ui.fragments.fragmentmain;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.ClinicListModel;
 import ru.ingos.digitalmedicine.mvp.models.DoctorModel;
+import ru.ingos.digitalmedicine.mvp.presenters.FavoritePresenter;
 import ru.ingos.digitalmedicine.mvp.views.FavoriteView;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicListAdapter;
 import ru.ingos.digitalmedicine.ui.adapters.EmptyListAdapter;
@@ -27,6 +31,16 @@ public class FavoriteFragment extends MVP4Fragment  implements FavoriteView{
     RecyclerView rvDoctors;
 
     ClinicListAdapter adapterClinics;
+
+    @InjectPresenter
+    FavoritePresenter presenter;
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Log.d(IngosApplication.DEBUG_TAG, "Resume!");
+        presenter.refreshClinics();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
@@ -52,7 +66,7 @@ public class FavoriteFragment extends MVP4Fragment  implements FavoriteView{
     }
 
     @Override
-    public void setDoctors(List<DoctorModel> doctors) {
+    public void setDoctors(List<String> doctors) {
 
     }
 }

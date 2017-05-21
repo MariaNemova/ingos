@@ -3,6 +3,7 @@ package ru.ingos.digitalmedicine.ui.listeners;
 import android.app.Activity;
 import android.view.View;
 
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.fragments.FragmentClinicList;
 
@@ -18,6 +19,7 @@ public class HomeServiceListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        IngosApplication.SHOW_CLINIC_INFO = true;
         Utils.showFragmentSupportInActivity(FragmentClinicList.class, activity, id);
     }
 }

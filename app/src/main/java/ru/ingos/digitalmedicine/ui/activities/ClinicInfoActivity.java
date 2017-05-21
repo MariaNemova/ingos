@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -23,16 +25,19 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
 import ru.ingos.digitalmedicine.ui.adapters.ClinicInfoPagerAdapter;
 import ru.ingos.digitalmedicine.ui.listeners.CoordinatorOffsetListener;
 
-public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapReadyCallback {
+public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapReadyCallback, View.OnClickListener {
 
     @BindView(R.id.clinic_info_toolbar) Toolbar toolbar;
     @BindView(R.id.clinic_info_pager) ViewPager pager;
     @BindView(R.id.clinic_info_app_bar) AppBarLayout appBar;
+    @BindView(R.id.activity_clinic_info_fab)
+    FloatingActionButton fabFavorite;
 
     @Override
     public void onCreate(Bundle savedInstance){
@@ -57,6 +62,7 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
         }
 
         appBar.addOnOffsetChangedListener(new CoordinatorOffsetListener(this, getSupportActionBar(),toolbar));
+        fabFavorite.setOnClickListener(this);
     }
 
     @Override
@@ -88,5 +94,12 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
     private void setupMap(){
         MapFragment map = (MapFragment) getFragmentManager().findFragmentById(R.id.clinic_info_map);
         map.getMapAsync(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Log.d(IngosApplication.DEBUG_TAG, "Clickasdasdasd!");
+        Toast.makeText(getApplicationContext(), "Добавлено в избранное", Toast.LENGTH_SHORT);
+        IngosApplication.FAVORITE_CLINICS_COUNT++;
     }
 }

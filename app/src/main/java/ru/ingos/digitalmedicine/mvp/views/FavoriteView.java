@@ -9,6 +9,6 @@ import java.util.List;
 public interface FavoriteView extends MvpView {
 
     void setClinics(List<ClinicListModel> clinics);
-    void setDoctors(List<DoctorModel> doctors);
+    void setDoctors(List<String> doctors);
 
 }

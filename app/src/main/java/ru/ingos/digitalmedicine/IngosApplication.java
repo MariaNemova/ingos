@@ -28,6 +28,9 @@ public class IngosApplication extends Application{
 
     public static Context GLOBAL_CONTEXT;
 
+    public static int FAVORITE_CLINICS_COUNT = 0;
+
+
     @Override
     public void onCreate(){
         super.onCreate();
