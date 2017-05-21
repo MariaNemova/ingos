@@ -1,5 +1,6 @@
 package ru.ingos.digitalmedicine.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,17 +12,23 @@ import com.arellomobile.mvp.MvpFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
+import ru.ingos.digitalmedicine.mvp.presenters.ExitPresenter;
+import ru.ingos.digitalmedicine.mvp.views.ExitView;
+import ru.ingos.digitalmedicine.ui.activities.AuthActivity;
 import ru.ingos.digitalmedicine.ui.adapters.SettingsAdapter;
 import ru.ingos.digitalmedicine.ui.listeners.SettingsListener;
 
 
-public class FragmentSettings extends MvpFragment {
+public class FragmentSettings extends MvpFragment implements ExitView {
 
     @BindView(R.id.fragment_settings_recycler_view)
     RecyclerView rvSettings;
 
+    @InjectPresenter
+    ExitPresenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
@@ -38,7 +45,16 @@ public class FragmentSettings extends MvpFragment {
         ButterKnife.bind(this, view);
 
         rvSettings.setLayoutManager(new LinearLayoutManager(null));
-        rvSettings.setAdapter(new SettingsAdapter(new SettingsListener(rvSettings, getActivity())));
+        rvSettings.setAdapter(new SettingsAdapter(new SettingsListener(rvSettings, getActivity(),presenter)));
 
+    }
+
+
+    @Override
+    public void performExit() {
+        Intent intent = new Intent(getActivity(), AuthActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+        getActivity().finish();
     }
 }

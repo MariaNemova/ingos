@@ -41,6 +41,7 @@
         <activity android:name=".ui.activities.ChatActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ui.activities.DoctorProfileActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ui.activities.AuthActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.activities.CreatePinActivity" android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -1,7 +1,6 @@
 package ru.ingos.digitalmedicine.ui.listeners;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.view.View;
@@ -9,21 +8,21 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
-import ru.ingos.digitalmedicine.IngosApplication;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.common.Utils;
-import ru.ingos.digitalmedicine.ui.activities.MainActivity;
-import ru.ingos.digitalmedicine.ui.fragments.FragmentMain;
+import ru.ingos.digitalmedicine.mvp.presenters.ExitPresenter;
 import ru.ingos.digitalmedicine.ui.fragments.insuranceinfo.FragmentUnavailableService;
 
 public class SettingsListener implements View.OnClickListener {
 
     private final RecyclerView rvSettings;
     private final Activity activity;
+    private final ExitPresenter presenter;
 
-    public SettingsListener(RecyclerView rvSettings, Activity activity) {
+    public SettingsListener(RecyclerView rvSettings, Activity activity, ExitPresenter presenter) {
         this.rvSettings = rvSettings;
         this.activity = activity;
+        this.presenter = presenter;
     }
 
 
@@ -47,11 +46,7 @@ public class SettingsListener implements View.OnClickListener {
                     }).show();
                 break;
             case 2: // Выйти из приложения
-                //нужнь предварительно удалить все аднные пользователя и сделать так, чтобы никто ничего не узнал.
-                Intent intent = new Intent(activity, MainActivity.class);
-                intent.putExtra(IngosApplication.EXTRA_IS_FROM_BRGINING, true);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
-                activity.startActivity(intent);
+                presenter.exit();
                 break;
         }
 

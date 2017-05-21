@@ -20,13 +20,14 @@ public class IngosApplication extends Application{
 
     public static final String PREF_SESSION_ID = "SESSION_ID";
 
+    public static final String KEY_PREFS = "MyPreferences";
 
     public static SharedPreferences GLOBAL_PREFERENCES;
 
     @Override
     public void onCreate(){
         super.onCreate();
-        GLOBAL_PREFERENCES = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        GLOBAL_PREFERENCES = getSharedPreferences(KEY_PREFS, MODE_PRIVATE);
     }
 
 }

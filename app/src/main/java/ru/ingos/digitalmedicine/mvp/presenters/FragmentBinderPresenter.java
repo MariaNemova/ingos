@@ -10,18 +10,19 @@ import ru.ingos.digitalmedicine.ui.fragments.FragmentMain;
 @InjectViewState
 public class FragmentBinderPresenter extends MvpPresenter<FragmentBinderView> {
 
+    private int session;
+
     @Override
     protected void onFirstViewAttach()
     {
-        int session = IngosApplication.GLOBAL_PREFERENCES.getInt(IngosApplication.PREF_SESSION_ID, -1);
-        if(session == -1){
-            getViewState().showAuthorizeActivity();
-        }else {
-            getViewState().bindFragmentSupport(FragmentMain.class, false);
-        }
+        session = IngosApplication.GLOBAL_PREFERENCES.getInt(IngosApplication.PREF_SESSION_ID, -1);
+        getViewState().bindFragmentSupport(FragmentMain.class, false);
     }
 
     public void bindFragment(Class fragmentClass, boolean addToBackStack){
+        if(session == -1)
+            getViewState().showAuthorizeActivity();
+
         if(fragmentClass == null){
             Log.w(IngosApplication.DEBUG_TAG, "Can't set fragment! Fragment is null!");
             return;

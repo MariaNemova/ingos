@@ -10,7 +10,6 @@ public interface FragmentBinderView extends MvpView{
 
     @StateStrategyType(SingleStateStrategy.class)
     void bindFragmentSupport(Class fragmentClass, boolean addToBackStack);
-    @StateStrategyType(SingleStateStrategy.class)
     void showAuthorizeActivity();
 
 }

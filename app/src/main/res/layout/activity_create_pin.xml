@@ -26,7 +26,7 @@
 						android:layout_height="wrap_content"
 						android:textStyle="bold"
 						android:padding="8dp"
-						android:text="Авторизуйтесь"
+						android:text="Придумайте PIN код для входа"
 						android:textColor="@android:color/white"
 						android:textSize="18sp"/>
 			</RelativeLayout>
@@ -47,42 +47,24 @@
 							android:textAlignment="textStart"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
-							android:layout_weight=".50"
-							android:text="Итендификатор:"
+							android:layout_weight=".30"
+							android:text="PIN:"
 							android:textSize="16sp"/>
 					<EditText
-							android:id="@+id/activity_auth_login"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
-							android:layout_weight=".50"/>
-				</LinearLayout>
-				<LinearLayout
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:orientation="horizontal">
-					<TextView
-							android:textAlignment="textStart"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_weight=".50"
-							android:text="Пароль:"
-							android:textSize="16sp"/>
-					<EditText
-							android:id="@+id/activity_auth_pass"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_weight=".50"/>
+							android:layout_weight=".70"/>
 				</LinearLayout>
 			</LinearLayout>
 		</LinearLayout>
 
 	</RelativeLayout>
 	<Button
-			android:id="@+id/activity_auth_btn"
+			android:id="@+id/activity_create_pin_button"
 			android:layout_width="match_parent"
 			android:layout_height="0dp"
 			android:layout_weight=".10"
-			android:text="ВОЙТИ"
+			android:text="ПОДТВЕРДИТЬ"
 			android:textStyle="bold"
 			android:textSize="16sp"
 			android:textColor="@android:color/white"
