@@ -168,7 +168,7 @@ public class MainActivity extends MvpAppCompatActivity
         }
 
         if(fragmentClass != null){
-            this.prFragmentBinder.bindFragment(fragmentClass, false);
+            this.prFragmentBinder.bindFragment(fragmentClass);
             this.prMainMenu.changeSelection(fragmentClass);
         }
 
@@ -189,7 +189,7 @@ public class MainActivity extends MvpAppCompatActivity
     //перехватывает клик по шапке меню
     @Override
     public void onClick(View v) {
-        this.prFragmentBinder.bindFragment(FragmentPrivateRoom.class, false);
+        this.prFragmentBinder.bindFragment(FragmentPrivateRoom.class);
         this.prMainMenu.diselectAll();
         this.dlSideMenu.closeDrawer(GravityCompat.START);
     }
