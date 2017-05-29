@@ -34,7 +34,6 @@ public class ServicesListener implements View.OnClickListener {
     public void onClick(View v) {
 
         if (fragment instanceof InsuranceInfoFragment){
-            IngosApplication.SHOW_CLINIC_INFO = true;
             Utils.showFragmentSupportInActivity(FragmentClinicList.class, activity, id);
         } else if ((fragment instanceof FragmentAvailableService) || (fragment instanceof FragmentUnavailableService)){
             MaterialDialog.Builder builder = new MaterialDialog.Builder(activity)

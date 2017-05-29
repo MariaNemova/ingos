@@ -47,7 +47,6 @@ public class SelectRegistryActivity extends MvpAppCompatActivity implements View
 
     @Override
     public void onClick(View v) {
-        IngosApplication.SHOW_CLINIC_INFO = false; //FIXME: лютый костыль! все исправить
         switch (v.getId()){
             case R.id.activity_select_registry_btn_spec:
                 startActivity(new Intent(this, SpecialtyActivity.class));

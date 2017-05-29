@@ -27,7 +27,7 @@ import java.util.List;
 public class FragmentList extends MVP4Fragment implements ClinicListView, CanPutIdExtra {
 
     private ClinicListAdapter mClinicListAdapter;
-    private long id = -1;
+    private long id;
 
     @InjectPresenter(type=PresenterType.GLOBAL, tag="ClinicListPresenter") ClinicListPresenter presenter;
 
@@ -41,7 +41,8 @@ public class FragmentList extends MVP4Fragment implements ClinicListView, CanPut
     public void onViewCreated(View view, Bundle savedInstance){
         ButterKnife.bind(this, view);
 
-        mClinicListAdapter = new ClinicListAdapter(getActivity(), IngosApplication.SHOW_CLINIC_INFO);
+        //вся система клиник требует полного переписывания))
+        mClinicListAdapter = new ClinicListAdapter(getActivity(), true);
         presenter.setClinics();
         rvHolder.setLayoutManager(new LinearLayoutManager(getContext()));
         rvHolder.setAdapter(mClinicListAdapter);

@@ -16,9 +16,4 @@ public class IngosApplication extends Application{
     public final static String EXTRA_IS_FROM_BRGINING = "FROM_BEGINIG";
     public final static String EXTRA_ID_FOR_FRAGMENT = "ID_FOR_FRAGMENT";
 
-    public static final String PREF_SESSION_ID = "SESSION_ID";
-
-    public static boolean SHOW_CLINIC_INFO = true;
-
-
 }
