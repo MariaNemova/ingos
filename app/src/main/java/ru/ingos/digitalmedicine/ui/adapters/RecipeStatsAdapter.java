@@ -28,7 +28,7 @@ public class RecipeStatsAdapter  extends RecyclerView.Adapter<RecipeStatsAdapter
 
     @Override
     public RecipeStatsHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        View view = mInflater.inflate(R.layout.item_list, parent, false);
 
         return new RecipeStatsHolder(view);
     }
@@ -52,8 +52,8 @@ public class RecipeStatsAdapter  extends RecyclerView.Adapter<RecipeStatsAdapter
         public RecipeStatsHolder(View itemView) {
             super(itemView);
 
-            tvRecipeName = (TextView) itemView.findViewById(R.id.tvNameClinic);
-            tvRecipeStats = (TextView) itemView.findViewById(R.id.tvAddresClinic);
+            tvRecipeName = (TextView) itemView.findViewById(R.id.item_list_name);
+            tvRecipeStats = (TextView) itemView.findViewById(R.id.item_list_description);
 
         }
 

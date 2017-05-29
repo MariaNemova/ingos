@@ -29,7 +29,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
 
     @Override
     public SettingsHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_setting, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_icon, parent, false);
         view.setOnClickListener(listener);
 
         return new SettingsHolder(view);
@@ -49,13 +49,17 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
     public class  SettingsHolder extends RecyclerView.ViewHolder {
 
         TextView tvSetting;
+        TextView tvDescription;
         AppCompatImageView apivIcon;
 
         public SettingsHolder(View itemView) {
             super(itemView);
 
-            tvSetting = (TextView) itemView.findViewById(R.id.item_list_setting_text_view);
-            apivIcon = (AppCompatImageView) itemView.findViewById(R.id.item_list_setting_image);
+            tvSetting = (TextView) itemView.findViewById(R.id.iconed_list_item_name);
+            tvSetting.setTextSize(22);
+            tvDescription = (TextView) itemView.findViewById(R.id.iconed_list_item_description);
+            tvDescription.setText(null);
+            apivIcon = (AppCompatImageView) itemView.findViewById(R.id.iconed_list_item_icon);
         }
 
         void setData(String nameSetting, int icon){

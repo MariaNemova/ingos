@@ -49,15 +49,9 @@ public class DoctorsActivity extends MvpAppCompatActivity implements DoctorListV
         lvDoctorList.setAdapter(mAdapter);
         lvDoctorList.setOnItemClickListener(this);
         lvDoctorList.setOnItemLongClickListener(this);
-        
         String clinicName = getIntent().getStringExtra(IngosApplication.EXTRA_CLINIC_NAME);
         presenter.loadDoctors(clinicName==null, clinicName);
         presenter.setDoctors();
-    }
-
-    @Override
-    public void setDoctors(List<DoctorModel> doctors) {
-        mAdapter.setmDoctors(doctors);
     }
 
     @Override
@@ -82,5 +76,10 @@ public class DoctorsActivity extends MvpAppCompatActivity implements DoctorListV
         startActivity(intent);
 
         return true;
+    }
+
+    @Override
+    public void setDoctors(List<DoctorModel> doctors) {
+        mAdapter.setDoctors(doctors);
     }
 }

@@ -12,9 +12,9 @@ import java.util.List;
 import ru.ingos.digitalmedicine.R;
 import ru.ingos.digitalmedicine.mvp.models.DoctorModel;
 
-public class DoctorListAdapter extends BaseAdapter {
+public class DoctorListAdapter extends BaseAdapter{
 
-    private List<DoctorModel> mDoctors;
+    private List <DoctorModel> doctors;
     private LayoutInflater layoutInflater;
 
     public DoctorListAdapter(Context context) {
@@ -23,21 +23,21 @@ public class DoctorListAdapter extends BaseAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setmDoctors(List<DoctorModel> mDoctors) {
-        this.mDoctors = mDoctors;
+    public void setDoctors(List<DoctorModel> doctors) {
+        this.doctors = doctors;
     }
 
     @Override
     public int getCount() {
-        if (mDoctors == null){
+        if(doctors == null){
             return 0;
         }
-        return mDoctors.size();
+        return doctors.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mDoctors.get(position);
+        return doctors.get(position);
     }
 
     @Override
@@ -49,14 +49,12 @@ public class DoctorListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.item_doctor, parent, false);
+            view = layoutInflater.inflate(R.layout.item_speciality, parent, false);
         }
 
-        TextView tvDoctor = (TextView) view.findViewById(R.id.item_doctor_text_view_doctor);
-        tvDoctor.setText(((DoctorModel) getItem(position)).getNameDoctor());
+        TextView tvDocName = (TextView) view.findViewById(R.id.item_speciality_text_view_spec);
+        tvDocName.setText(((DoctorModel) getItem(position)).getNameDoctor());
 
         return view;
     }
-
-
 }

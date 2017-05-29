@@ -30,7 +30,7 @@ public class DoctorStatsAdapter extends RecyclerView.Adapter<DoctorStatsAdapter.
 
     @Override
     public DoctorStatsHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        View view = mInflater.inflate(R.layout.item_list, parent, false);
 
         return new DoctorStatsHolder(view);
     }
@@ -54,8 +54,8 @@ public class DoctorStatsAdapter extends RecyclerView.Adapter<DoctorStatsAdapter.
         public DoctorStatsHolder(View itemView) {
             super(itemView);
 
-            tvDoctorName = (TextView) itemView.findViewById(R.id.tvNameClinic);
-            tvDoctorStats = (TextView) itemView.findViewById(R.id.tvAddresClinic);
+            tvDoctorName = (TextView) itemView.findViewById(R.id.item_list_name);
+            tvDoctorStats = (TextView) itemView.findViewById(R.id.item_list_description);
         }
 
         public void setData(DoctorStatsModel currentObject){

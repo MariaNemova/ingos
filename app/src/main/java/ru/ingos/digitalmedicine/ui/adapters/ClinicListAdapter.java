@@ -21,10 +21,6 @@ import ru.ingos.digitalmedicine.ui.activities.NewRegistryActivity;
 import ru.ingos.digitalmedicine.ui.listeners.OnClickListener;
 import ru.ingos.digitalmedicine.R;
 
-/**
- * Created by Alexandr on 15.04.2017.
- *
- */
 
 public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.ClinicHolder> {
 
@@ -83,8 +79,8 @@ public class ClinicListAdapter extends RecyclerView.Adapter<ClinicListAdapter.Cl
         public ClinicHolder(View itemView) {
             super(itemView);
 
-            tvNameClinic = (TextView) itemView.findViewById(R.id.tvNameClinic);
-            tvAddresClinic = (TextView) itemView.findViewById(R.id.tvAddresClinic);
+            tvNameClinic = (TextView) itemView.findViewById(R.id.item_list_name);
+            tvAddresClinic = (TextView) itemView.findViewById(R.id.item_list_description);
             this.view = itemView;
         }
 
