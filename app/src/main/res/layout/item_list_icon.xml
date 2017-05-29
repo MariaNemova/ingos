@@ -33,7 +33,7 @@
                 android:paddingStart="6dp"
                 android:paddingEnd="0dp"
                 android:paddingRight="0dp"
-                android:text="@string/insurance_information"
+                android:text="@string/debug_text"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:textSize="18sp" />
@@ -45,7 +45,7 @@
                 android:paddingStart="6dp"
                 android:paddingEnd="0dp"
                 android:paddingRight="0dp"
-                android:text="@string/insurance_information_global"
+                android:text="@string/debug_text"
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
         </LinearLayout>

@@ -32,7 +32,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
 
     @Override
     public RecipeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recipe, parent, false);
+        View view = mInflater.inflate(R.layout.item_recipe, parent, false);
 
         return new RecipeHolder(view);
     }
@@ -56,7 +56,6 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         TextView tvRecipeManual;
         ImageView ivDel;
         private int position;
-        private RecipeModel currentObject;
 
         public RecipeHolder(View itemView) {
             super(itemView);
@@ -71,7 +70,6 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
             this.tvRecipeName.setText(currentObject.getRecipeName());
             this.tvRecipeManual.setText(currentObject.getRecipeManual());
             this.position = position;
-            this.currentObject = currentObject;
         }
 
         public void setListeners(){

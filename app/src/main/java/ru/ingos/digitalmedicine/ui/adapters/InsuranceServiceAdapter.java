@@ -36,7 +36,7 @@ public class InsuranceServiceAdapter extends RecyclerView.Adapter<InsuranceServi
 
     @Override
     public InsuranceServiceHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_speciality, parent, false);
+        View view = mInflater.inflate(R.layout.item_speciality, parent, false);
         view.setOnClickListener(listener);
         view.setOnClickListener(homeListener);
 
