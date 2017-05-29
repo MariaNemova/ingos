@@ -86,4 +86,9 @@ public class InsuranceInfoFragment  extends MVP4Fragment implements InsuranceSer
         tvDateInsurance.setText(insuranceDate);
         ivAvatar.setImageDrawable(avatar);
     }
+
+    @Override
+    public void laodMethodsWithContext() {
+        presenter.setInsuranceInfo(getActivity());
+    }
 }

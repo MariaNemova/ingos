@@ -38,9 +38,7 @@ public class FavoritePresenter  extends MvpPresenter<FavoriteView>{
 
     public void refreshClinics(){
         clinics = new ArrayList<>();
-        for(int i=0;i<IngosApplication.FAVORITE_CLINICS_COUNT;i++){
-            clinics.add(new ClinicListModel("Любимая клинка", "ул. Тестовая, 11/1"));
-        }
+        //здесь нужно загружать реально клиники избранные
         setFavoriteClinics();
     }
 

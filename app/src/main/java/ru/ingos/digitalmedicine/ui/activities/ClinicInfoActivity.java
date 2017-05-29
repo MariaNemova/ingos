@@ -98,8 +98,6 @@ public class ClinicInfoActivity extends MvpAppCompatActivity implements OnMapRea
 
     @Override
     public void onClick(View v) {
-        Log.d(IngosApplication.DEBUG_TAG, "Clickasdasdasd!");
-        Toast.makeText(getApplicationContext(), "Добавлено в избранное", Toast.LENGTH_SHORT);
-        IngosApplication.FAVORITE_CLINICS_COUNT++;
+        Toast.makeText(getApplicationContext(), "Добавлено в избранное", Toast.LENGTH_SHORT).show();
     }
 }

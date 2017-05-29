@@ -1,9 +1,6 @@
 package ru.ingos.digitalmedicine.mvp.presenters;
 
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
-import butterknife.BindView;
-import com.alamkanak.weekview.WeekViewEvent;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.github.tibolte.agendacalendarview.models.BaseCalendarEvent;

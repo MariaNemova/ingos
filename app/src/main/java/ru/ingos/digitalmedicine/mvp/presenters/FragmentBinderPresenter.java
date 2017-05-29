@@ -15,19 +15,21 @@ public class FragmentBinderPresenter extends MvpPresenter<FragmentBinderView> {
     @Override
     protected void onFirstViewAttach()
     {
-        session = IngosApplication.GLOBAL_PREFERENCES.getInt(IngosApplication.PREF_SESSION_ID, -1);
-        getViewState().bindFragmentSupport(FragmentMain.class, false);
+        session = 1;//заглушка
+        this.bindFragment(FragmentMain.class);
     }
 
-    public void bindFragment(Class fragmentClass, boolean addToBackStack){
-        if(session == -1)
+    public void bindFragment(Class fragmentClass){
+        if(session == -1) {
             getViewState().showAuthorizeActivity();
+            return;
+        }
 
         if(fragmentClass == null){
             Log.w(IngosApplication.DEBUG_TAG, "Can't set fragment! Fragment is null!");
             return;
         }
-        getViewState().bindFragmentSupport(fragmentClass, addToBackStack);
+        getViewState().bindFragmentSupport(fragmentClass, false);
     }
 
 }

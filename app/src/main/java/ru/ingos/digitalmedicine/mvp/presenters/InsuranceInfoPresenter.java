@@ -19,22 +19,22 @@ public class InsuranceInfoPresenter extends MvpPresenter<InsuranceInfoView> {
 
     private InsuranceInfoModel insuranceInfo;
 
-    private void loadInsuranceInfo(){
+    private void loadInsuranceInfo(Context context){
         insuranceInfo = new InsuranceInfoModel("Леонид Каприов",
                 "0000 0000 0000",
                 "365 дней",
-                ContextCompat.getDrawable(IngosApplication.GLOBAL_CONTEXT, R.drawable.ic_dicaprio));
+                ContextCompat.getDrawable(context, R.drawable.ic_dicaprio));
 
     }
 
     @Override
     protected void onFirstViewAttach() {
         Utils.logPresenterCreated(InsuranceInfoPresenter.class);
-        setInsuranceInfo();
+        getViewState().laodMethodsWithContext();
     }
 
-    private void setInsuranceInfo() {
-        loadInsuranceInfo();
+    public void setInsuranceInfo(Context context) {
+        loadInsuranceInfo(context);
         getViewState().setInsuranceInfo(
                 insuranceInfo.getName(),
                 insuranceInfo.getInsuranceNumber(),

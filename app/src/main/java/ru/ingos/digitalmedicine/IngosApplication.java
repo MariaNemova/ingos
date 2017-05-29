@@ -1,8 +1,6 @@
 package ru.ingos.digitalmedicine;
 
 import android.app.Application;
-import android.content.Context;
-import android.content.SharedPreferences;
 
 /**
  * Класс создан для хранения статических данных, к которым должен быть организован доступ из всех частей проекта.
@@ -20,22 +18,7 @@ public class IngosApplication extends Application{
 
     public static final String PREF_SESSION_ID = "SESSION_ID";
 
-    public static final String KEY_PREFS = "MyPreferences";
-
-    public static SharedPreferences GLOBAL_PREFERENCES;
-
     public static boolean SHOW_CLINIC_INFO = true;
 
-    public static Context GLOBAL_CONTEXT;
-
-    public static int FAVORITE_CLINICS_COUNT = 0;
-
-
-    @Override
-    public void onCreate(){
-        super.onCreate();
-        GLOBAL_CONTEXT = this;
-        GLOBAL_PREFERENCES = getSharedPreferences(KEY_PREFS, MODE_PRIVATE);
-    }
 
 }

@@ -25,9 +25,7 @@ public class AuthPresenter extends MvpPresenter<AuthView> {
         Sha256 passFromUser = new Sha256(password);
         Sha256 serverPass = new Sha256("123456");
         if(login.equals("12345678") && passFromUser.equals(serverPass)){
-            SharedPreferences.Editor edit = IngosApplication.GLOBAL_PREFERENCES.edit();
-            edit.putInt(IngosApplication.PREF_SESSION_ID, Utils.GLOBAL_RANDOM.nextInt(9999999));//id should be bigger
-            edit.apply();
+            //здесь должно быть создание сессии
             getViewState().successfulAuthorization();
         }else{
             getViewState().showMessage("Не удалось авторизоваться");

@@ -11,9 +11,7 @@ import ru.ingos.digitalmedicine.mvp.views.ExitView;
 public class ExitPresenter extends MvpPresenter<ExitView> {
 
     public void exit(){
-        SharedPreferences.Editor globalPref = IngosApplication.GLOBAL_PREFERENCES.edit();
-        globalPref.remove(IngosApplication.KEY_PREFS);
-        globalPref.apply();
+
 
         getViewState().performExit();
     }

@@ -37,7 +37,7 @@ public class FragmentPrivateRoom extends MvpFragment implements InsuranceInfoVie
     @BindView(R.id.pr_block_general_info_avatar)
     ImageView ivAvatar;
 
-    @InjectPresenter(type = PresenterType.GLOBAL, tag = "InsuranceInfoPreseneter")
+    @InjectPresenter(type = PresenterType.GLOBAL, tag = "InsuranceInfoPresenter")
     InsuranceInfoPresenter presenter;
 
 
@@ -67,4 +67,11 @@ public class FragmentPrivateRoom extends MvpFragment implements InsuranceInfoVie
         tvInsuranceDate.setText(insuranceDate);
         ivAvatar.setImageDrawable(avatar);
     }
+
+    @Override
+    public void laodMethodsWithContext() {
+        presenter.setInsuranceInfo(getActivity());
+    }
+
+
 }
